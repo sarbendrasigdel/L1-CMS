@@ -1,0 +1,93 @@
+//styles for modal
+.modal-wrapper {
+  .modal-header {
+    border: 1px solid $border-color;
+    @include border-radius(0);
+    background: $bg-color;
+    padding: 12px;
+
+    h5 {
+      font-weight: 400;
+      font-size: 16px;
+    }
+
+    .modal-close {
+      background: #ccc;
+      opacity: 1;
+      padding: 7px 13px;
+      margin: -25px;
+      color: #2d1a1c;
+      font-weight: 300;
+    }
+  }
+
+  .modal-content {
+    @include border-radius(0);
+  }
+
+}
+
+.light-modal-wrapper {
+  .modal-backdrop {
+    background-color: #ffffff;
+    opacity: 1;
+  }
+}
+
+.rich-content {
+  @include box-shadow(0, 2px, 4px, rgba(0, 0, 0, 0.2));
+  width: 400px;
+  position: absolute;
+  @include border-radius(3px);
+  padding: 15px 50px 15px;
+  background: $primary-color;
+  color: #ffffff;
+  display: none;
+
+  &-icon {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    font-size: 18px;
+  }
+
+  .notif-close-ico {
+    position: absolute;
+    top: -11px;
+    right: 15px;
+    width: 25px;
+    height: 25px;
+    background: #fbfbfb;
+    overflow: hidden;
+    border-radius: 50%;
+    line-height: 25px;
+    text-align: center;
+    color: #ff4f4f;
+    box-shadow: -1px 1px 6px 2px rgba(0, 0, 0, 0.37);
+  }
+}
+
+.rich-content-lt {
+  top: 40px;
+  left: 10px;
+  .notif-close-ico{
+    left: 15px;
+    right: auto;
+  }
+  .rich-content-icon{
+    right: 15px;
+    left: auto;
+  }
+}
+
+.rich-content-rt {
+  top: 40px;
+  right: 10px;
+
+}
+

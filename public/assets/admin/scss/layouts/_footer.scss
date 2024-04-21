@@ -1,0 +1,80 @@
+.footer-sticky {
+  position: fixed;
+  bottom: 0;
+  background: #c9dcf7;
+  border: 1px solid #cddffa;
+  left: 0;
+  right: 0;
+}
+
+.footer-list {
+  display: inline-block;
+  padding: 5px 0;
+
+  li {
+    position: relative;
+    padding-right: 8px;
+    margin-right: 8px;
+    display: inline-block;
+
+    &:after {
+      position: absolute;
+      right: 0;
+      content: '';
+      background: $border-color;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+    }
+
+    &:last-child {
+      margin-right: 0;
+      padding-right: 0;
+
+      &:after {
+        content: none;
+      }
+    }
+  }
+}
+
+.breadcrumb-wrapper {
+  background: #4d7dbf;
+  display: inline-block;
+  padding: 5px;
+
+  ul {
+    li {
+      display: inline-block;
+      position: relative;
+      padding-right: 8px;
+      margin-right: 8px;
+      color: #fff;
+
+      a {
+        color: #fff;
+      }
+
+      &:after {
+        position: absolute;
+        right: 0;
+        content: '>';
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        color: #fff;
+      }
+
+      &:last-child {
+        &:after {
+          content: none;
+        }
+      }
+    }
+
+    .active {
+      opacity: 0.8;
+      color: #fff;
+    }
+  }
+}

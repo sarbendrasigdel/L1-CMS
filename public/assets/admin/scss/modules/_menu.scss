@@ -1,0 +1,59 @@
+//style for menus
+.menu-bar-top {
+  background: $bg-color;
+  border: 1px solid $border-color;
+
+  ul {
+    li {
+      position: relative;
+      display: inline-block;
+      padding: 8px;
+      &:hover{
+        background: $border-color;
+        .menu-step-first{
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.menu-content {
+  padding: 12px;
+  border: 1px solid $border-color;
+  height: 300px;
+}
+
+.menu-step-first {
+  width: 200px;
+  border: 1px solid $border-color;
+  display: none;
+  position: absolute;
+  left: 0;
+  background: $bg-color;
+  z-index: 5;
+  top: 100%;
+  ul {
+    border-bottom: 1px solid $border-color;
+
+    li {
+      span {
+        margin-right: 8px;
+      }
+
+      display: block;
+
+      &:hover {
+        background: $border-color;
+      }
+
+      a {
+        display: inline-block;
+
+        &:hover {
+          background: $border-color;
+        }
+      }
+    }
+  }
+}

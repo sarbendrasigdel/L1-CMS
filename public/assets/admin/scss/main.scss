@@ -1,0 +1,43 @@
+/*
+Sujal
+Author: Capitaleye
+Version: 1.0
+*/
+/* Base- style, variables, mixins, etc */
+@import 'base/_variables.scss';
+@import 'base/_mixins.scss';
+@import 'base/_base.scss';
+/* layout- footer, header, nav etc */
+@import 'layouts/_header.scss';
+@import 'layouts/_nav.scss';
+@import 'layouts/_banner.scss';
+@import 'layouts/_footer.scss';
+/* modules- */
+@import 'modules/_blocks.scss';
+@import 'modules/_buttons.scss';
+@import 'modules/_sections.scss';
+@import 'modules/_accordion.scss';
+@import 'modules/_windows.scss';
+@import 'modules/_slider.scss';
+@import 'modules/_tabs.scss';
+@import 'modules/_list.scss';
+@import 'modules/_form.scss';
+@import 'modules/_tree-grid.scss';
+@import 'modules/_data-view.scss';
+@import 'modules/_sidebar.scss';
+@import 'modules/_menu.scss';
+@import 'modules/_modal.scss';
+@import 'modules/_tooltip.scss';
+@import 'modules/_csv.scss';
+@import 'modules/_message.scss';
+@import 'modules/_breadcrumb';
+@import 'modules/_stats.scss';
+@import 'modules/_login.scss';
+@import 'modules/_user-profile.scss';
+@import 'modules/_chart.scss';
+@import 'modules/_query.scss';
+@import 'modules/_data-table.scss';
+@import 'modules/_filter.scss';
+
+
+@import 'modules/_typography.scss';

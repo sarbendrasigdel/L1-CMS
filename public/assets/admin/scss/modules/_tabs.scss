@@ -1,0 +1,48 @@
+//style for tabs
+.bordered-container {
+  border: 1px solid $border-color;
+}
+
+.tab-nav-wrapper {
+  background: $bg-color;
+
+  .nav-tabs {
+    .nav-item {
+      .nav-link {
+        border: 0;
+        border-bottom: 2px solid transparent;
+      }
+
+      .active {
+        background: transparent;
+        border-style: solid;
+        border-width: 0 0 2px 0;
+        border-color: $color-light-blue;
+        color: $color-light-blue;
+      }
+    }
+
+  }
+}
+
+.tool-bar {
+  background: $bg-color;
+  ul{
+    li{
+      a{
+        padding: .5rem 1rem;
+        display: inline-block;
+        &:hover{
+          background: #ecebeb;
+        }
+        i{
+          font-size: 18px;
+        }
+        span{
+          display: inline-block;
+          margin-left: 8px;
+        }
+      }
+    }
+  }
+}

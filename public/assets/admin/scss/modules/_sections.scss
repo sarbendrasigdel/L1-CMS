@@ -1,0 +1,43 @@
+.content-box {
+  background: #ffffff;
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #dddddd;
+  &.clone-contact {
+    padding-bottom: 0;
+    position: relative;
+    &:hover {
+      .btn-remove-row {
+        transform: translateX(-50%) scale(1);
+      }
+    }
+  }
+}
+
+.btn-remove-row {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  top: -28px;
+  transition: 400ms ease;
+  z-index: 999;
+}
+
+.content-box-grey {
+  background: #efefef;
+  margin-top: 10px;
+  padding: 20px;
+  border: 1px solid #dddddd;
+}
+
+.clone-this-add .btn-remove-row, .clone-this-edit .btn-remove-row {
+  display: none;
+}
+
+#cloned-contact-add .btn-remove-row, #cloned-contact-edit .btn-remove-row {
+  display: block;
+}
+
+.modal-lg {
+  max-width: 80% !important;
+}

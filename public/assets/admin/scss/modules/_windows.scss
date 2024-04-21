@@ -1,0 +1,44 @@
+//css for windows
+.task-bar {
+  background: $bg-color;
+  color: $font-color;
+  position: relative;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 20px;
+  border: 1px solid $border-color;
+  border-bottom: 0;
+}
+
+.task-action {
+  position: absolute;
+  right: 0;
+  top: 0;
+  @include transition(all, 0.3s, ease-in-out);
+
+  ul {
+    li {
+      display: inline-block;
+      margin: 0 8px;
+      width: 30px;
+      text-align: center;
+    }
+  }
+
+  &:hover {
+    background: #bd0707;
+
+    .window-dismiss {
+      color: #ffffff;
+
+    }
+  }
+}
+
+.window-content {
+  border: 1px solid $border-color;
+}
+
+.task-title {
+  font-size: 18px;
+}

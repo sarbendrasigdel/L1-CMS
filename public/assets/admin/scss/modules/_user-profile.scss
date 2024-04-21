@@ -1,0 +1,72 @@
+.user-nav {
+  ul {
+    li {
+      display: inline-block;
+      margin-right: 8px;
+
+      a {
+        border: 1px solid $border-color;
+        background: $bg-color;
+        padding: 5px 12px;
+        display: inline-block;
+
+        i {
+          margin-right: 8px;
+        }
+      }
+    }
+  }
+}
+
+.profile-image-box {
+  text-align: center;
+
+  img {
+    width: 130px;
+    margin: 0 auto;
+  }
+}
+
+.btn-upload-wrapper {
+  position: relative;
+  margin-top: 18px;
+
+  .custom-file-label {
+    margin: 0;
+    padding: 10px;
+
+    &:after {
+      padding: 8px;
+    }
+  }
+
+}
+
+.u-name-log {
+  font-weight: 600;
+  color: $primary-color;
+  padding-left: 12px;
+
+  a {
+    color: $primary-color;
+  }
+}
+
+.log-box-footer {
+  color: #828282;
+  ul {
+    li {
+      display: inline-block;
+      margin: 0 5px;
+
+      i {
+        margin-right: 2px;
+      }
+    }
+  }
+}
+.log-footer{
+  background: $bg-color;
+  padding: 10px;
+  border-top: 1px solid  $border-color;
+}

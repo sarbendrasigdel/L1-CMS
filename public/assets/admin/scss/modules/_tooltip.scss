@@ -1,0 +1,43 @@
+//style for ttol tips
+.tooltip {
+  .tooltip-inner {
+    background: $primary-color;
+    color: #ffffff;
+    padding: 5px 15px;
+    opacity: 1;
+    @include border-radius(0);
+  }
+}
+
+.bs-tooltip-right {
+  .arrow {
+    &:before {
+      border-right-color:  $primary-color;
+    }
+  }
+}
+
+.bs-tooltip-bottom {
+  .arrow {
+    &:before {
+      border-bottom-color:  $primary-color;
+    }
+  }
+}
+
+.bs-tooltip-left {
+  .arrow {
+    &:before {
+      border-left-color:  $primary-color;
+    }
+  }
+}
+
+
+.bs-tooltip-top {
+  .arrow {
+    &:before {
+      border-top-color: $primary-color;
+    }
+  }
+}

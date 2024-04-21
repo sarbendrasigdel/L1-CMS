@@ -1,0 +1,27 @@
+.component-header {
+  h3 {
+    font-size: 14px;
+    background: $bg-color;
+    display: inline-block;
+    padding: 8px 15px;
+    font-weight: 400;
+    background: #007bff;
+    color: #ffff;
+
+  }
+}
+
+.page-header {
+  h3 {
+    font-size: 13px;
+    margin-bottom: 5px;
+  }
+}
+
+.header-ssm {
+  h4 {
+    font-size: 15px;
+    font-weight: 500;
+    color: #212529;
+  }
+}

@@ -1,0 +1,244 @@
+/*styles for login page */
+.login-wrap {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f5f5f5;
+}
+
+.login {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+
+  width: 40%;
+  @include border-radius(6px);
+}
+
+.login-form-box {
+  background-color: #E8E8E8;
+  border: 1px solid $border-color;
+}
+
+.logo-login {
+  background: #e8e8e8;
+  display: inline-block;
+  padding: 10px 20px 10px;
+  @include border-radii(0, 6px, 0, 0);
+  border-bottom: 1px solid #fafafa;
+}
+
+
+.login-icon-box {
+  display: inline-block;
+  vertical-align: middle;
+
+  img {
+    width: 50px;
+  }
+}
+
+.login-desc-cap {
+  display: inline-block;
+  vertical-align: middle;
+
+  h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+
+  p {
+    font-size: 13px;
+    margin-bottom: 0;
+  }
+}
+
+.login-form-wrapper {
+  padding: 20px 20px 0;
+  position: relative;
+
+  .form-control {
+    padding: 12px 15px;
+  }
+
+  .input-group {
+    padding-bottom: 24px;
+    position: relative;
+  }
+
+  .input-group-text {
+    background: #f1f1f1;
+    color: #d0cbcb;
+  }
+
+}
+
+.login-desc-top {
+  padding: 20px 20px 0;
+}
+
+.login-remember {
+  padding: 20px;
+  border-top: 1px solid $bg-color;
+}
+
+.check-in-label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  input {
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .checkmark {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    background-color: #ffffff;
+    border: 1px solid $primary-color;
+
+    &:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+  }
+
+  &:hover {
+    input ~ .checkmark {
+      background-color: #ccc;
+    }
+  }
+
+  input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+
+  input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  .checkmark:after {
+    left: 50%;
+    top: 50%;
+    content: '\f00c';
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    font-family: "Font Awesome 5 Free";
+    font-weight: 600;
+    color: #ffffff;
+  }
+}
+
+.checkin-label-log {
+  padding-left: 25px;
+}
+
+.check-in-label .chk-mark-tp {
+  top: 2px;
+}
+
+.login-remember {
+  .chk-wrap {
+    display: inline-block;
+  }
+}
+
+.btn-login {
+  background: $primary-color;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 4px 24px;
+  @include border-radius(4px);
+
+  &:hover {
+    color: #ffffff;
+  }
+}
+
+.lg-error {
+  position: absolute;
+  padding: 1px 10px;
+  background: transparent;
+
+  color: #e45036;
+  font-size: 11px;
+  @include border-radius(2px);
+
+  //&:after {
+  //  position: absolute;
+  //  content: '';
+  //  border-style: solid;
+  //  border-width: 5px 5px 5px 5px;
+  //  border-color: #e45036 transparent transparent transparent;
+  //}
+}
+
+.lg-error-btm {
+  bottom: 5px;
+
+  &:after {
+    bottom: 90%;
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+}
+
+.lg-error-top {
+  top: -3px;
+
+  &:after {
+    content: none;
+
+  }
+}
+
+.effect2:before, .effect2:after {
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 15px;
+  left: 10px;
+  width: 50%;
+  top: 80%;
+  max-width: 300px;
+  background: #777;
+  -webkit-box-shadow: 0 15px 10px #777;
+  -moz-box-shadow: 0 15px 10px #777;
+  box-shadow: 0 15px 10px #777;
+  -webkit-transform: rotate(-3deg);
+  -moz-transform: rotate(-3deg);
+  -o-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+}
+
+.effect2:after {
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  transform: rotate(3deg);
+  right: 10px;
+  left: auto;
+}
+
+/* login styles end */

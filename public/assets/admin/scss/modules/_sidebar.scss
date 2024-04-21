@@ -1,0 +1,87 @@
+//style for side bar
+.side-bar-wrapper {
+  border: 2px solid $border-color;
+  display: flex;
+  margin-top: 20px;
+
+  ul {
+    li {
+
+      position: relative;
+
+      .side-bar-icon {
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        display: inline-block;
+        color: #fff;
+        text-align: center;
+        font-size: 9px;
+        border-radius: 2px;
+        background-color: #5d78ff;
+        position: absolute;
+        left: 5px;
+      }
+
+      &:nth-child(5n+1) {
+        .side-bar-icon {
+          background-color: #716aca !important;
+        }
+      }
+
+      &:nth-child(5n+2) {
+        .side-bar-icon {
+          background-color: #34bfa3 !important;
+        }
+      }
+
+      &:nth-child(5n+3) {
+        .side-bar-icon {
+          background-color: #ffb822 !important;
+        }
+      }
+
+      &:nth-child(5n+4) {
+        .side-bar-icon {
+          background-color: #f4516c !important;
+        }
+      }
+
+      a {
+        padding: 8px 8px 8px 35px;
+        display: block;
+        position: relative;
+
+        &:hover {
+          background: #edf7ff;
+        }
+
+        span {
+          margin-right: 8px;
+        }
+      }
+
+      .side-bar-icon {
+
+      }
+    }
+  }
+}
+
+.side-bar-tab {
+  background: $bg-color;
+  min-height: calc(100vh - 122px);
+
+  ul {
+    border-bottom: 1px solid $border-color;
+
+  }
+}
+
+.side-bar-aside {
+  width: 300px;
+}
+
+.sidebar-content {
+  width: 100%;
+}

@@ -1,0 +1,64 @@
+//style for tree view
+.tree-view-wrapper {
+  border: 1px solid $border-color;
+}
+
+.tree-item-parent {
+  padding: 5px;
+
+  &:hover {
+    background: $border-color;
+  }
+
+  .d-inline-block {
+    vertical-align: middle;
+    margin: 0 8px;
+  }
+}
+
+.tree-child {
+  display: none;
+  ul {
+
+    li {
+      padding: 6px 35px;
+    }
+  }
+}
+
+.tree-child-active{
+  display: block;
+
+}
+.status-open{
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.file-icon-inline {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.selected-inline {
+  width: 15px;
+  height: 15px;
+  border: 1px solid #7b7b7b;
+  display: inline-block;
+  font-size: 8px;
+  vertical-align: middle;
+  line-height: 15px;
+  text-align: center;
+  color: $primary-color;
+}
+.checked-tick{
+  display: none;
+}
+.parent-icon-close{
+  display: inline-block;
+}
+.parent-icon-open{
+  display: inline-block;
+}

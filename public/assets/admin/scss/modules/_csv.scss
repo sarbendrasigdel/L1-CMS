@@ -1,0 +1,82 @@
+//style for csv table
+.csv-table-header {
+  background: $bg-color;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .15);
+
+  ul {
+    border-left: 1px solid $border-color;
+    display: inline-block;
+
+    li {
+      padding: 8px 12px;
+      display: inline-block;
+
+      &:hover {
+        background: $border-color;
+      }
+
+      .active-color-box {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 8px;
+        width: 20px;
+        height: 20px;
+        border: 1px solid $border-color;
+
+      }
+    }
+  }
+}
+
+.active-text-color {
+  background: #000000;
+}
+
+.active-background-color {
+  background: #ffffff;
+}
+
+.csv-table-url {
+  background: #ffffff;
+
+  .form-control {
+    @include border-radius(0);
+    border: 1px solid $border-color;
+  }
+}
+
+.csv-table-content {
+  thead {
+    background: #ededed;
+
+    th {
+      font-weight: 400;
+
+    }
+  }
+
+  tbody {
+    tr {
+      th {
+        background: #ededed;
+        font-weight: 400;
+
+      }
+    }
+  }
+
+  .table td {
+    min-width: 150px;
+  }
+
+  .table td{
+    padding: 3px 5px;
+  }
+  .table th{
+    padding: 3px 30px;
+
+  }
+  table tr {
+    min-height: 1000px;
+  }
+}

@@ -1,0 +1,23 @@
+//style for data view
+.data-view-wrapper {
+  border: 2px solid $border-color;
+}
+.data-view-content{
+  padding: 15px;
+  border-bottom: 1px solid  $border-color;
+}
+.square-box{
+  height: 100px;
+  width: 100px;
+
+  img{
+    height: 100px;
+    width: 100px;
+    border: 1px solid $border-color;
+    padding: 2px;
+  }
+}
+.data-view-active{
+  background: $border-color;
+  border-left: 3px solid $primary-color;
+}

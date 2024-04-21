@@ -1,0 +1,33 @@
+.query-table {
+  margin-top: 15px;
+}
+
+.query-report-wrapper {
+  background: $bg-color;
+  padding: 5px 5px 0;
+  border: 1px solid $border-color;
+  position: relative;
+  margin: 10px 0;
+}
+
+.icon-box-tt {
+  img {
+    height: 100px;
+  }
+
+  &-label {
+    border-top: 1px solid $border-color;
+    padding: 5px;
+    h4 {
+      font-size: 12px;
+      margin-bottom: 0;
+    }
+  }
+}
+.anc-overlay-abs{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

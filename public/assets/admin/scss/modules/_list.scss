@@ -1,0 +1,27 @@
+//style for list
+.list-wrapper {
+  border: 1px solid $border-color;
+  height: 390px;
+  overflow-y: scroll;
+  ul {
+    li {
+      padding: 10px;
+      border-bottom: 1px solid $border-color;
+
+      &:last-child {
+        border-bottom: 0;
+      }
+
+      h5 {
+        font-size: 16px;
+        color: $font-color;
+        font-weight: 600;
+      }
+
+      span {
+        display: block;
+        color: $font-color-light;
+      }
+    }
+  }
+}

@@ -1,0 +1,135 @@
+.stat-box-square {
+  padding: 20px;
+  @include border-radius(5px);
+  background-clip: padding-box;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0 0 rgba(0, 0, 0, 0.02);
+  box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0 0 rgba(0, 0, 0, 0.02);
+  position: relative;
+}
+
+.stat-box-header {
+  float: left;
+}
+
+.stats-header-text {
+  h5 {
+    font-size: 18px;
+    margin: 0;
+    text-transform: uppercase;
+  }
+}
+
+.stats-header-icon {
+  float: right;
+  font-size: 18px;
+}
+
+.stats-header-label {
+  color: #6c757d;
+  margin-bottom: 20px;
+}
+
+.stats-calc {
+  display: inline-block;
+  background-color: #f1b53d;
+  padding: 0.2em 0.6em;
+  color: #ffffff;
+  line-height: 1.5;
+  font-weight: 700;
+  @include border-radius(3px);
+  letter-spacing: 1px;
+}
+
+.stats-calc-helper {
+  display: inline-block;
+  padding-left: 5px;
+}
+
+.stats-footer {
+  color: #6c757d;
+
+}
+
+.stat-data {
+  margin-bottom: 20px;
+}
+
+.stats-calc-inc {
+  background-color: #1bb99a;
+}
+
+.stats-calc-dec {
+  background-color: #ff5d48;
+}
+
+.stas-bar {
+
+}
+
+.val-inc {
+  color: #1bb99a;
+}
+
+.val-dec {
+  color: #ff5d48;
+}
+
+.val-eql {
+  color: #f1b53d;
+}
+
+.progress-label-name {
+  float: left;
+}
+
+.progress-label-val {
+  float: right;
+  font-weight: 600;
+}
+
+.progress-label {
+  margin-bottom: 16px;
+}
+
+.header-ssm {
+  h4 {
+    margin-bottom: 20px;
+
+  }
+}
+
+.stas-bar {
+  .progress {
+    height: 10px;
+
+    .progress-bar-inc {
+      background-color: #1bb99a;
+    }
+
+    .progress-bar-dec {
+      background-color: #ff5d48;
+    }
+
+    .progress-bar-eql {
+      background-color: #f1b53d;
+    }
+  }
+}
+
+.stat-table {
+  .table {
+    margin: 0;
+  }
+}
+
+.anc-overlay {
+  display: block;
+
+  &:hover {
+    .stats-header-label {
+      color: #000000;
+    }
+  }
+}

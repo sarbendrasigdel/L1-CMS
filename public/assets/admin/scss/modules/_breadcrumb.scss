@@ -1,0 +1,11 @@
+.breadcrumb-wrapper {
+  .breadcrumb {
+    margin: 0;
+    padding: 9px;
+    @include border-radius(0);
+    border: 0;
+    background: #ebebeb;
+  }
+
+
+}
