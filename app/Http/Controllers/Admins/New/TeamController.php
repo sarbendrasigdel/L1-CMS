@@ -6,16 +6,32 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admins\Pagesettings\Team;
 use Illuminate\Support\Facades\DB;
+use App\Models\Admins\AdminUserInfo;
+use App\Library\AuthUser;
+use App\Library\BreadCrumbs;
+
 class TeamController extends Controller
 {
+    use AuthUser,BreadCrumbs;
     public function index()
     {
-        return view('admin.pagesettings.team.index');
+        $data['title'] = 'Team';
+        $data['menu'] = 'submenu';
+        $data['subMenu'] = 'pagesettings';
+        $data['breadCrumbs'] = $this->getBreadCrumbDetails($data);
+        return view('admin.pagesettings.team.index',compact('data'));
     }
 
     public function frontendIndex()
     {
         return view('Frontend.team');
+    }
+    public function edit($id)
+    {
+        $designation = Team::get()
+                        ->where('id', decrypt($id))->first();
+
+        return $designation;
     }
 
     public function store(Request $request)
@@ -31,8 +47,8 @@ class TeamController extends Controller
             $team->instagram = $request->instagram;
             $team->twitter = $request->twitter;
             $team->github = $request->github;
-            $team->featured = $request->featured;    
-            $team->active_status = ($request->has('active_status')) ? true : false;
+            $team->featured = $request->featured_add;    
+            $team->active_status = ($request->has('active_status_add')) ? true : false;
             $team->save();
 
             // if (!empty($user)) {
@@ -70,8 +86,42 @@ class TeamController extends Controller
         return $data;
     }
 
+    public function update(Request $request, $id)
+    {
+
+        try {
+            if ($request->ajax()) {
+                $team = Team::find(decrypt($id));
+                // dd($team);
+                $team->name = $request->name;
+                $team->image = $request->team_image;
+                $team->position = $request->position;
+                $team->facebook = $request->facebook;
+                $team->instagram = $request->instagram;
+                $team->twitter = $request->twitter;
+                $team->github = $request->github;
+                $team->featured = $request->featured; 
+                $team->active_status = ($request->has('active_status')) ? true : false;
+                // $team->updated_by_admin_users_info_id = $this->getLoggedInUser()->latestAdminUserInfo->id;
+                $team->save();
+
+                $data['status'] = true;
+                $data['title'] = 'Team';
+                $data['message'] = 'Team Updated Successfully.';
+            }
+        } catch (\Exception $e) {
+            $data['status'] = false;
+            $data['title'] = 'Team';
+            $data['message'] = 'Something went wrong. please try again';
+           $data['message'] = $e->getMessage();
+        }
+
+        return $data;
+    }
+
     public function fetchTeamList(Request $request)
     {
+        // dd($request->all());
         $columns = array(
             0 => 'id',
             1 => 'name',
@@ -109,8 +159,8 @@ class TeamController extends Controller
             $nestedData['position'] = $team->position;
             $nestedData['active_status'] = $team->active_status;
             $nestedData['created_at'] = $team->created_at->toDateTimeString();
-            $nestedData['edit_permission'] = $this->checkPermission('view.user.designation');
-            $nestedData['delete_permission'] = $this->checkPermission('delete.user.designation');
+            $nestedData['edit_permission'] = true;
+            $nestedData['delete_permission'] = true;
             $nestedData['is_editable'] = $team->is_editable;
             $teamData[] = $nestedData;
         }
@@ -125,5 +175,30 @@ class TeamController extends Controller
     }
     
 
+    }
+    public function destroy(Request $request, $id)
+    {
+        try {
+            if ($request->ajax()) {
+                $team = Team::findOrFail(decrypt($id));
+                
+
+                    // $team->deleted_by_admin_users_info_id = $this->getLoggedInUser()->latestAdminUserInfo->id;
+                    $team->save();
+                    if($team->delete()){
+                        $data['id']= $id;
+                        $data['status']=true;
+                        $data['msg']= $team->display_name.' is successfully deleted.';
+                    }
+                
+            }
+        } catch (\Exception $e) {
+            $data['status'] = false;
+            $data['title'] = 'Team';
+            $data['message'] = 'Something went wrong. please try again';
+//            $data['message'] = $e->getMessage();
+        }
+
+        return $data;
     }
 }

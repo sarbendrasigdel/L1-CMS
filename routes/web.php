@@ -115,6 +115,9 @@ Route::group(['middleware' => 'auth:admin-user'], function () {
         Route::get('team-settings',[TeamController::class,'index'])->name('teams');
         Route::post('add-team',[TeamController::class,'store'])->name('add-team');
         Route::post('fetch-teams',[TeamController::class,'fetchTeamList']);
+        Route::get('/team/{id}/edit',[TeamController::class,'edit']);
+        Route::post('/team/{id}',[TeamController::class,'update']);
+        Route::delete('/teams/{id}',[TeamController::class,'destroy']);
 
     });
 });

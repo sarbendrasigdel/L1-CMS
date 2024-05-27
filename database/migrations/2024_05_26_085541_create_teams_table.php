@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('github')->nullable();
             $table->string('image');
             $table->boolean('featured')->default(0);
+            $table->tinyInteger('is_editable')->default('1');
             $table->tinyInteger('active_status')->default('1');
             $table->timestamps();
         });

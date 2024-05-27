@@ -119,6 +119,9 @@ class DesignationController extends Controller
         return $data;
     }
 
+     
+
+
     public function export(Request $request)
     {
         $currentDate = Carbon::now()->toDateTimeString();

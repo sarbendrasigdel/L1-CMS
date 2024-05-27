@@ -40,17 +40,17 @@
                                         <div class="col-sm-8 pl-lg-0">
                                             <div class="input-group">
                                                <span class="input-group-btn">
-                                                 <a data-input="thumbnail" data-preview="holder"
+                                                 <a data-input="thumbnail" data-preview="holder-add"
                                                     class="lfm btn btn-primary">
                                                    <i class="fa fa-picture-o"></i> Choose
                                                  </a>
                                                </span>
-                                                <input id="thumbnail" class="form-control" type="text"
+                                                <input id="thumbnail-add" class="form-control" type="text"
                                                        name="team_image"
                                                        value="">
                                             </div>
 
-                                            <div id="holder">
+                                            <div id="holder-add">
                                                 <img
                                                     src=""
                                                     style="height: 5rem;">
@@ -132,7 +132,7 @@
                                                    style="display: none;"></small>
                                                    <div class="form-check form-check-inline">
                                                     <label class="form-check-label">
-                                                        <input class="form-check-input" type="checkbox" name="featured" id="" value="1"> Featured
+                                                        <input class="form-check-input" type="checkbox" name="featured_add" id="featured-add" value="1"> Featured
                                                     </label>
                                                    </div>
                                             
@@ -150,7 +150,7 @@
                                                 Status </label>
                                             <div class="col-sm-8 pl-lg-0">
                                                 <label class="switch">
-                                                    <input type="checkbox" id="event-fee-switch" name="active_status"
+                                                    <input type="checkbox" id="event-fee-switch_add" name="active_status_add"
                                                            value="1">
                                                     <span class="slider"></span>
                                                 </label>

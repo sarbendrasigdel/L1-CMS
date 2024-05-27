@@ -16,9 +16,9 @@
     </style>
 @endsection
 @section('main-content')
-    {{-- @include('admin.access.users.partials.view')
-    @include('admin.access.users.partials.add') --}}
-    @include('admin.pagesettings.team.add')
+    
+    @include('admin.pagesettings.team.partials.view')
+    @include('admin.pagesettings.team.partials.add')
     <section class="content-wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -166,7 +166,7 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="table-responsive">
-                                    <table class="table table-striped table-bordered tabled-search" id="user-table">
+                                    <table class="table table-striped table-bordered tabled-search" id="master-table">
                                         <thead class="thead-sort">
                                         <tr>
                                             <th class="sort-active">S.No</th>
