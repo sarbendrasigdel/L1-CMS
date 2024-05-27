@@ -1,0 +1,129 @@
+<?php
+
+namespace App\Http\Controllers\Admins\New;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Admins\Pagesettings\Team;
+use Illuminate\Support\Facades\DB;
+class TeamController extends Controller
+{
+    public function index()
+    {
+        return view('admin.pagesettings.team.index');
+    }
+
+    public function frontendIndex()
+    {
+        return view('Frontend.team');
+    }
+
+    public function store(Request $request)
+    {
+        // dd($request->all());
+        try {
+            DB::beginTransaction();
+            $team = new Team();
+            $team->name = $request->name;
+            $team->image = $request->team_image;
+            $team->position = $request->position;
+            $team->facebook = $request->facebook;
+            $team->instagram = $request->instagram;
+            $team->twitter = $request->twitter;
+            $team->github = $request->github;
+            $team->featured = $request->featured;    
+            $team->active_status = ($request->has('active_status')) ? true : false;
+            $team->save();
+
+            // if (!empty($user)) {
+            //     $user->syncPermissions($request->permissions);
+            //     $userInfo = new Team();
+            //     $userInfo->admin_user_id = $user->id;
+            //     $userInfo->full_name = $request->full_name;
+            //     $userInfo->email = $request->email;
+            //     $userInfo->phone_number = $request->phone;
+            //     $userInfo->address = $request->address;
+            //     $userInfo->user_created_by_users_info_id = $this->getLoggedInUser()->latestAdminUserInfo->id;
+            //     $userInfo->save();
+
+            //     if (!empty($userInfo)) {
+            //         $this->addPermissionsLog($userInfo, $request->permissions);
+            //         $userDesignation = new UserDesignation();
+            //         $userDesignation->admin_users_info_id = $userInfo->id;
+            //         $userDesignation->designation_id = $request->designation;
+            //         $userDesignation->save();
+            //     }
+            // }
+
+            DB::commit();
+            $data['status'] = true;
+            $data['title'] = 'Team Management';
+            $data['message'] = 'Team added successfully';
+        } catch (\Exception $e) {
+            DB::rollback();
+            $data['status'] = false;
+            $data['title'] = 'Team Management';
+            $data['message'] = 'Something went wrong. please try again';
+            $data['error'] = $e->getMessage();
+        }
+
+        return $data;
+    }
+
+    public function fetchTeamList(Request $request)
+    {
+        $columns = array(
+            0 => 'id',
+            1 => 'name',
+            2 => 'position',
+            3 => 'active_status',
+            4 => 'created_at',
+            5 => 'id',
+        );
+        $data['team'] = array();
+        $totalData = Team::count();
+        $limit = $request->input('length');
+        $start = $request->input('start');
+        $order = $columns[$request->input('order.0.column')];
+        $dir = $request->input('order.0.dir');
+
+        $dat = array();
+        $datas = array();
+
+        $searchKey = $request->input('search.value');
+            $teamLists =  Team::FilterByGlobalSearch($searchKey);
+            $totalData = $teamLists->count();
+            $teams = $teamLists->offset($start)
+                ->limit($limit)
+                ->orderBy($order,$dir)
+                ->get();
+            $totalFiltered = $totalData;
+    
+    if(!empty($teams)){
+        $teamData = array();
+        foreach($teams as $index => $team){
+            $nestedData = array();
+            $nestedData['id'] = $index + 1;
+            $nestedData['teamId'] = encrypt($team->id);
+            $nestedData['name'] = $team->name;
+            $nestedData['position'] = $team->position;
+            $nestedData['active_status'] = $team->active_status;
+            $nestedData['created_at'] = $team->created_at->toDateTimeString();
+            $nestedData['edit_permission'] = $this->checkPermission('view.user.designation');
+            $nestedData['delete_permission'] = $this->checkPermission('delete.user.designation');
+            $nestedData['is_editable'] = $team->is_editable;
+            $teamData[] = $nestedData;
+        }
+        $tableContent = array(
+            "draw"            => intval($request->input('draw')),
+            "recordsTotal"    => intval($totalData),
+            "recordsFiltered" => intval($totalFiltered),
+            "data"            => $teamData,
+        );
+
+        return $tableContent;
+    }
+    
+
+    }
+}

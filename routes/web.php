@@ -4,12 +4,20 @@ use App\Http\Controllers\Admins\Access\AdminUserController;
 use App\Http\Controllers\Admins\Access\DesignationController;
 use App\Http\Controllers\Admins\Access\RoleController;
 use App\Http\Controllers\Admins\DashboardController;
+use App\Http\Controllers\Admins\New\HomepageController;
+use App\Http\Controllers\Admins\New\TeamController;
 use App\Http\Controllers\Admins\Settings\PrivacyPolicyController;
 use App\Http\Controllers\Admins\Settings\SeoSettingController;
 use App\Http\Controllers\Admins\Settings\SiteSettingController;
 use App\Http\Controllers\Admins\Settings\TermsAndConditionController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\NewsletterController;
+use App\Http\Controllers\Frontend\PortfolioController;
+use App\Http\Controllers\Frontend\ServicesController;
+use NunoMaduro\Collision\Adapters\Laravel\Commands\TestCommand;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +37,9 @@ Route::get('clear', function () {
     return 'all clear';
 });
 
+Route::get('/', function () {
+    return redirect(route('admin.login'));
+})->name('frontend.index');
 
 Route::get('/admin-login', [LoginController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/admin-login', [LoginController::class, 'authenticate'])->name('admin.login.submit');
@@ -93,6 +104,28 @@ Route::group(['middleware' => 'auth:admin-user'], function () {
         Route::delete('seo-setting/{id}', [SeoSettingController::class, 'destroy'])->middleware('permission:delete.seoSetting');
 
 
+        //Route for homepagesettings
+
+        Route::get('homepage-settings',[HomepageController::class,'index'])->name('homepage');
+
+        //newsletter section
+        Route::get('newsletter-settings',[NewsletterController::class,'index'])->name('newsletter');
+
+        //Teams section
+        Route::get('team-settings',[TeamController::class,'index'])->name('teams');
+        Route::post('add-team',[TeamController::class,'store'])->name('add-team');
+        Route::post('fetch-teams',[TeamController::class,'fetchTeamList']);
+
     });
 });
 
+
+Route::get('test',[TestController::class,'index'])->name('test');
+Route::get('/fetchdata',[TestController::class,'getData'])->name('getdata');
+
+//frontend
+Route::get('/',[HomeController::class,'index']);
+Route::get('/portfolio',[PortfolioController::class,'index']);
+Route::get('/services',[ServicesController::class,'index']);
+Route::get('/newsletter',[NewsletterController::class,'index']);
+Route::get('/team',[TeamController::class,'frontendIndex'])->name('teams');

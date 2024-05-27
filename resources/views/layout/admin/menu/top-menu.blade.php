@@ -8,7 +8,7 @@
             </div>
             <div class="col-md-6 col-6 text-right text-md-left">
                 <div class="soft-brand-image">
-{{--                    <img src="{{asset('assets/admin')}}/images/logo.png" alt="">--}}
+                   {{-- <img src="{{asset('assets/admin')}}/images/logo.png" alt=""> --}}
                 </div>
             </div>
             <div class="col-md-6 col-3 text-md-right">

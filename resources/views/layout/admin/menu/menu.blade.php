@@ -8,6 +8,7 @@
                         @include('layout.admin.menu.submenu.dashboard')
                         @include('layout.admin.menu.submenu.setting')
                         @include('layout.admin.menu.submenu.users')
+                        @include('layout.admin.menu.submenu.pagesetting')
                     </div>
                 </div>
             </div>
