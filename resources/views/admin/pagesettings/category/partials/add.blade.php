@@ -7,14 +7,14 @@
                     @include('layout.common.modal-spinner')
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">
-                            Add Team
+                            Add Category
                         </h5>
                         <button type="button" class="close modal-close" data-dismiss="modal"
                                 aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form id="add-team-form" autocomplete="off" enctype="multipart/form-data">
+                    <form id="add-form" autocomplete="off" enctype="multipart/form-data">
                         @csrf
                         <input id="real-password" type="password" autocomplete="new-password" style="display: none;">
                         <div class="modal-body">
@@ -22,20 +22,20 @@
 
                                 <div class="col-lg-6 form-input-area">
                                     <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label"> Name <sup
+                                        <label class="col-sm-4 col-form-label">Category Name <sup
                                                 class="text-danger">*</sup></label>
                                         <div class="col-sm-8 pl-lg-0">
                                             <small class="error-message" id="company_name_err"
                                                    style="display: none;"></small>
                                             <input type="text" class="form-control"
-                                                   placeholder=" Name" name="name"
+                                                   placeholder="Category Name" name="category_name"
                                                    value="">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Photo <sup
+                                        <label class="col-sm-4 col-form-label">Category Image <sup
                                                 class="text-danger">*</sup></label>
                                         <div class="col-sm-8 pl-lg-0">
                                             <div class="input-group">
@@ -46,7 +46,7 @@
                                                  </a>
                                                </span>
                                                 <input id="thumbnail-add" class="form-control" type="text"
-                                                       name="team_image"
+                                                       name="category_image"
                                                        value="">
                                             </div>
 
@@ -63,69 +63,6 @@
                                 </div>
                                 <div class="col-lg-6 form-input-area">
                                     <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Position <sup
-                                                class="text-danger">*</sup></label>
-                                        <div class="col-sm-8 pl-lg-0">
-                                            <small class="error-message" id="company_email_err"
-                                                   style="display: none;"></small>
-                                            <input type="text" class="form-control"
-                                                   placeholder="Position" name="position"
-                                                   value="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 form-input-area">
-                                    <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Facebook <sup
-                                                class="text-danger">*</sup></label>
-                                        <div class="col-sm-8 pl-lg-0">
-                                            <small class="error-message" id="company_location_err"
-                                                   style="display: none;"></small>
-                                            <input type="url" class="form-control"
-                                                   placeholder="Facebook Link" name="facebook"
-                                                   value="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 form-input-area">
-                                    <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Instagram <sup
-                                                class="text-danger">*</sup></label>
-                                        <div class="col-sm-8 pl-lg-0">
-                                            <small class="error-message" id="contact_number_err"
-                                                   style="display: none;"></small>
-                                            <input type="url" class="form-control"
-                                                   placeholder="Instagram Link" name="instagram"
-                                                   value="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 form-input-area">
-                                    <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Twitter </label>
-                                        <div class="col-sm-8 pl-lg-0">
-                                            <small class="error-message" id="copyright_err"
-                                                   style="display: none;"></small>
-                                            <input type="url" class="form-control"
-                                                   placeholder="Twitter Link" name="twitter"
-                                                   value="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 form-input-area">
-                                    <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Github </label>
-                                        <div class="col-sm-8 pl-lg-0">
-                                            <small class="error-message" id="meta_title_err"
-                                                   style="display: none;"></small>
-                                            <input type="url" class="form-control"
-                                                   placeholder="Github Link" name="meta_title"
-                                                   value="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 form-input-area">
-                                    <div class="form-group row">
                                         <label class="col-sm-4 col-form-label">Featured</label>
                                         <div class="col-sm-8 pl-lg-0">
                                             <small class="error-message" id="meta_description_err"
@@ -135,7 +72,17 @@
                                                         <input class="form-check-input" type="checkbox" name="featured_add" id="featured-add" value="1"> Featured
                                                     </label>
                                                    </div>
-                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 form-input-area">
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Category Description </label>
+                                        <div class="col-sm-8 pl-lg-0">
+                                            <small class="error-message" id="meta_description_err"
+                                                   style="display: none;"></small>
+                                            <textarea name="category_description"
+                                                      class="form-control"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -165,10 +112,10 @@
                         <button type="button" class="btn form-button" data-dismiss="modal">
                             Close
                         </button>
-                        <button type="button" class="btn form-button btn-danger reset-user">
+                        <button type="button" class="btn form-button btn-danger reset-btn">
                             Reset Form
                         </button>
-                        <button type="button" class="btn form-button btn-success add-user">Save</button>
+                        <button type="button" class="btn form-button btn-success add-btn">Save</button>
                     </div>
                 </div>
             </div>

@@ -1,19 +1,18 @@
-// $(".chosen-select-width").chosen({ width: '100%' });
 
-$('.add-user').on('click', function(e){
+$('.add-btn').on('click', function(e){
     e.preventDefault();
     $('.modal-spinner').show();
-    var form_data = $('form#add-team-form').serializeArray();
+    var form_data = $('form#add-form').serializeArray();
     $.ajax({
         type: "POST",
-        url: basePath + "admin/add-team",
+        url: basePath + "admin/add-category",
         data: form_data,
         success: function (data) {
-            $('form#add-designation-form').find('.error-message').each(function(){
+            $('form#add-form').find('.error-message').each(function(){
                 $(this).empty().hide();
             });
             if (data.status) {
-                teamTable.draw();
+                categoryTable.draw();
                 $('#addModal').modal('hide');
                 $('.bg-success').find('.message-title').empty().text(data.title);
                 $('.bg-success').find('.message-body').empty().text(data.message);
@@ -52,25 +51,27 @@ $('.add-user').on('click', function(e){
     });
 });
 
+
 $('#addModal').on('hidden.bs.modal', function(){
     addForm.find('.error-message').each(function(){
         $(this).empty().hide();
     });
-    $('#addModal').find('form#add-user-form')[0].reset();
+    $('#addModal').find('form#add-form')[0].reset();
     addForm.find('#role-perm').empty();
     addForm.find('#more-perm').empty();
     addForm.find('#more-perm').parents('.form-input-area').hide();
     $('.collapse').collapse("hide");
 });
 
-$('.reset-user').click(function(e){
+$('.reset-btn').click(function(e){
     e.preventDefault();
     addForm.find('.error-message').each(function(){
         $(this).empty().hide();
     });
 });
+/*======================DATA TABLE=====================*/ 
 
-var teamTable = $('#master-table').DataTable({
+var categoryTable = $('#master-table').DataTable({
     order: [0, 'desc'],
     dom: 'lfrtip',
     serverSide: true,
@@ -80,7 +81,7 @@ var teamTable = $('#master-table').DataTable({
         processing: '<div class="loader-containers"><div class="loader-contents"><img src="'+basePath +'assets/admin/images/loader.svg" alt=""></div></div>',
     },
     "ajax": {
-        url: basePath + 'admin/fetch-teams',
+        url: basePath + 'admin/fetch-categories',
         type: "POST",
         dataType: 'json',
 
@@ -96,12 +97,12 @@ var teamTable = $('#master-table').DataTable({
         }
     },
     'createdRow': function( row, data, dataIndex ) {
-        $(row).attr('data-id', data.teamId);
+        $(row).attr('data-id', data.categoryId);
     },
     columns: [
         {data: 'id'},
-        {data: 'name'},
-        {data: 'position'},
+        {data: 'category_name'},
+        {data: 'description'},
         {data: 'active_status',
         render: function(data, type, dataObject, meta) {
             if(data){
@@ -117,7 +118,7 @@ var teamTable = $('#master-table').DataTable({
                 var action = '';
                 if(dataObject.is_editable){
                     if(dataObject.edit_permission){
-                        action += '<a href="javascript:void(0);" data-toggle="modal" data-target="#viewModal" class="btn btn-sm form-button btn-success view-designation" data-backdrop="static" data-keyboard="false"><i class="mr-1 fa fa-eye"></i> View</a>';
+                        action += '<a href="javascript:void(0);" data-toggle="modal" data-target="#viewModal" class="btn btn-sm form-button btn-success view-record" data-backdrop="static" data-keyboard="false"><i class="mr-1 fa fa-eye"></i> View</a>';
                     }
 
                     if(dataObject.delete_permission){
@@ -131,6 +132,7 @@ var teamTable = $('#master-table').DataTable({
         }
     ],
 });
+
 
 /*========== END SCRIPT TO ADD NEW TEAM =================*/
 
@@ -147,33 +149,30 @@ $('#viewModal').find(".btn-edit").click(function (e) {
     else {
     }
 });
+
 $('#viewModal').on('hidden.bs.modal', function () {
     $("input,.form-control").prop("disabled", true);
     $('#viewModal .btn-edit').show();
     $("#viewModal .modal-footer").hide();
 });
 
-
 // fetch previous data
-$('table#master-table').delegate('.view-designation', 'click', function(){
-    var teamId = $(this).parents('tr').attr('data-id');
-    $.get(basePath+"admin/team/"+teamId+"/edit", function(team){
+$('table#master-table').delegate('.view-record', 'click', function(){
+    var categoryId = $(this).parents('tr').attr('data-id');
+    $.get(basePath+"admin/category/"+categoryId+"/edit", function(category){
         var form = $('form#edit-form');
-        form.find('input[name="id"]').val(teamId);
-        form.find('input[name="name"]').val(team.name);
-        form.find('input[name="team_image"]').val(team.image);
-        form.find('div#holder img').val(team.image);
-        form.find('input[name="position"]').val(team.position);
-        form.find('input[name="facebook"]').val(team.facebook);
-        form.find('input[name="instagram"]').val(team.instagram);
-        form.find('input[name="twitter"]').val(team.twitter);
-        form.find('input[name="github"]').val(team.github);
-        if(team.active_status){
+        form.find('input[name="id"]').val(categoryId);
+        form.find('input[name="category_name"]').val(category.name);
+        form.find('input[name="category_image"]').val(category.image);
+        form.find('div#holder img').val(category.image);
+        form.find('textarea[name="category_description"]').val(category.description);
+
+        if(category.active_status){
             form.find('input[name="active_status"]').prop('checked', true);
         }
-        if(team.image)
+        if(category.image)
             {
-                form.find('#holder img').attr('src',imagePath+team.image);
+                form.find('#holder img').attr('src',imagePath+category.image);
             }
        
 
@@ -199,21 +198,21 @@ $('.reset-designation').click(function(e){
     $('#addModal').find('form#add-designation-form')[0].reset();
 });
 
-$('.update-designation').click(function(e){
+$('.update-button').click(function(e){
     e.preventDefault();
     $('.modal-spinner').show();
-    var teamId = $('form#edit-form').find('input[name="id"]').val();
+    var categoryId = $('form#edit-form').find('input[name="id"]').val();
     var form_data = $('form#edit-form').serializeArray();
     $.ajax({
         type: "POST",
-        url: basePath + "admin/team/"+ teamId,
+        url: basePath + "admin/category/"+ categoryId,
         data: form_data,
         success: function (data) {
             $('form#edit-form').find('.error-message').each(function(){
                 $(this).empty().hide();
             });
             if (data.status) {
-                teamTable.draw();
+                categoryTable.draw();
                 $('#viewModal').modal('hide');
                 $('.bg-success').find('.message-title').empty().text(data.title);
                 $('.bg-success').find('.message-body').empty().text(data.message);
@@ -249,12 +248,13 @@ $('.update-designation').click(function(e){
         }
     });
 });
+
 /*========== END SCRIPT TO EDIT AND VIEW TEAM =================*/
 
 /*========== START SCRIPT TO DELETE TEAM =================*/
 $('table#master-table').delegate('.delete-designation', 'click', function(e){
     e.preventDefault();
-    var teamId = $(this).parents('tr').attr('data-id');
+    var categoryId = $(this).parents('tr').attr('data-id');
     var thisReference = $(this);
     swal({
         title: "Are you sure want to delete this member?",
@@ -268,9 +268,9 @@ $('table#master-table').delegate('.delete-designation', 'click', function(e){
     }, function (isConfirm){
         if(isConfirm){
             $.ajax({
-                url: basePath + 'admin/teams/' + teamId,
+                url: basePath + 'admin/categories/' + categoryId,
                 type: 'post',
-                data:{ id:teamId, _method: 'DELETE', _token: csrfToken
+                data:{ id:categoryId, _method: 'DELETE', _token: csrfToken
                 },
                 success: function(data){
                     if(data.status){
@@ -292,7 +292,7 @@ $('table#master-table').delegate('.delete-designation', 'click', function(e){
                 error: function(){},
             });
         }else{
-            swal("Not Deleted", "Designation is not Deleted. it is save.", "error");
+            swal("Not Deleted", "Category is not Deleted. it is save.", "error");
         }
     });
 });

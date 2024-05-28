@@ -22,6 +22,13 @@
 
     @can('view.user')
     <div class="dropdown">
+        <a class="drop-sub @if(@$subMenu == 'category') active @endif" href="{{route('admin.category')}}">
+            <i class="fa fa-tag text-primary"></i>category
+        </a>
+    </div>
+    @endcan
+    @can('view.user')
+    <div class="dropdown">
         <a class="drop-sub @if(@$subMenu == 'Services') active @endif" href="{{route('admin.users')}}">
             <i class="fas fa-user-plus text-primary"></i>Services
         </a>

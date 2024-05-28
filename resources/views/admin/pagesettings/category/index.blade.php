@@ -16,9 +16,9 @@
     </style>
 @endsection
 @section('main-content')
-@include('layout.common.modal-spinner')
-    @include('admin.pagesettings.team.partials.view')
-    @include('admin.pagesettings.team.partials.add')
+    @include('layout.common.modal-spinner')
+    @include('admin.pagesettings.category.partials.view')
+    @include('admin.pagesettings.category.partials.add')
     <section class="content-wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -28,7 +28,7 @@
                             <div class="col-lg-8">
                                 <header class="page-header">
                                     <h3>
-                                        Your team
+                                        Available Categories
                                     </h3>
                                 </header>
                             </div>
@@ -37,7 +37,7 @@
                                 <div class="link-btn-wrapper">
                                     <a href="#" class="btn link-btn" data-toggle="modal"
                                        data-target="#addModal" data-backdrop="static" data-keyboard="false">
-                                        Add Team
+                                        Add Category
                                         <span>+</span>
                                     </a>
                                 </div>
@@ -170,8 +170,8 @@
                                         <thead class="thead-sort">
                                         <tr>
                                             <th class="sort-active">S.No</th>
-                                            <th>Full Name</th>
-                                            <th>Position</th>
+                                            <th>Category Name</th>
+                                            <th>Description</th>
                                             <th>Status</th>
                                             <th>Created Date</th>
                                             <th style="width: 245px;">Action</th>
@@ -198,7 +198,7 @@
     <script src="{{asset('assets')}}/plugin/sweetalert/sweetalert.min.js"></script>
     <script src="{{ asset('assets/plugin/chosen/chosen.jquery.js') }}"></script>
     <script src="{{ asset('assets/plugin/chosen/prism.js') }}"></script>
-    <script src="{{asset('assets/admin/custom/js/pagesettings/team.js')}}"></script>
+    <script src="{{asset('assets/admin/custom/js/pagesettings/category.js')}}"></script>
     <script src="{{asset('vendor/laravel-filemanager/js/stand-alone-button.js')}}"></script>
     <script>
         var route_prefix = "{{ url('/laravel-filemanager') }}";

@@ -4,12 +4,13 @@ use App\Http\Controllers\Admins\Access\AdminUserController;
 use App\Http\Controllers\Admins\Access\DesignationController;
 use App\Http\Controllers\Admins\Access\RoleController;
 use App\Http\Controllers\Admins\DashboardController;
-use App\Http\Controllers\Admins\New\HomepageController;
-use App\Http\Controllers\Admins\New\TeamController;
+use App\Http\Controllers\Admins\Updated\HomepageController;
+use App\Http\Controllers\Admins\Updated\TeamController;
 use App\Http\Controllers\Admins\Settings\PrivacyPolicyController;
 use App\Http\Controllers\Admins\Settings\SeoSettingController;
 use App\Http\Controllers\Admins\Settings\SiteSettingController;
 use App\Http\Controllers\Admins\Settings\TermsAndConditionController;
+use App\Http\Controllers\Admins\Updated\CategoryController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
@@ -118,6 +119,17 @@ Route::group(['middleware' => 'auth:admin-user'], function () {
         Route::get('/team/{id}/edit',[TeamController::class,'edit']);
         Route::post('/team/{id}',[TeamController::class,'update']);
         Route::delete('/teams/{id}',[TeamController::class,'destroy']);
+        
+        
+        //category section
+        Route::get('category',[CategoryController::class,'index'])->name('category');
+        Route::post('fetch-categories',[CategoryController::class,'fetchCategoryList']);
+        Route::post('add-category',[CategoryController::class,'store']);
+        Route::get('/category/{id}/edit',[CategoryController::class,'edit']);
+        Route::post('/category/{id}',[CategoryController::class,'update']);
+        Route::delete('/categories/{id}',[CategoryController::class,'destroy']);
+
+
 
     });
 });
