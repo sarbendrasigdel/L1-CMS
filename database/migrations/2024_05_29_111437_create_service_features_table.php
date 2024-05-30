@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('service_id');
             $table->foreign('service_id')->references('id')->on('services')->onDelete('NO ACTION')->onUpdate('NO ACTION');
             $table->tinyInteger('active_status')->default('1');
+            $table->tinyInteger('is_editable')->default('1');
             $table->unsignedBigInteger('created_by_admin_users_info_id');
             $table->unsignedBigInteger('updated_by_admin_users_info_id')->nullable();
             $table->unsignedBigInteger('deleted_by_admin_users_info_id')->nullable();

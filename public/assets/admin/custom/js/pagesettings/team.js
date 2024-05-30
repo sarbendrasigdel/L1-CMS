@@ -13,7 +13,7 @@ $('.add-user').on('click', function(e){
                 $(this).empty().hide();
             });
             if (data.status) {
-                teamTable.draw();
+                masterTable.draw();
                 $('#addModal').modal('hide');
                 $('.bg-success').find('.message-title').empty().text(data.title);
                 $('.bg-success').find('.message-body').empty().text(data.message);
@@ -70,7 +70,7 @@ $('.reset-user').click(function(e){
     });
 });
 
-var teamTable = $('#master-table').DataTable({
+var masterTable = $('#master-table').DataTable({
     order: [0, 'desc'],
     dom: 'lfrtip',
     serverSide: true,
@@ -117,11 +117,11 @@ var teamTable = $('#master-table').DataTable({
                 var action = '';
                 if(dataObject.is_editable){
                     if(dataObject.edit_permission){
-                        action += '<a href="javascript:void(0);" data-toggle="modal" data-target="#viewModal" class="btn btn-sm form-button btn-success view-designation" data-backdrop="static" data-keyboard="false"><i class="mr-1 fa fa-eye"></i> View</a>';
+                        action += '<a href="javascript:void(0);" data-toggle="modal" data-target="#viewModal" class="btn btn-sm form-button btn-success view-button" data-backdrop="static" data-keyboard="false"><i class="mr-1 fa fa-eye"></i> View</a>';
                     }
 
                     if(dataObject.delete_permission){
-                        action += '<a href="javascript:void(0);" class="btn btn-sm form-button btn-danger delete-designation"><i class="mr-1 fa fa-trash"></i> Delete</a>';
+                        action += '<a href="javascript:void(0);" class="btn btn-sm form-button btn-danger delete-button"><i class="mr-1 fa fa-trash"></i> Delete</a>';
                     }
                 }else{
                     action += 'Cannot be edited';
@@ -155,14 +155,14 @@ $('#viewModal').on('hidden.bs.modal', function () {
 
 
 // fetch previous data
-$('table#master-table').delegate('.view-designation', 'click', function(){
+$('table#master-table').delegate('.view-button', 'click', function(){
     var teamId = $(this).parents('tr').attr('data-id');
     $.get(basePath+"admin/team/"+teamId+"/edit", function(team){
         var form = $('form#edit-form');
         form.find('input[name="id"]').val(teamId);
         form.find('input[name="name"]').val(team.name);
-        form.find('input[name="team_image"]').val(team.image);
-        form.find('div#holder img').val(team.image);
+        form.find('input[name="image"]').val(team.image);
+        // form.find('div#holder img').val(team.image);
         form.find('input[name="position"]').val(team.position);
         form.find('input[name="facebook"]').val(team.facebook);
         form.find('input[name="instagram"]').val(team.instagram);
@@ -203,7 +203,7 @@ $('.reset-designation').click(function(e){
     $('#addModal').find('form#add-designation-form')[0].reset();
 });
 
-$('.update-designation').click(function(e){
+$('.update-button').click(function(e){
     e.preventDefault();
     $('.modal-spinner').show();
     var teamId = $('form#edit-form').find('input[name="id"]').val();
@@ -217,7 +217,7 @@ $('.update-designation').click(function(e){
                 $(this).empty().hide();
             });
             if (data.status) {
-                teamTable.draw();
+                masterTable.draw();
                 $('#viewModal').modal('hide');
                 $('.bg-success').find('.message-title').empty().text(data.title);
                 $('.bg-success').find('.message-body').empty().text(data.message);
@@ -256,7 +256,7 @@ $('.update-designation').click(function(e){
 /*========== END SCRIPT TO EDIT AND VIEW TEAM =================*/
 
 /*========== START SCRIPT TO DELETE TEAM =================*/
-$('table#master-table').delegate('.delete-designation', 'click', function(e){
+$('table#master-table').delegate('.delete-button', 'click', function(e){
     e.preventDefault();
     var teamId = $(this).parents('tr').attr('data-id');
     var thisReference = $(this);

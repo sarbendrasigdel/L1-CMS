@@ -21,8 +21,15 @@ return new class extends Migration
             $table->string('github')->nullable();
             $table->string('image');
             $table->boolean('featured')->default(0);
-            $table->tinyInteger('is_editable')->default('1');
             $table->tinyInteger('active_status')->default('1');
+            $table->tinyInteger('is_editable')->default('1');
+            $table->unsignedBigInteger('created_by_admin_users_info_id');
+            $table->unsignedBigInteger('updated_by_admin_users_info_id')->nullable();
+            $table->unsignedBigInteger('deleted_by_admin_users_info_id')->nullable();
+            $table->foreign('created_by_admin_users_info_id')->references('id')->on('admin_user_infos')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('updated_by_admin_users_info_id')->references('id')->on('admin_user_infos')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('deleted_by_admin_users_info_id')->references('id')->on('admin_user_infos')->onDelete('cascade')->onUpdate('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

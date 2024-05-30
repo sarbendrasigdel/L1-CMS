@@ -10,6 +10,7 @@ use App\Models\Admins\AdminUserInfo;
 use App\Library\AuthUser;
 use App\Library\BreadCrumbs;
 use App\Http\Requests\Updated\TeamRequest;
+use App\Http\Requests\Updated\TeamUpdateRequest;
 
 class TeamController extends Controller
 {
@@ -20,7 +21,7 @@ class TeamController extends Controller
         $data['menu'] = 'submenu';
         $data['subMenu'] = 'pagesettings';
         $data['breadCrumbs'] = $this->getBreadCrumbDetails($data);
-        return view('admin.pagesettings.team.index',compact('data'));
+        return view('admin.pagesettings.team.index',$data);
     }
 
     public function frontendIndex()
@@ -29,10 +30,10 @@ class TeamController extends Controller
     }
     public function edit($id)
     {
-        $designation = Team::get()
+        $team = Team::get()
                         ->where('id', decrypt($id))->first();
 
-        return $designation;
+        return $team;
     }
 
     public function store(TeamRequest $request)
@@ -87,20 +88,20 @@ class TeamController extends Controller
         return $data;
     }
 
-    public function update(Request $request, $id)
+    public function update(TeamUpdateRequest $request, $id)
     {
-
+        dd($request->all());
         try {
             if ($request->ajax()) {
                 $team = Team::find(decrypt($id));
                 $team->name = $request->name;
-                $team->image = $request->team_image;
+                $team->image = $request->image;
                 $team->position = $request->position;
                 $team->facebook = $request->facebook;
                 $team->instagram = $request->instagram;
                 $team->twitter = $request->twitter;
                 $team->github = $request->github;
-                $team->featured = ($request->has('featured_add')) ? 1 : 0 ; 
+                $team->featured = ($request->has('featured')) ? 1 : 0 ; 
                 $team->active_status = ($request->has('active_status')) ? true : false;
                 // $team->updated_by_admin_users_info_id = $this->getLoggedInUser()->latestAdminUserInfo->id;
                 $team->save();
@@ -161,7 +162,7 @@ class TeamController extends Controller
             $nestedData['created_at'] = $team->created_at->toDateTimeString();
             $nestedData['edit_permission'] = true;
             $nestedData['delete_permission'] = true;
-            $nestedData['is_editable'] = $team->is_editable;
+            $nestedData['is_editable'] = true;
             $teamData[] = $nestedData;
         }
         $tableContent = array(

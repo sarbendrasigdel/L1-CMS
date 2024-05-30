@@ -60,7 +60,7 @@
                                                      </a>
                                                    </span>
                                                     <input id="thumbnail" class="form-control" type="text"
-                                                           name="team_image"
+                                                           name="image"
                                                            value="">
                                                 </div>
     
@@ -70,7 +70,7 @@
                                                         style="height: 5rem;">
     
                                                 </div>
-                                                <small class="error-message" id="company_logo_err"
+                                                <small class="error-message" id="image_err"
                                                        style="display: none;bottom: 0;"></small>
                                             </div>
                                         </div>
@@ -80,7 +80,7 @@
                                             <label class="col-sm-4 col-form-label">Position <sup
                                                     class="text-danger">*</sup></label>
                                             <div class="col-sm-8 pl-lg-0">
-                                                <small class="error-message" id="image_err"
+                                                <small class="error-message" id="position_err"
                                                        style="display: none;"></small>
                                                 <input type="text" class="form-control"
                                                        placeholder="Position" name="position"
@@ -181,7 +181,7 @@
                         {{--<button type="button" class="btn form-button btn-danger reset-edit-designation-form">--}}
                             {{--Reset Form--}}
                         {{--</button>--}}
-                        <button type="button" class="btn form-button btn-success update-designation">Update</button>
+                        <button type="button" class="btn form-button btn-success update-button">Update</button>
                     </div>
                 </div>
             </div>

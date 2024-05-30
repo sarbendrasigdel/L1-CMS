@@ -38,39 +38,11 @@
                                             <label class="col-sm-4 col-form-label">Category Name <sup
                                                     class="text-danger">*</sup></label>
                                             <div class="col-sm-8 pl-lg-0">
-                                                <small class="error-message" id="company_name_err"
+                                                <small class="error-message" id="name_err"
                                                        style="display: none;"></small>
                                                 <input type="text" class="form-control"
-                                                       placeholder="Category Name" name="category_name"
+                                                       placeholder="Category Name" name="name"
                                                        value="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group row">
-                                            <label class="col-sm-4 col-form-label">Category Image <sup
-                                                    class="text-danger">*</sup></label>
-                                            <div class="col-sm-8 pl-lg-0">
-                                                <div class="input-group">
-                                                   <span class="input-group-btn">
-                                                     <a data-input="thumbnail" data-preview="holder"
-                                                        class="lfm btn btn-primary">
-                                                       <i class="fa fa-picture-o"></i> Choose
-                                                     </a>
-                                                   </span>
-                                                    <input id="thumbnail" class="form-control" type="text"
-                                                           name="category_image"
-                                                           value="">
-                                                </div>
-    
-                                                <div id="holder">
-                                                    <img
-                                                        src=""
-                                                        style="height: 5rem;">
-    
-                                                </div>
-                                                <small class="error-message" id="company_logo_err"
-                                                       style="display: none;bottom: 0;"></small>
                                             </div>
                                         </div>
                                     </div>
@@ -82,7 +54,7 @@
                                                        style="display: none;"></small>
                                                        <div class="form-check form-check-inline">
                                                         <label class="form-check-label">
-                                                            <input class="form-check-input" type="checkbox" name="featured_add" id="featured-add" value="1"> Featured
+                                                            <input class="form-check-input" type="checkbox" name="featured" id="featured" value="1"> Featured
                                                         </label>
                                                        </div>
                                             </div>
@@ -92,9 +64,9 @@
                                         <div class="form-group row">
                                             <label class="col-sm-4 col-form-label">Category Description </label>
                                             <div class="col-sm-8 pl-lg-0">
-                                                <small class="error-message" id="meta_description_err"
+                                                <small class="error-message" id="description_err"
                                                        style="display: none;"></small>
-                                                <textarea name="category_description"
+                                                <textarea name="description"
                                                           class="form-control"></textarea>
                                             </div>
                                         </div>

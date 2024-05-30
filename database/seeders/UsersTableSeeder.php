@@ -26,10 +26,10 @@ class UsersTableSeeder extends Seeder
         if(!empty($user)){
             $userInfo = new AdminUserInfo();
             $userInfo->admin_user_id = $user->id;
-            $userInfo->full_name = 'sanjay';
+            $userInfo->full_name = 'Sarbendra';
             $userInfo->email = 'admin@havit.com';
-            $userInfo->phone_number = '9843702839';
-            $userInfo->address = 'Bhaktapur';
+            $userInfo->phone_number = '9860672399';
+            $userInfo->address = 'Thankot';
             $userInfo->save();
         }
     }
