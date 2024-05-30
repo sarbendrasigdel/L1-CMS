@@ -14,10 +14,11 @@ use App\Http\Controllers\Admins\Updated\CategoryController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Frontend\HomeController;
-use App\Http\Controllers\Frontend\NewsletterController;
-use App\Http\Controllers\Frontend\PortfolioController;
-use App\Http\Controllers\Frontend\ServicesController;
+use App\Http\Controllers\Admins\Updated\HomeController;
+use App\Http\Controllers\Admins\Updated\NewsletterController;
+use App\Http\Controllers\Admins\Updated\PortfolioController;
+use App\Http\Controllers\Admins\Updated\ServiceController;
+use App\Http\Controllers\Admins\Updated\ServiceFeaturesController;
 use NunoMaduro\Collision\Adapters\Laravel\Commands\TestCommand;
 
 /*
@@ -128,6 +129,27 @@ Route::group(['middleware' => 'auth:admin-user'], function () {
         Route::get('/category/{id}/edit',[CategoryController::class,'edit']);
         Route::post('/category/{id}',[CategoryController::class,'update']);
         Route::delete('/categories/{id}',[CategoryController::class,'destroy']);
+        
+
+        //Services Section
+
+        Route::get('service-feature',[ServiceFeaturesController::class,'index'])->name('serviceFeatures');
+        Route::post('fetch-service-features',[ServiceFeaturesController::class,'fetchServiceFeatureList']);
+        Route::post('add-service-feature',[ServiceFeaturesController::class,'store']);
+        Route::get('/service-feature/{id}/edit',[ServiceFeaturesController::class,'edit']);
+        Route::post('/service-feature/{id}',[ServiceFeaturesController::class,'update']);
+        Route::delete('/service-features/{id}',[ServiceFeaturesController::class,'destroy']);
+
+
+        //Services Section
+
+        Route::get('service',[ServiceController::class,'index'])->name('services');
+        Route::post('fetch-services',[ServiceController::class,'fetchServiceList']);
+        Route::post('add-service',[ServiceController::class,'store']);
+        Route::get('/service/{id}/edit',[ServiceController::class,'edit']);
+        Route::post('/service/{id}',[ServiceController::class,'update']);
+        Route::delete('/services/{id}',[ServiceController::class,'destroy']);
+
 
 
 
@@ -135,12 +157,6 @@ Route::group(['middleware' => 'auth:admin-user'], function () {
 });
 
 
-Route::get('test',[TestController::class,'index'])->name('test');
-Route::get('/fetchdata',[TestController::class,'getData'])->name('getdata');
 
-//frontend
-Route::get('/',[HomeController::class,'index']);
-Route::get('/portfolio',[PortfolioController::class,'index']);
-Route::get('/services',[ServicesController::class,'index']);
-Route::get('/newsletter',[NewsletterController::class,'index']);
-Route::get('/team',[TeamController::class,'frontendIndex'])->name('teams');
+
+

@@ -17,8 +17,8 @@
 @endsection
 @section('main-content')
     @include('layout.common.modal-spinner')
-    @include('admin.pagesettings.services.partials.view')
-    @include('admin.pagesettings.services.partials.add')
+    @include('admin.pagesettings.service-features.partials.view')
+    @include('admin.pagesettings.service-features.partials.add')
     <section class="content-wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -28,7 +28,7 @@
                             <div class="col-lg-8">
                                 <header class="page-header">
                                     <h3>
-                                        Available services
+                                        Service Features
                                     </h3>
                                 </header>
                             </div>
@@ -37,7 +37,7 @@
                                 <div class="link-btn-wrapper">
                                     <a href="#" class="btn link-btn" data-toggle="modal"
                                        data-target="#addModal" data-backdrop="static" data-keyboard="false">
-                                        Add Service
+                                        Add Service Features
                                         <span>+</span>
                                     </a>
                                 </div>
@@ -170,9 +170,9 @@
                                         <thead class="thead-sort">
                                         <tr>
                                             <th class="sort-active">S.No</th>
-                                            <th>Service Title</th>
+                                            <th>Service Feature</th>
                                             <th>Description</th>
-                                            <th>Category</th>
+                                            <th>Service</th>
                                             <th>Status</th>
                                             <th>Created Date</th>
                                             <th style="width: 245px;">Action</th>
@@ -199,7 +199,7 @@
     <script src="{{asset('assets')}}/plugin/sweetalert/sweetalert.min.js"></script>
     <script src="{{ asset('assets/plugin/chosen/chosen.jquery.js') }}"></script>
     <script src="{{ asset('assets/plugin/chosen/prism.js') }}"></script>
-    <script src="{{asset('assets/admin/custom/js/pagesettings/services.js')}}"></script>
+    <script src="{{asset('assets/admin/custom/js/pagesettings/serviceFeatures.js')}}"></script>
     <script src="{{asset('vendor/laravel-filemanager/js/stand-alone-button.js')}}"></script>
     <script>
         var route_prefix = "{{ url('/laravel-filemanager') }}";
