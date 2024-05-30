@@ -14,7 +14,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form id="add-team-form" autocomplete="off" enctype="multipart/form-data">
+                    <form id="add-form" autocomplete="off" enctype="multipart/form-data">
                         @csrf
                         <input id="real-password" type="password" autocomplete="new-password" style="display: none;">
                         <div class="modal-body">
@@ -25,11 +25,11 @@
                                         <label class="col-sm-4 col-form-label"> Name <sup
                                                 class="text-danger">*</sup></label>
                                         <div class="col-sm-8 pl-lg-0">
-                                            <small class="error-message" id="company_name_err"
+                                            <small class="error-message" id="name_err"
                                                    style="display: none;"></small>
                                             <input type="text" class="form-control"
                                                    placeholder=" Name" name="name"
-                                                   value="">
+                                                   value="{{old('name')}}">
                                         </div>
                                     </div>
                                 </div>
@@ -46,7 +46,7 @@
                                                  </a>
                                                </span>
                                                 <input id="thumbnail-add" class="form-control" type="text"
-                                                       name="team_image"
+                                                       name="image"
                                                        value="">
                                             </div>
 
@@ -56,7 +56,7 @@
                                                     style="height: 5rem;">
 
                                             </div>
-                                            <small class="error-message" id="company_logo_err"
+                                            <small class="error-message" id="image_err"
                                                    style="display: none;bottom: 0;"></small>
                                         </div>
                                     </div>
@@ -66,37 +66,35 @@
                                         <label class="col-sm-4 col-form-label">Position <sup
                                                 class="text-danger">*</sup></label>
                                         <div class="col-sm-8 pl-lg-0">
-                                            <small class="error-message" id="company_email_err"
+                                            <small class="error-message" id="position_err"
                                                    style="display: none;"></small>
                                             <input type="text" class="form-control"
                                                    placeholder="Position" name="position"
-                                                   value="">
+                                                   value="{{old('position')}}">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 form-input-area">
                                     <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Facebook <sup
-                                                class="text-danger">*</sup></label>
+                                        <label class="col-sm-4 col-form-label">Facebook</label>
                                         <div class="col-sm-8 pl-lg-0">
-                                            <small class="error-message" id="company_location_err"
+                                            <small class="error-message" id="facebook_err"
                                                    style="display: none;"></small>
                                             <input type="url" class="form-control"
                                                    placeholder="Facebook Link" name="facebook"
-                                                   value="">
+                                                   value="{{old('facebook')}}">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 form-input-area">
                                     <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Instagram <sup
-                                                class="text-danger">*</sup></label>
+                                        <label class="col-sm-4 col-form-label">Instagram </label>
                                         <div class="col-sm-8 pl-lg-0">
-                                            <small class="error-message" id="contact_number_err"
+                                            <small class="error-message" id="instagram_err"
                                                    style="display: none;"></small>
                                             <input type="url" class="form-control"
                                                    placeholder="Instagram Link" name="instagram"
-                                                   value="">
+                                                   value="{{old('instagram')}}">
                                         </div>
                                     </div>
                                 </div>
@@ -104,11 +102,11 @@
                                     <div class="form-group row">
                                         <label class="col-sm-4 col-form-label">Twitter </label>
                                         <div class="col-sm-8 pl-lg-0">
-                                            <small class="error-message" id="copyright_err"
+                                            <small class="error-message" id="twitter_err"
                                                    style="display: none;"></small>
                                             <input type="url" class="form-control"
                                                    placeholder="Twitter Link" name="twitter"
-                                                   value="">
+                                                   value="{{old('twitter')}}">
                                         </div>
                                     </div>
                                 </div>
@@ -116,11 +114,11 @@
                                     <div class="form-group row">
                                         <label class="col-sm-4 col-form-label">Github </label>
                                         <div class="col-sm-8 pl-lg-0">
-                                            <small class="error-message" id="meta_title_err"
+                                            <small class="error-message" id="github_err"
                                                    style="display: none;"></small>
                                             <input type="url" class="form-control"
-                                                   placeholder="Github Link" name="meta_title"
-                                                   value="">
+                                                   placeholder="Github Link" name="github"
+                                                   value="{{old('github')}}">
                                         </div>
                                     </div>
                                 </div>
@@ -128,14 +126,13 @@
                                     <div class="form-group row">
                                         <label class="col-sm-4 col-form-label">Featured</label>
                                         <div class="col-sm-8 pl-lg-0">
-                                            <small class="error-message" id="meta_description_err"
+                                            <small class="error-message" id="featured_err"
                                                    style="display: none;"></small>
                                                    <div class="form-check form-check-inline">
                                                     <label class="form-check-label">
                                                         <input class="form-check-input" type="checkbox" name="featured_add" id="featured-add" value="1"> Featured
                                                     </label>
                                                    </div>
-                                            
                                         </div>
                                     </div>
                                 </div>

@@ -3,7 +3,7 @@
 $('.add-user').on('click', function(e){
     e.preventDefault();
     $('.modal-spinner').show();
-    var form_data = $('form#add-team-form').serializeArray();
+    var form_data = $('form#add-form').serializeArray();
     $.ajax({
         type: "POST",
         url: basePath + "admin/add-team",
@@ -32,13 +32,13 @@ $('.add-user').on('click', function(e){
         },
         error: function (error) {
             if (error.status === 422 && error.readyState == 4) {
-                $('form#add-designation-form').find('.error-message').each(function(){
+                $('form#add-form').find('.error-message').each(function(){
                     $(this).empty().hide();
                 });
                 var errors = $.parseJSON(error.responseText);
                 $.each(errors.errors, function (key, val) {
-                    $('form#add-designation-form').find('#' + key + '_err').empty().append('<i class="fa fa-info-circle"></i>' + val);
-                    $('form#add-designation-form').find('#' + key + '_err').show();
+                    $('form#add-form').find('#' + key + '_err').empty().append('<i class="fa fa-info-circle"></i>' + val);
+                    $('form#add-form').find('#' + key + '_err').show();
 
 
                 });
@@ -174,6 +174,10 @@ $('table#master-table').delegate('.view-designation', 'click', function(){
         if(team.image)
             {
                 form.find('#holder img').attr('src',imagePath+team.image);
+            }
+        if(team.featured)
+            {
+                form.find('input[name="featured"]').prop('checked',true);
             }
        
 

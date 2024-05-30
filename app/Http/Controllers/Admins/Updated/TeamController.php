@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Admins\AdminUserInfo;
 use App\Library\AuthUser;
 use App\Library\BreadCrumbs;
+use App\Http\Requests\Updated\TeamRequest;
 
 class TeamController extends Controller
 {
@@ -34,20 +35,20 @@ class TeamController extends Controller
         return $designation;
     }
 
-    public function store(Request $request)
+    public function store(TeamRequest $request)
     {
         // dd($request->all());
         try {
             DB::beginTransaction();
             $team = new Team();
             $team->name = $request->name;
-            $team->image = $request->team_image;
+            $team->image = $request->image;
             $team->position = $request->position;
             $team->facebook = $request->facebook;
             $team->instagram = $request->instagram;
             $team->twitter = $request->twitter;
             $team->github = $request->github;
-            $team->featured = $request->featured_add;    
+            $team->featured = ($request->has('featured_add')) ? 1 : 0 ;    
             $team->active_status = ($request->has('active_status_add')) ? true : false;
             $team->save();
 
@@ -92,7 +93,6 @@ class TeamController extends Controller
         try {
             if ($request->ajax()) {
                 $team = Team::find(decrypt($id));
-                // dd($team);
                 $team->name = $request->name;
                 $team->image = $request->team_image;
                 $team->position = $request->position;
@@ -100,7 +100,7 @@ class TeamController extends Controller
                 $team->instagram = $request->instagram;
                 $team->twitter = $request->twitter;
                 $team->github = $request->github;
-                $team->featured = $request->featured; 
+                $team->featured = ($request->has('featured_add')) ? 1 : 0 ; 
                 $team->active_status = ($request->has('active_status')) ? true : false;
                 // $team->updated_by_admin_users_info_id = $this->getLoggedInUser()->latestAdminUserInfo->id;
                 $team->save();

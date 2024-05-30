@@ -39,7 +39,7 @@
                                             <label class="col-sm-4 col-form-label"> Name <sup
                                                     class="text-danger">*</sup></label>
                                             <div class="col-sm-8 pl-lg-0">
-                                                <small class="error-message" id="company_name_err"
+                                                <small class="error-message" id="name_err"
                                                        style="display: none;"></small>
                                                 <input type="text" class="form-control"
                                                        placeholder=" Name" name="name"
@@ -80,7 +80,7 @@
                                             <label class="col-sm-4 col-form-label">Position <sup
                                                     class="text-danger">*</sup></label>
                                             <div class="col-sm-8 pl-lg-0">
-                                                <small class="error-message" id="company_email_err"
+                                                <small class="error-message" id="image_err"
                                                        style="display: none;"></small>
                                                 <input type="text" class="form-control"
                                                        placeholder="Position" name="position"
@@ -92,7 +92,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-4 col-form-label">Facebook </label>
                                             <div class="col-sm-8 pl-lg-0">
-                                                <small class="error-message" id="company_location_err"
+                                                <small class="error-message" id="facebook_err"
                                                        style="display: none;"></small>
                                                 <input type="url" class="form-control"
                                                        placeholder="Facebook Link" name="facebook"
@@ -104,7 +104,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-4 col-form-label">Instagram </label>
                                             <div class="col-sm-8 pl-lg-0">
-                                                <small class="error-message" id="contact_number_err"
+                                                <small class="error-message" id="instagram_err"
                                                        style="display: none;"></small>
                                                 <input type="url" class="form-control"
                                                        placeholder="Instagram Link" name="instagram"
@@ -116,7 +116,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-4 col-form-label">Twitter </label>
                                             <div class="col-sm-8 pl-lg-0">
-                                                <small class="error-message" id="copyright_err"
+                                                <small class="error-message" id="twitter_err"
                                                        style="display: none;"></small>
                                                 <input type="url" class="form-control"
                                                        placeholder="Twitter Link" name="twitter"
@@ -128,7 +128,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-4 col-form-label">Github </label>
                                             <div class="col-sm-8 pl-lg-0">
-                                                <small class="error-message" id="meta_title_err"
+                                                <small class="error-message" id="github_err"
                                                        style="display: none;"></small>
                                                 <input type="url" class="form-control"
                                                        placeholder="Github Link" name="github"
@@ -140,7 +140,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-4 col-form-label">Featured</label>
                                             <div class="col-sm-8 pl-lg-0">
-                                                <small class="error-message" id="meta_description_err"
+                                                <small class="error-message" id="featured_err"
                                                        style="display: none;"></small>
                                                        <div class="form-check form-check-inline">
                                                         <label class="form-check-label">
