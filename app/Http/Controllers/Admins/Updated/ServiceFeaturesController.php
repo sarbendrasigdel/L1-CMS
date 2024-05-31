@@ -9,6 +9,8 @@ use App\Library\BreadCrumbs;
 use Illuminate\Support\Facades\DB;
 use App\Models\Admins\Pagesettings\Service;
 use App\Models\Admins\Pagesettings\ServiceFeatures;
+use App\Http\Requests\Updated\ServiceFeatureRequest;
+use App\Http\Requests\Updated\ServiceFeatureUpdateRequest;
 class ServiceFeaturesController extends Controller
 {
     
@@ -24,7 +26,7 @@ class ServiceFeaturesController extends Controller
         return view('admin.pagesettings.service-features.index',$data);
     }
 
-    public function store(Request $request)
+    public function store(ServiceFeatureRequest $request)
     {
         try {
             DB::beginTransaction();
@@ -69,7 +71,6 @@ class ServiceFeaturesController extends Controller
 
     public function fetchServiceFeatureList(Request $request)
     {
-        // dd($request->all());
         $columns = array(
             0 => 'id',
             1 => 'name',
@@ -127,7 +128,7 @@ class ServiceFeaturesController extends Controller
 
     }
 
-    public function update(Request $request, $id)
+    public function update(ServiceFeatureUpdateRequest $request, $id)
     {
 
         try {
@@ -163,7 +164,7 @@ class ServiceFeaturesController extends Controller
                 $feature = ServiceFeatures::findOrFail(decrypt($id));
                 
 
-                    // $team->deleted_by_admin_users_info_id = $this->getLoggedInUser()->latestAdminUserInfo->id;
+                    $feature->deleted_by_admin_users_info_id = $this->getLoggedInUser()->latestAdminUserInfo->id;
                     $feature->save();
                     if($feature->delete()){
                         $data['id']= $id;

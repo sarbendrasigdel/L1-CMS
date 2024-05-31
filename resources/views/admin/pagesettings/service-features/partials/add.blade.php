@@ -7,7 +7,7 @@
                     @include('layout.common.modal-spinner')
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">
-                            Add Service
+                            Add Service Features
                         </h5>
                         <button type="button" class="close modal-close" data-dismiss="modal"
                                 aria-label="Close">
@@ -25,7 +25,7 @@
                                         <label class="col-sm-4 col-form-label">Service Feature Title <sup
                                                 class="text-danger">*</sup></label>
                                         <div class="col-sm-8 pl-lg-0">
-                                            <small class="error-message" id="company_name_err"
+                                            <small class="error-message" id="name_err"
                                                    style="display: none;"></small>
                                             <input type="text" class="form-control"
                                                    placeholder="Service feature Title" name="name"
@@ -56,7 +56,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-4 col-form-label">Service Features Description </label>
                                         <div class="col-sm-8 pl-lg-0">
-                                            <small class="error-message" id="meta_description_err"
+                                            <small class="error-message" id="description_err"
                                                    style="display: none;"></small>
                                             <textarea name="description"
                                                       class="form-control"></textarea>

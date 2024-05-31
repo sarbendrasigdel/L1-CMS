@@ -51,7 +51,7 @@
                                             <label class="col-sm-4 col-form-label">Service <sup
                                                     class="text-danger">*</sup></label>
                                             <div class="col-sm-8 pl-lg-0">
-                                                <small class="error-message" id="company_name_err"
+                                                <small class="error-message" id="service_err"
                                                        style="display: none;"></small>
                                                        <select name="service_id" id="service_id"  class="form-control" >
                                                         @foreach($service as $ser)
@@ -65,7 +65,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-4 col-form-label">Service Feature Description </label>
                                             <div class="col-sm-8 pl-lg-0">
-                                                <small class="error-message" id="meta_description_err"
+                                                <small class="error-message" id="description_err"
                                                        style="display: none;"></small>
                                                 <textarea name="description"
                                                           class="form-control"></textarea>

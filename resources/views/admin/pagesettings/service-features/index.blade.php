@@ -171,7 +171,6 @@
                                         <tr>
                                             <th class="sort-active">S.No</th>
                                             <th>Service Feature</th>
-                                            <th>Description</th>
                                             <th>Service</th>
                                             <th>Status</th>
                                             <th>Created Date</th>

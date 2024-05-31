@@ -31,13 +31,13 @@ $('.add-btn').on('click', function(e){
         },
         error: function (error) {
             if (error.status === 422 && error.readyState == 4) {
-                $('form#add-designation-form').find('.error-message').each(function(){
+                $('form#add-form').find('.error-message').each(function(){
                     $(this).empty().hide();
                 });
                 var errors = $.parseJSON(error.responseText);
                 $.each(errors.errors, function (key, val) {
-                    $('form#add-designation-form').find('#' + key + '_err').empty().append('<i class="fa fa-info-circle"></i>' + val);
-                    $('form#add-designation-form').find('#' + key + '_err').show();
+                    $('form#add-form').find('#' + key + '_err').empty().append('<i class="fa fa-info-circle"></i>' + val);
+                    $('form#add-form').find('#' + key + '_err').show();
 
 
                 });
@@ -102,7 +102,6 @@ var masterTable= $('#master-table').DataTable({
     columns: [
         {data: 'id'},
         {data: 'name'},
-        {data: 'description'},
         {data: 'category'},
         {data: 'active_status',
         render: function(data, type, dataObject, meta) {
@@ -166,17 +165,12 @@ $('table#master-table').delegate('.view-record', 'click', function(){
         form.find('input[name="id"]').val(serviceFeatureId);
         form.find('input[name="name"]').val(serviceFeature.name);
         form.find('select[name="service_id"]').val(serviceFeature.service_id);
-        // form.find('input[name="category_image"]').val(service.image);
-        // form.find('div#holder img').val(service.image);
         form.find('textarea[name="description"]').val(serviceFeature.description);
 
         if(serviceFeature.active_status){
             form.find('input[name="active_status"]').prop('checked', true);
         }
-        if(serviceFeature.image)
-            {
-                form.find('#holder img').attr('src',imagePath+serviceFeature.image);
-            }
+        
        
 
         form.find('textarea').prop("disabled", true);
@@ -188,18 +182,18 @@ $('table#master-table').delegate('.view-record', 'click', function(){
 
 
 $('#addModal').on('hidden.bs.modal', function(){
-    $('form#add-designation-form').find('.error-message').each(function(){
+    $('form#add-form').find('.error-message').each(function(){
         $(this).empty().hide();
     });
-    $('#addModal').find('form#add-designation-form')[0].reset();
+    $('#addModal').find('form#add-form')[0].reset();
 });
 
 $('.reset-designation').click(function(e){
     e.preventDefault();
-    $('form#add-designation-form').find('.error-message').each(function(){
+    $('form#add-form').find('.error-message').each(function(){
         $(this).empty().hide();
     });
-    $('#addModal').find('form#add-designation-form')[0].reset();
+    $('#addModal').find('form#add-form')[0].reset();
 });
 
 $('.update-button').click(function(e){
