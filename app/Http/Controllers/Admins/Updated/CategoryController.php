@@ -16,10 +16,10 @@ class CategoryController extends Controller
     public function index()
     {
         $data['title'] = 'Team';
-        $data['menu'] = 'submenu';
-        $data['subMenu'] = 'pagesettings';
+        $data['menu'] = 'pagesetting';
+        $data['subMenu'] = 'Category';
         $data['breadCrumbs'] = $this->getBreadCrumbDetails($data);
-        return view('admin.pagesettings.category.index');
+        return view('admin.pagesettings.category.index',$data);
     }
 
     public function store(CategoryRequest $request)

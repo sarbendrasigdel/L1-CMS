@@ -19,8 +19,8 @@ class ServiceController extends Controller
         {
 
             $data['title'] = 'Service';
-            $data['menu'] = 'submenu';
-            $data['subMenu'] = 'pagesettings';
+            $data['menu'] = 'pagesetting';
+            $data['subMenu'] = 'Services';
             $data['breadCrumbs'] = $this->getBreadCrumbDetails($data);
             $data['category']= category::get();
             return view('admin.pagesettings.services.index',$data);

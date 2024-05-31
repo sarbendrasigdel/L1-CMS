@@ -1,8 +1,8 @@
-<div class="tab-pane fade @if(@$menu == 'pagesetting') active show @endif" id="pagesetting" role="tabpanel" aria-labelledby="register-tab">
+<div class="tab-pane fade @if(@$menu == 'pagesetting') active show @endif" id="pagesetting" role="tabpanel" aria-labelledby="pagesetting-tab">
 
     @php $loggedInUser = \Illuminate\Support\Facades\Auth::guard('admin-user')->user() @endphp
 
-    @can('view.user.role')
+    @can('view.user')
 
     <div class="dropdown">
         <a class="drop-sub @if(@$subMenu == 'Home page') active @endif" href="{{route('admin.homepage')}}">
@@ -12,7 +12,7 @@
 
     @endcan
 
-    @can('view.user.designation')
+    @can('view.user')
     <div class="dropdown">
         <a class="drop-sub @if(@$subMenu == 'portfolio') active @endif" href="{{route('admin.designations')}}">
             <i class="fas fa-id-badge text-primary"></i>Portfolio
@@ -22,8 +22,8 @@
 
     @can('view.user')
     <div class="dropdown">
-        <a class="drop-sub @if(@$subMenu == 'category') active @endif" href="{{route('admin.category')}}">
-            <i class="fa fa-tag text-primary"></i>category
+        <a class="drop-sub @if(@$subMenu == 'Category') active @endif" href="{{route('admin.category')}}">
+            <i class="fa fa-tag text-primary"></i>Category
         </a>
     </div>
     @endcan

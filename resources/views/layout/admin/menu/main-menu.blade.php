@@ -30,8 +30,8 @@
                            aria-controls="contact" aria-selected="false"><i class="fas fa-users text-success"></i> User</a>
                     </li>
                 @endif
-                @if($loggedInUser->can('view.user.role') || $loggedInUser->can('view.user.designation') || $loggedInUser->can('view.user'))
-
+                @if($loggedInUser->can('view.user') || $loggedInUser->can('view.user') || $loggedInUser->can('view.user'))
+                
                     <li class="nav-item">
                         <a class="nav-link @if(@$menu == 'pagesetting') active @endif" id="pagesetting-tab" data-toggle="tab"
                            href="#pagesetting" role="tab"

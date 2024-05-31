@@ -19,8 +19,8 @@ class ServiceFeaturesController extends Controller
     {
 
         $data['title'] = 'Service';
-        $data['menu'] = 'submenu';
-        $data['subMenu'] = 'pagesettings';
+        $data['menu'] = 'pagesetting';
+        $data['subMenu'] = 'ServiceFeatures';
         $data['breadCrumbs'] = $this->getBreadCrumbDetails($data);
         $data['service']= Service::get();
         return view('admin.pagesettings.service-features.index',$data);
