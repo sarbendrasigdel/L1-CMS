@@ -157,6 +157,7 @@ $('#viewModal').on('hidden.bs.modal', function () {
     $("#viewModal .modal-footer").hide();
 });
 
+
 // fetch previous data
 $('table#master-table').delegate('.view-record', 'click', function(){
     var serviceFeatureId = $(this).parents('tr').attr('data-id');

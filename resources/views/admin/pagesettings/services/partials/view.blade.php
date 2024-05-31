@@ -38,10 +38,10 @@
                                             <label class="col-sm-4 col-form-label">Service Title <sup
                                                     class="text-danger">*</sup></label>
                                             <div class="col-sm-8 pl-lg-0">
-                                                <small class="error-message" id="company_name_err"
+                                                <small class="error-message" id="title_err"
                                                        style="display: none;"></small>
                                                 <input type="text" class="form-control"
-                                                       placeholder="Service Title" name="service_title"
+                                                       placeholder="Service Title" name="title"
                                                        value="">
                                             </div>
                                         </div>
@@ -51,7 +51,7 @@
                                             <label class="col-sm-4 col-form-label">Category <sup
                                                     class="text-danger">*</sup></label>
                                             <div class="col-sm-8 pl-lg-0">
-                                                <small class="error-message" id="company_name_err"
+                                                <small class="error-message" id="category_id_err"
                                                        style="display: none;"></small>
                                                        <select name="category_id" id="category_id">
                                                         @foreach($category as $cat)
@@ -65,9 +65,9 @@
                                         <div class="form-group row">
                                             <label class="col-sm-4 col-form-label">Service Description </label>
                                             <div class="col-sm-8 pl-lg-0">
-                                                <small class="error-message" id="meta_description_err"
+                                                <small class="error-message" id="description_err"
                                                        style="display: none;"></small>
-                                                <textarea name="service_description"
+                                                <textarea name="description"
                                                           class="form-control"></textarea>
                                             </div>
                                         </div>

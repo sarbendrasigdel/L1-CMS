@@ -9,6 +9,8 @@ use App\Library\BreadCrumbs;
 use Illuminate\Support\Facades\DB;
 use App\Models\Admins\Pagesettings\Service;
 use App\Models\Admins\Pagesettings\category;
+use App\Http\Requests\Updated\ServiceRequest;
+use App\Http\Requests\Updated\ServiceUpdateRequest;
 class ServiceController extends Controller
 {
     
@@ -24,13 +26,13 @@ class ServiceController extends Controller
             return view('admin.pagesettings.services.index',$data);
         }
     
-        public function store(Request $request)
+        public function store(ServiceRequest $request)
         {
             try {
                 DB::beginTransaction();
                 $service = new Service();
-                $service->title = $request->service_title;
-                $service->description = $request->service_description;
+                $service->title = $request->title;
+                $service->description = $request->description;
                 $service->category_id = $request->category_id_add;
                 $service->active_status = ($request->has('active_status_add')) ? true : false;
                 $service->created_by_admin_users_info_id = $this->getLoggedInUser()->latestAdminUserInfo->id;
@@ -72,7 +74,7 @@ class ServiceController extends Controller
             // dd($request->all());
             $columns = array(
                 0 => 'id',
-                1 => 'service_title',
+                1 => 'title',
                 2 => 'description',
                 3 => 'category',
                 4 => 'active_status',
@@ -104,7 +106,7 @@ class ServiceController extends Controller
                 $nestedData = array();
                 $nestedData['id'] = $index + 1;
                 $nestedData['serviceId'] = encrypt($service->id);
-                $nestedData['service_title'] = $service->title;
+                $nestedData['title'] = $service->title;
                 $nestedData['description'] = $service->description;
                 $nestedData['category'] = $service->category->name;
                 $nestedData['active_status'] = $service->active_status;
@@ -114,6 +116,7 @@ class ServiceController extends Controller
                 $nestedData['is_editable'] = true;
                 $serviceData[] = $nestedData;
             }
+
             $tableContent = array(
                 "draw"            => intval($request->input('draw')),
                 "recordsTotal"    => intval($totalData),
@@ -127,15 +130,15 @@ class ServiceController extends Controller
     
         }
     
-        public function update(Request $request, $id)
+        public function update(ServiceUpdateRequest $request, $id)
         {
     
             try {
                 if ($request->ajax()) {
                     $service = Service::find(decrypt($id));
                     // dd($category);
-                    $service->title = $request->service_title;
-                    $service->description = $request->service_description;
+                    $service->title = $request->title;
+                    $service->description = $request->description;
                     $service->category_id = $request->category_id;
                     $service->active_status = ($request->has('active_status')) ? true : false;
                     $service->updated_by_admin_users_info_id = $this->getLoggedInUser()->latestAdminUserInfo->id;
@@ -160,9 +163,7 @@ class ServiceController extends Controller
             try {
                 if ($request->ajax()) {
                     $service = Service::findOrFail(decrypt($id));
-                    
-    
-                        // $team->deleted_by_admin_users_info_id = $this->getLoggedInUser()->latestAdminUserInfo->id;
+                        $service->deleted_by_admin_users_info_id = $this->getLoggedInUser()->latestAdminUserInfo->id;
                         $service->save();
                         if($service->delete()){
                             $data['id']= $id;
@@ -175,7 +176,7 @@ class ServiceController extends Controller
                 $data['status'] = false;
                 $data['title'] = 'Service';
                 $data['message'] = 'Something went wrong. please try again';
-    //            $data['message'] = $e->getMessage();
+            //    $data['error'] = $e->getMessage();
             }
     
             return $data;

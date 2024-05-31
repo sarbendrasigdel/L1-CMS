@@ -31,7 +31,7 @@ $('.add-btn').on('click', function(e){
         },
         error: function (error) {
             if (error.status === 422 && error.readyState == 4) {
-                $('form#add-designation-form').find('.error-message').each(function(){
+                $('form#add-form').find('.error-message').each(function(){
                     $(this).empty().hide();
                 });
                 var errors = $.parseJSON(error.responseText);
@@ -184,18 +184,18 @@ $('table#master-table').delegate('.view-record', 'click', function(){
 });
 
 $('#addModal').on('hidden.bs.modal', function(){
-    $('form#add-designation-form').find('.error-message').each(function(){
+    $('form#add-form').find('.error-message').each(function(){
         $(this).empty().hide();
     });
-    $('#addModal').find('form#add-designation-form')[0].reset();
+    $('#addModal').find('form#add-form')[0].reset();
 });
 
-$('.reset-designation').click(function(e){
+$('.reset-btn').click(function(e){
     e.preventDefault();
-    $('form#add-designation-form').find('.error-message').each(function(){
+    $('form#add-form').find('.error-message').each(function(){
         $(this).empty().hide();
     });
-    $('#addModal').find('form#add-designation-form')[0].reset();
+    $('#addModal').find('form#add-form')[0].reset();
 });
 
 $('.update-button').click(function(e){
@@ -296,4 +296,4 @@ $('table#master-table').delegate('.delete-button', 'click', function(e){
         }
     });
 });
-/*========== END SCRIPT TO DELETE DESIGNATION =================*/
+/*========== END SCRIPT TO DELETE CATEGORY =================*/

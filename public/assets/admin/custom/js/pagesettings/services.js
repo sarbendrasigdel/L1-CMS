@@ -31,13 +31,13 @@ $('.add-btn').on('click', function(e){
         },
         error: function (error) {
             if (error.status === 422 && error.readyState == 4) {
-                $('form#add-designation-form').find('.error-message').each(function(){
+                $('form#add-form').find('.error-message').each(function(){
                     $(this).empty().hide();
                 });
                 var errors = $.parseJSON(error.responseText);
                 $.each(errors.errors, function (key, val) {
-                    $('form#add-designation-form').find('#' + key + '_err').empty().append('<i class="fa fa-info-circle"></i>' + val);
-                    $('form#add-designation-form').find('#' + key + '_err').show();
+                    $('form#add-form').find('#' + key + '_err').empty().append('<i class="fa fa-info-circle"></i>' + val);
+                    $('form#add-form').find('#' + key + '_err').show();
 
 
                 });
@@ -101,7 +101,7 @@ var masterTable = $('#master-table').DataTable({
     },
     columns: [
         {data: 'id'},
-        {data: 'service_title'},
+        {data: 'title'},
         {data: 'description'},
         {data: 'category'},
         {data: 'active_status',
@@ -163,21 +163,14 @@ $('table#master-table').delegate('.view-record', 'click', function(){
     $.get(basePath+"admin/service/"+serviceId+"/edit", function(service){
         var form = $('form#edit-form');
         form.find('input[name="id"]').val(serviceId);
-        form.find('input[name="service_title"]').val(service.title);
+        form.find('input[name="title"]').val(service.title);
         form.find('select[name="category_id"]').val(service.category_id);
-        // form.find('input[name="category_image"]').val(service.image);
-        // form.find('div#holder img').val(service.image);
-        form.find('textarea[name="service_description"]').val(service.description);
+        form.find('textarea[name="description"]').val(service.description);
 
         if(service.active_status){
             form.find('input[name="active_status"]').prop('checked', true);
         }
-        if(service.image)
-            {
-                form.find('#holder img').attr('src',imagePath+service.image);
-            }
-       
-
+        
         form.find('textarea').prop("disabled", true);
         form.find('input').each(function(){
             $(this).prop("disabled", true);
@@ -187,18 +180,18 @@ $('table#master-table').delegate('.view-record', 'click', function(){
 
 
 $('#addModal').on('hidden.bs.modal', function(){
-    $('form#add-designation-form').find('.error-message').each(function(){
+    $('form#add-form').find('.error-message').each(function(){
         $(this).empty().hide();
     });
-    $('#addModal').find('form#add-designation-form')[0].reset();
+    $('#addModal').find('form#add-form')[0].reset();
 });
 
-$('.reset-designation').click(function(e){
+$('.reset-button').click(function(e){
     e.preventDefault();
-    $('form#add-designation-form').find('.error-message').each(function(){
+    $('form#add-form').find('.error-message').each(function(){
         $(this).empty().hide();
     });
-    $('#addModal').find('form#add-designation-form')[0].reset();
+    $('#addModal').find('form#add-form')[0].reset();
 });
 
 $('.update-button').click(function(e){
@@ -271,7 +264,7 @@ $('table#master-table').delegate('.delete-record', 'click', function(e){
     }, function (isConfirm){
         if(isConfirm){
             $.ajax({
-                url: basePath + 'admin/categories/' + serviceId,
+                url: basePath + 'admin/services/' + serviceId,
                 type: 'post',
                 data:{ id:serviceId, _method: 'DELETE', _token: csrfToken
                 },
@@ -299,4 +292,4 @@ $('table#master-table').delegate('.delete-record', 'click', function(e){
         }
     });
 });
-/*========== END SCRIPT TO DELETE DESIGNATION =================*/
+/*========== END SCRIPT TO DELETE SERVICES =================*/

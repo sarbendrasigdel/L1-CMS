@@ -107,14 +107,6 @@
                                             <input type="text" class="form-control"
                                                    placeholder="Email" name="email">
                                         </div>
-                                        {{-- <div class="col-lg-2 pr-0 chosen">
-                                            <select name="designation[]" class="form-control chosen-select-width" data-placeholder="Select a designation..." multiple="multiple" style="width:221px;">
-                                                @forelse($designations as $designation)
-                                                    <option value="{{$designation->id}}">{{$designation->name}}</option>
-                                                @empty
-                                                @endforelse
-                                            </select>
-                                        </div> --}}
                                         <div class="col-lg-2 pr-0">
                                             <input type="text" class="form-control"
                                                    placeholder="Phone Number" name="phone_number">
