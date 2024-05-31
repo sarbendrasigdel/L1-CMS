@@ -8,7 +8,8 @@ use App\Models\Admins\Pagesettings\category;
 use Illuminate\Support\Facades\DB;
 use App\Library\AuthUser;
 use App\Library\BreadCrumbs;
-
+use App\Http\Requests\Updated\CategoryRequest;
+use App\Http\Requests\Updated\CategoryUpdateRequest;
 class CategoryController extends Controller
 {
     use AuthUser,BreadCrumbs;
@@ -21,16 +22,17 @@ class CategoryController extends Controller
         return view('admin.pagesettings.category.index');
     }
 
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
+        // dd($request->all());
         try {
             DB::beginTransaction();
             $Category = new Category();
-            $Category->name = $request->category_name;
-            $Category->image = $request->category_image;
-            $Category->description = $request->category_description;
-            $Category->featured = $request->featured_add; 
+            $Category->name = $request->name;
+            $Category->description = $request->description;
+            $Category->featured = $request->has('featured_add') ? '1' : '0'; 
             $Category->active_status = ($request->has('active_status_add')) ? true : false;
+            $Category->created_by_admin_users_info_id = $this->getLoggedInUser()->latestAdminUserInfo->id;
             $Category->save();
 
             
@@ -97,7 +99,7 @@ class CategoryController extends Controller
             $nestedData = array();
             $nestedData['id'] = $index + 1;
             $nestedData['categoryId'] = encrypt($category->id);
-            $nestedData['category_name'] = $category->name;
+            $nestedData['name'] = $category->name;
             $nestedData['description'] = $category->description;
             $nestedData['active_status'] = $category->active_status;
             $nestedData['created_at'] = $category->created_at->toDateTimeString();
@@ -119,19 +121,18 @@ class CategoryController extends Controller
 
     }
 
-    public function update(Request $request, $id)
+    public function update(CategoryUpdateRequest $request, $id)
     {
 
         try {
             if ($request->ajax()) {
                 $category = Category::find(decrypt($id));
                 // dd($category);
-                $category->name = $request->category_name;
-                $category->image = $request->category_image;
-                $category->description = $request->category_description;
-                $category->featured = 1; 
+                $category->name = $request->name;
+                $category->description = $request->description;
+                $category->featured = $request->has('featured') ? '1' : '0' ; 
                 $category->active_status = ($request->has('active_status')) ? true : false;
-                // $team->updated_by_admin_users_info_id = $this->getLoggedInUser()->latestAdminUserInfo->id;
+                $category->updated_by_admin_users_info_id = $this->getLoggedInUser()->latestAdminUserInfo->id;
                 $category->save();
 
                 $data['status'] = true;
@@ -155,7 +156,7 @@ class CategoryController extends Controller
                 $category = Category::findOrFail(decrypt($id));
                 
 
-                    // $team->deleted_by_admin_users_info_id = $this->getLoggedInUser()->latestAdminUserInfo->id;
+                    $category->deleted_by_admin_users_info_id = $this->getLoggedInUser()->latestAdminUserInfo->id;
                     $category->save();
                     if($category->delete()){
                         $data['id']= $id;

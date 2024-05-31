@@ -12,7 +12,7 @@ $('.add-btn').on('click', function(e){
                 $(this).empty().hide();
             });
             if (data.status) {
-                categoryTable.draw();
+                masterTable.draw();
                 $('#addModal').modal('hide');
                 $('.bg-success').find('.message-title').empty().text(data.title);
                 $('.bg-success').find('.message-body').empty().text(data.message);
@@ -36,8 +36,8 @@ $('.add-btn').on('click', function(e){
                 });
                 var errors = $.parseJSON(error.responseText);
                 $.each(errors.errors, function (key, val) {
-                    $('form#add-designation-form').find('#' + key + '_err').empty().append('<i class="fa fa-info-circle"></i>' + val);
-                    $('form#add-designation-form').find('#' + key + '_err').show();
+                    $('form#add-form').find('#' + key + '_err').empty().append('<i class="fa fa-info-circle"></i>' + val);
+                    $('form#add-form').find('#' + key + '_err').show();
 
 
                 });
@@ -71,7 +71,7 @@ $('.reset-btn').click(function(e){
 });
 /*======================DATA TABLE=====================*/ 
 
-var categoryTable = $('#master-table').DataTable({
+var masterTable = $('#master-table').DataTable({
     
     order: [0, 'desc'],
     dom: 'lfrtip',
@@ -102,7 +102,7 @@ var categoryTable = $('#master-table').DataTable({
     },
     columns: [
         {data: 'id'},
-        {data: 'category_name'},
+        {data: 'name'},
         {data: 'description'},
         {data: 'active_status',
         render: function(data, type, dataObject, meta) {
@@ -124,7 +124,7 @@ var categoryTable = $('#master-table').DataTable({
                     }
 
                     if(dataObject.delete_permission){
-                        action += '<a href="javascript:void(0);" class="btn btn-sm form-button btn-danger delete-designation"><i class="mr-1 fa fa-trash"></i> Delete</a>';
+                        action += '<a href="javascript:void(0);" class="btn btn-sm form-button btn-danger delete-button"><i class="mr-1 fa fa-trash"></i> Delete</a>';
                     }
                 }else{
                     action += 'Cannot be edited';
@@ -164,17 +164,15 @@ $('table#master-table').delegate('.view-record', 'click', function(){
     $.get(basePath+"admin/category/"+categoryId+"/edit", function(category){
         var form = $('form#edit-form');
         form.find('input[name="id"]').val(categoryId);
-        form.find('input[name="category_name"]').val(category.name);
-        form.find('input[name="category_image"]').val(category.image);
-        form.find('div#holder img').val(category.image);
-        form.find('textarea[name="category_description"]').val(category.description);
+        form.find('input[name="name"]').val(category.name);
+        form.find('textarea[name="description"]').val(category.description);
 
         if(category.active_status){
             form.find('input[name="active_status"]').prop('checked', true);
         }
-        if(category.image)
+        if(category.featured)
             {
-                form.find('#holder img').attr('src',imagePath+category.image);
+                form.find('input[name="featured"]').prop('checked',true)
             }
        
 
@@ -214,7 +212,7 @@ $('.update-button').click(function(e){
                 $(this).empty().hide();
             });
             if (data.status) {
-                categoryTable.draw();
+                masterTable.draw();
                 $('#viewModal').modal('hide');
                 $('.bg-success').find('.message-title').empty().text(data.title);
                 $('.bg-success').find('.message-body').empty().text(data.message);
@@ -254,7 +252,7 @@ $('.update-button').click(function(e){
 /*========== END SCRIPT TO EDIT AND VIEW TEAM =================*/
 
 /*========== START SCRIPT TO DELETE TEAM =================*/
-$('table#master-table').delegate('.delete-designation', 'click', function(e){
+$('table#master-table').delegate('.delete-button', 'click', function(e){
     e.preventDefault();
     var categoryId = $(this).parents('tr').attr('data-id');
     var thisReference = $(this);

@@ -29,7 +29,7 @@
                                                    style="display: none;"></small>
                                             <input type="text" class="form-control"
                                                    placeholder="Category Name" name="name"
-                                                   value="">
+                                                   value="{{old('name')}}">
                                         </div>
                                     </div>
                                 </div>
@@ -41,7 +41,7 @@
                                                    style="display: none;"></small>
                                                    <div class="form-check form-check-inline">
                                                     <label class="form-check-label">
-                                                        <input class="form-check-input" type="checkbox" name="featured_add" id="featured-add" value="1"> Featured
+                                                        <input class="form-check-input" type="checkbox" name="featured_add" id="featured" value="1"> Featured
                                                     </label>
                                                    </div>
                                         </div>
@@ -54,7 +54,7 @@
                                             <small class="error-message" id="description_err"
                                                    style="display: none;"></small>
                                             <textarea name="description"
-                                                      class="form-control"></textarea>
+                                                      class="form-control" value="{{old('description')}}"></textarea>
                                         </div>
                                     </div>
                                 </div>

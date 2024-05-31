@@ -51,6 +51,7 @@ class TeamController extends Controller
             $team->github = $request->github;
             $team->featured = ($request->has('featured_add')) ? 1 : 0 ;    
             $team->active_status = ($request->has('active_status_add')) ? true : false;
+            $team->created_by_admin_users_info_id = $this->getLoggedInUser()->latestAdminUserInfo->id;
             $team->save();
 
             // if (!empty($user)) {
@@ -103,7 +104,7 @@ class TeamController extends Controller
                 $team->github = $request->github;
                 $team->featured = ($request->has('featured')) ? 1 : 0 ; 
                 $team->active_status = ($request->has('active_status')) ? true : false;
-                // $team->updated_by_admin_users_info_id = $this->getLoggedInUser()->latestAdminUserInfo->id;
+                $team->updated_by_admin_users_info_id = $this->getLoggedInUser()->latestAdminUserInfo->id;
                 $team->save();
 
                 $data['status'] = true;
