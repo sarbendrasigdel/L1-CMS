@@ -25,33 +25,24 @@
                                         </ul> --}}
                                     </li>
                                     <li class="mil-has-children">
-                                        <a href="#.">Portfolio</a>
-                                        <ul>
-                                            <li><a href="portfolio-1.html">Grid type 1</a></li>
-                                            <li><a href="portfolio-2.html">Grid type 2</a></li>
-                                            <li><a href="portfolio-3.html">Slider</a></li>
-                                        </ul>
+                                        <a href="{{route('frontend.publication')}}">Portfolio</a>
                                     </li>
                                     <li class="mil-has-children">
-                                        <a href="#.">Services</a>
-                                        <ul>
-                                            <li><a href="services.html">Services List</a></li>
-                                            <li><a href="service.html">Single service</a></li>
-                                        </ul>
+                                        <a href="{{route('frontend.services')}}">Services</a>
+                                        
                                     </li>
                                     <li class="mil-has-children">
                                         <a href="#.">Newsletter</a>
                                         <ul>
-                                            <li><a href="blog.html">Blog List</a></li>
-                                            <li><a href="publication.html">Publication</a></li>
+                                            <li><a href="{{route('frontend.blog')}}">Blog List</a></li>
+                                            <li><a href="{{route('frontend.publication')}}">Publication</a></li>
                                         </ul>
                                     </li>
                                     <li class="mil-has-children">
                                         <a href="#.">Other pages</a>
                                         <ul>
                                             <li><a href="{{route('frontend.teams')}}">Team</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="404.html">404</a></li>
+                                            <li><a href="{{route('frontend.contact')}}">Contact</a></li>
                                         </ul>
                                     </li>
                                 </ul>

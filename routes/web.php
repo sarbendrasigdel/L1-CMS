@@ -19,6 +19,7 @@ use App\Http\Controllers\Admins\Updated\NewsletterController;
 use App\Http\Controllers\Admins\Updated\PortfolioController;
 use App\Http\Controllers\Admins\Updated\ServiceController;
 use App\Http\Controllers\Admins\Updated\ServiceFeaturesController;
+use App\Http\Controllers\Admins\Updated\TestimonialController;
 use App\Http\Controllers\Frontend\FrontendController;
 use NunoMaduro\Collision\Adapters\Laravel\Commands\TestCommand;
 
@@ -153,6 +154,14 @@ Route::group(['middleware' => 'auth:admin-user'], function () {
         Route::delete('/services/{id}',[ServiceController::class,'destroy']);
 
 
+        //testimonials
+        Route::get('testimonials',[TestimonialController::class,'index'])->name('testimonial');
+        Route::post('add-testimonial',[TestimonialController::class,'store'])->name('add-team');
+        Route::post('fetch-testimonials',[TestimonialController::class,'fetchTestimonialList']);
+        Route::get('/testimonials/{id}/edit',[TestimonialController::class,'edit']);
+        Route::post('/testimonials/{id}',[TestimonialController::class,'update']);
+        Route::delete('/testimonials/{id}',[TestimonialController::class,'destroy']);
+
 
 
     });
@@ -163,6 +172,9 @@ Route::get('/home',[FrontendController::class,'home'])->name('frontend.home');
 Route::get('/team',[FrontendController::class,'teams'])->name('frontend.teams');
 Route::get('/services',[FrontendController::class,'services'])->name('frontend.services');
 Route::get('/portfolio',[FrontendController::class,'portfolio'])->name('frontend.portfolio');
+Route::get('/blog',[FrontendController::class,'blog'])->name('frontend.blog');
+Route::get('/contact',[FrontendController::class,'contact'])->name('frontend.contact');
+Route::get('/publication',[FrontendController::class,'publication'])->name('frontend.publication');
 
 
 
