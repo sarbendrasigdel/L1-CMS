@@ -2,10 +2,11 @@
 $('.add-btn').on('click', function(e){
     e.preventDefault();
     $('.modal-spinner').show();
+    CKEDITOR.instances['editor1'].updateElement();
     var form_data = $('form#add-form').serializeArray();
     $.ajax({
         type: "POST",
-        url: basePath + "admin/add-service",
+        url: basePath + "admin/add-blog",
         data: form_data,
         success: function (data) {
             $('form#add-form').find('.error-message').each(function(){
@@ -81,7 +82,7 @@ var masterTable = $('#master-table').DataTable({
         processing: '<div class="loader-containers"><div class="loader-contents"><img src="'+basePath +'assets/admin/images/loader.svg" alt=""></div></div>',
     },
     "ajax": {
-        url: basePath + 'admin/fetch-services',
+        url: basePath + 'admin/fetch-blogs',
         type: "POST",
         dataType: 'json',
 
@@ -97,7 +98,7 @@ var masterTable = $('#master-table').DataTable({
         }
     },
     'createdRow': function( row, data, dataIndex ) {
-        $(row).attr('data-id', data.serviceId);
+        $(row).attr('data-id', data.BlogId);
     },
     columns: [
         {data: 'id'},
@@ -135,9 +136,9 @@ var masterTable = $('#master-table').DataTable({
 });
 
 
-/*========== END SCRIPT TO ADD NEW TEAM =================*/
+/*========== END SCRIPT TO ADD NEW BLOG =================*/
 
-/*========== START SCRIPT TO EDIT AND VIEW TEAM =================*/
+/*========== START SCRIPT TO EDIT AND VIEW BLOG =================*/
 //edit 
 $('#viewModal').find(".btn-edit").click(function (e) {
     e.preventDefault();
@@ -146,6 +147,7 @@ $('#viewModal').find(".btn-edit").click(function (e) {
         $(".btn-edit").hide("500");
         $("#viewModal .modal-footer").show("500");
         $(".btn").removeClass("disabled");
+        CKEDITOR.instances['editor2'].setReadOnly(false);
     }
     else {
     }
@@ -159,20 +161,29 @@ $('#viewModal').on('hidden.bs.modal', function () {
 
 // fetch previous data
 $('table#master-table').delegate('.view-record', 'click', function(){
-    var serviceId = $(this).parents('tr').attr('data-id');
-    $.get(basePath+"admin/service/"+serviceId+"/edit", function(service){
-        var form = $('form#edit-form');
-        form.find('input[name="id"]').val(serviceId);
-        form.find('input[name="title"]').val(service.title);
-        form.find('select[name="category_id"]').val(service.category_id);
-        form.find('textarea[name="description"]').val(service.description);
+    var BlogId = $(this).parents('tr').attr('data-id');
+    $.get(basePath+"admin/blog/"+BlogId+"/edit", function(blog){
 
-        if(service.active_status){
+        var form = $('form#edit-form');
+        console.log(blog);
+        form.find('input[name="id"]').val(BlogId);
+        form.find('input[name="title"]').val(blog.title);
+        form.find('input[name="image"]').val(blog.image);
+        form.find('select[name="category_id"]').val(blog.category_id);
+        // form.find('textarea[name="description"]').val(blog.description);
+        CKEDITOR.instances['editor2'].setData(blog.description);
+        CKEDITOR.instances['editor2'].setReadOnly(true);
+
+        if(blog.active_status){
             form.find('input[name="active_status"]').prop('checked', true);
         }
+        if(blog.image)
+            {
+                form.find('#holder img').attr('src',imagePath+blog.image);
+            }
         
         form.find('textarea').prop("disabled", true);
-        form.find('select').prop("disabled", true);
+        form.find('select').prop("disabled",true);
         form.find('input').each(function(){
             $(this).prop("disabled", true);
         });
@@ -198,11 +209,13 @@ $('.reset-button').click(function(e){
 $('.update-button').click(function(e){
     e.preventDefault();
     $('.modal-spinner').show();
-    var serviceId = $('form#edit-form').find('input[name="id"]').val();
+    var BlogId = $('form#edit-form').find('input[name="id"]').val();
     var form_data = $('form#edit-form').serializeArray();
+    var form_data = $('form#add-form').serializeArray();
+    form_data.append(CKEDITOR.instances['editor2'].updateElement());
     $.ajax({
         type: "POST",
-        url: basePath + "admin/service/"+ serviceId,
+        url: basePath + "admin/blog/"+ BlogId,
         data: form_data,
         success: function (data) {
             $('form#edit-form').find('.error-message').each(function(){
@@ -246,12 +259,12 @@ $('.update-button').click(function(e){
     });
 });
 
-/*========== END SCRIPT TO EDIT AND VIEW TEAM =================*/
+/*========== END SCRIPT TO EDIT AND VIEW BLOG =================*/
 
-/*========== START SCRIPT TO DELETE TEAM =================*/
+/*========== START SCRIPT TO DELETE BLOG =================*/
 $('table#master-table').delegate('.delete-record', 'click', function(e){
     e.preventDefault();
-    var serviceId = $(this).parents('tr').attr('data-id');
+    var BlogId = $(this).parents('tr').attr('data-id');
     var thisReference = $(this);
     swal({
         title: "Are you sure want to delete this member?",
@@ -265,9 +278,9 @@ $('table#master-table').delegate('.delete-record', 'click', function(e){
     }, function (isConfirm){
         if(isConfirm){
             $.ajax({
-                url: basePath + 'admin/services/' + serviceId,
+                url: basePath + 'admin/blogs/' + BlogId,
                 type: 'post',
-                data:{ id:serviceId, _method: 'DELETE', _token: csrfToken
+                data:{ id:BlogId, _method: 'DELETE', _token: csrfToken
                 },
                 success: function(data){
                     if(data.status){
@@ -289,8 +302,8 @@ $('table#master-table').delegate('.delete-record', 'click', function(e){
                 error: function(){},
             });
         }else{
-            swal("Not Deleted", "Service is not Deleted. it is save.", "error");
+            swal("Not Deleted", "blog is not Deleted. it is save.", "error");
         }
     });
 });
-/*========== END SCRIPT TO DELETE SERVICES =================*/
+/*========== END SCRIPT TO DELETE blogS =================*/

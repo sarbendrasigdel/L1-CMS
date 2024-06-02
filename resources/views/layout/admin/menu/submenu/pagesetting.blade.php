@@ -50,8 +50,8 @@
     @endcan
     @can('view.user')
     <div class="dropdown">
-        <a class="drop-sub @if(@$subMenu == 'Newsletter') active @endif" href="{{route('admin.users')}}">
-            <i class="fas fa-newspaper text-primary"></i>Newsletter
+        <a class="drop-sub @if(@$subMenu == 'Blog') active @endif" href="{{route('admin.blogs')}}">
+            <i class="fas fa-newspaper text-primary"></i>Blog
         </a>
     </div>
     @endcan
@@ -65,7 +65,7 @@
     @can('view.user')
     <div class="dropdown">
         <a class="drop-sub @if(@$subMenu == 'Testimonials') active @endif" href="{{route('admin.testimonial')}}">
-            <i class="fas fa-newspaper text-primary"></i>Testimonials
+            <i class="fas fa-quote-left text-primary"></i>Testimonials
         </a>
     </div>
     @endcan

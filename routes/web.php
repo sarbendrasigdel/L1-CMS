@@ -10,6 +10,7 @@ use App\Http\Controllers\Admins\Settings\PrivacyPolicyController;
 use App\Http\Controllers\Admins\Settings\SeoSettingController;
 use App\Http\Controllers\Admins\Settings\SiteSettingController;
 use App\Http\Controllers\Admins\Settings\TermsAndConditionController;
+use App\Http\Controllers\Admins\Updated\BlogController;
 use App\Http\Controllers\Admins\Updated\CategoryController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\TestController;
@@ -161,6 +162,15 @@ Route::group(['middleware' => 'auth:admin-user'], function () {
         Route::get('/testimonials/{id}/edit',[TestimonialController::class,'edit']);
         Route::post('/testimonials/{id}',[TestimonialController::class,'update']);
         Route::delete('/testimonials/{id}',[TestimonialController::class,'destroy']);
+
+        //Services Section
+
+        Route::get('blog',[BlogController::class,'index'])->name('blogs');
+        Route::post('/fetch-blogs',[BlogController::class,'fetchBlogList']);
+        Route::post('add-blog',[BlogController::class,'store']);
+        Route::get('/blog/{id}/edit',[BlogController::class,'edit']);
+        Route::post('/blog/{id}',[BlogController::class,'update']);
+        Route::delete('/blogs/{id}',[BlogController::class,'destroy']);
 
 
 
