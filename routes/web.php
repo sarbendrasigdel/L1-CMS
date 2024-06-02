@@ -19,6 +19,7 @@ use App\Http\Controllers\Admins\Updated\NewsletterController;
 use App\Http\Controllers\Admins\Updated\PortfolioController;
 use App\Http\Controllers\Admins\Updated\ServiceController;
 use App\Http\Controllers\Admins\Updated\ServiceFeaturesController;
+use App\Http\Controllers\Frontend\FrontendController;
 use NunoMaduro\Collision\Adapters\Laravel\Commands\TestCommand;
 
 /*
@@ -109,6 +110,7 @@ Route::group(['middleware' => 'auth:admin-user'], function () {
         //Route for homepagesettings
 
         Route::get('homepage-settings',[HomepageController::class,'index'])->name('homepage');
+        Route::post('homepage-settings',[HomepageController::class,'store']);
 
         //newsletter section
         Route::get('newsletter-settings',[NewsletterController::class,'index'])->name('newsletter');
@@ -155,6 +157,12 @@ Route::group(['middleware' => 'auth:admin-user'], function () {
 
     });
 });
+
+//frontend routes
+Route::get('/home',[FrontendController::class,'home'])->name('frontend.home');
+Route::get('/team',[FrontendController::class,'teams'])->name('frontend.teams');
+Route::get('/services',[FrontendController::class,'services'])->name('frontend.services');
+Route::get('/portfolio',[FrontendController::class,'portfolio'])->name('frontend.portfolio');
 
 
 

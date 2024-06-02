@@ -5,7 +5,7 @@
     @can('view.user')
 
     <div class="dropdown">
-        <a class="drop-sub @if(@$subMenu == 'Home page') active @endif" href="{{route('admin.homepage')}}">
+        <a class="drop-sub @if(@$subMenu == 'HomePage') active @endif" href="{{route('admin.homepage')}}">
             <i class="fas fa-cogs text-primary"></i>Home Page
         </a>
     </div>

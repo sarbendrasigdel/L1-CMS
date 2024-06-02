@@ -24,6 +24,7 @@ class SiteSettingController extends Controller
     }
 
     public function store(CreateSiteSettingRequest $request){
+        
         try {
             if ($request->ajax()){
                 $siteSetting = SiteSetting::first();

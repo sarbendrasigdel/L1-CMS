@@ -17,12 +17,12 @@
                             <nav class="mil-main-menu" id="swupMenu">
                                 <ul>
                                     <li class="mil-has-children mil-active">
-                                        <a href="#.">Homepage</a>
-                                        <ul>
+                                        <a href="{{route('frontend.home')}}">Homepage</a>
+                                        {{-- <ul>
                                             <li><a href="home-1.html">Landing page</a></li>
                                             <li><a href="home-2.html">Personal</a></li>
                                             <li><a href="portfolio-3.html">Portfolio slider</a></li>
-                                        </ul>
+                                        </ul> --}}
                                     </li>
                                     <li class="mil-has-children">
                                         <a href="#.">Portfolio</a>
@@ -49,7 +49,7 @@
                                     <li class="mil-has-children">
                                         <a href="#.">Other pages</a>
                                         <ul>
-                                            <li><a href="{{route('teams')}}">Team</a></li>
+                                            <li><a href="{{route('frontend.teams')}}">Team</a></li>
                                             <li><a href="contact.html">Contact</a></li>
                                             <li><a href="404.html">404</a></li>
                                         </ul>

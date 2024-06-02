@@ -31,144 +31,133 @@
                 <div class="col-lg-12">
                     <div class="content-box">
                         @include('layout.common.modal-spinner')
-                        <form id="">
+                        <form id="add-form">
                             @csrf
                             <fieldset class="scheduler-border">
-                                <legend class="scheduler-border">Home Page Information</legend>
+                                <legend class="scheduler-border">Hero Section</legend>
                                 <div class="row">
                                     <div class="col-lg-6 form-input-area">
                                         <div class="form-group row">
-                                            <label class="col-sm-4 col-form-label">Company Name <sup
+                                            <label class="col-sm-4 col-form-label">Heading<sup
                                                     class="text-danger">*</sup></label>
                                             <div class="col-sm-8 pl-lg-0">
-                                                <small class="error-message" id="company_name_err"
+                                                <small class="error-message" id="heading_err"
                                                        style="display: none;"></small>
-                                                <input type="text" class="form-control"
-                                                       placeholder="Company Name" name="company_name"
-                                                       value="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group row">
-                                            <label class="col-sm-4 col-form-label">Company Logo <sup
-                                                    class="text-danger">*</sup></label>
-                                            <div class="col-sm-8 pl-lg-0">
-                                                <div class="input-group">
-                                                   <span class="input-group-btn">
-                                                     <a data-input="thumbnail" data-preview="holder"
-                                                        class="lfm btn btn-primary">
-                                                       <i class="fa fa-picture-o"></i> Choose
-                                                     </a>
-                                                   </span>
-                                                    <input id="thumbnail" class="form-control" type="text"
-                                                           name="company_logo"
-                                                           value="">
-                                                </div>
-
-                                                <div id="holder">
-                                                    <img
-                                                        src=""
-                                                        style="height: 5rem;">
-
-                                                </div>
-                                                <small class="error-message" id="company_logo_err"
-                                                       style="display: none;bottom: 0;"></small>
+                                                       <textarea name="heading"
+                                                       class="form-control" value=" " 
+                                                       placeholder ="Heading">{{@$home->heading}}</textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 form-input-area">
                                         <div class="form-group row">
-                                            <label class="col-sm-4 col-form-label">Company Email <sup
-                                                    class="text-danger">*</sup></label>
+                                            <label class="col-sm-4 col-form-label">Description<sup
+                                                class="text-danger">*</sup></label> 
                                             <div class="col-sm-8 pl-lg-0">
-                                                <small class="error-message" id="company_email_err"
+                                                <small class="error-message" id="description_err"
                                                        style="display: none;"></small>
-                                                <input type="text" class="form-control"
-                                                       placeholder="Company Email" name="company_email"
-                                                       value="">
+                                                <textarea name="description"
+                                                          class="form-control" value=" ">{{@$home->description}}</textarea>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6 form-input-area">
-                                        <div class="form-group row">
-                                            <label class="col-sm-4 col-form-label">Company Location <sup
-                                                    class="text-danger">*</sup></label>
-                                            <div class="col-sm-8 pl-lg-0">
-                                                <small class="error-message" id="company_location_err"
-                                                       style="display: none;"></small>
-                                                <input type="text" class="form-control"
-                                                       placeholder="Company Location" name="company_location"
-                                                       value="">
+                                </div>
+                            </fieldset >
+                            <fieldset class="scheduler-border">
+                                
+                                <legend class="scheduler-border">Discover section</legend>
+                                <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Discover section Image <sup
+                                                class="text-danger">*</sup></label>
+                                        <div class="col-sm-8 pl-lg-0">
+                                            <div class="input-group">
+                                               <span class="input-group-btn">
+                                                 <a data-input="thumbnail-discover" data-preview="holder-discover"
+                                                    class="lfm btn btn-primary">
+                                                   <i class="fa fa-picture-o"></i> Choose
+                                                 </a>
+                                               </span>
+                                                <input id="thumbnail-discover" class="form-control" type="text"
+                                                       name="discover_img"
+                                                       value="{{@$home->discover_img ?? ""}}">
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 form-input-area">
-                                        <div class="form-group row">
-                                            <label class="col-sm-4 col-form-label">Contact Number <sup
-                                                    class="text-danger">*</sup></label>
-                                            <div class="col-sm-8 pl-lg-0">
-                                                <small class="error-message" id="contact_number_err"
-                                                       style="display: none;"></small>
-                                                <input type="text" class="form-control"
-                                                       placeholder="Contact Number" name="contact_number"
-                                                       value="">
+    
+                                            <div id="holder-discover">
+                                                <img
+                                                    src="{{asset(@$home->discover_img)}}"
+                                                    style="height: 5rem;">
+    
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 form-input-area">
-                                        <div class="form-group row">
-                                            <label class="col-sm-4 col-form-label">Copyright </label>
-                                            <div class="col-sm-8 pl-lg-0">
-                                                <small class="error-message" id="copyright_err"
-                                                       style="display: none;"></small>
-                                                <input type="text" class="form-control"
-                                                       placeholder="Copyright" name="copyright"
-                                                       value="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 form-input-area">
-                                        <div class="form-group row">
-                                            <label class="col-sm-4 col-form-label">Meta Title </label>
-                                            <div class="col-sm-8 pl-lg-0">
-                                                <small class="error-message" id="meta_title_err"
-                                                       style="display: none;"></small>
-                                                <input type="text" class="form-control"
-                                                       placeholder="Meta Title" name="meta_title"
-                                                       value="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 form-input-area">
-                                        <div class="form-group row">
-                                            <label class="col-sm-4 col-form-label">Meta Description </label>
-                                            <div class="col-sm-8 pl-lg-0">
-                                                <small class="error-message" id="meta_description_err"
-                                                       style="display: none;"></small>
-                                                <textarea name="meta_description"
-                                                          class="form-control"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-input-area">
-                                            <div class="row">
-                                                <label class="col-sm-4 col-form-label">
-                                                    Status </label>
-                                                <div class="col-sm-8 pl-lg-0">
-                                                    <label class="switch">
-                                                        <input type="checkbox" id="event-fee-switch"
-                                                               name="active_status"
-                                                               value="1"  >
-                                                        <span class="slider"></span>
-                                                    </label>
-                                                </div>
-                                            </div>
+                                            <small class="error-message" id="discover_img_err"
+                                                   style="display: none;bottom: 0;"></small>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-lg-6 form-input-area">
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Description<sup
+                                            class="text-danger">*</sup></label> 
+                                        <div class="col-sm-8 pl-lg-0">
+                                            <small class="error-message" id="discover_text_err"
+                                                   style="display: none;"></small>
+                                            <textarea name="discover_text"
+                                                      class="form-control" value=" ">{{@$home->discover_text}}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 form-input-area">
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">Founders Quote<sup
+                                            class="text-danger">*</sup></label> 
+                                        <div class="col-sm-8 pl-lg-0">
+                                            <small class="error-message" id="quote_err"
+                                                   style="display: none;"></small>
+                                            <textarea name="quote"
+                                                      class="form-control" value="">{{@$home->quote}}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
                             </fieldset>
+                            <fieldset class="scheduler-border">
+                                
+                                <legend class="scheduler-border">Service section</legend>
+                                <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label">service Image <sup
+                                                class="text-danger">*</sup></label>
+                                        <div class="col-sm-8 pl-lg-0">
+                                            <div class="input-group">
+                                               <span class="input-group-btn">
+                                                 <a data-input="thumbnail-service" data-preview="holder-service"
+                                                    class="lfm btn btn-primary">
+                                                   <i class="fa fa-picture-o"></i> Choose
+                                                 </a>
+                                               </span>
+                                                <input id="thumbnail-service" class="form-control" type="text"
+                                                       name="service_img"
+                                                       value="{{@$home->service_img ?? ""}}">
+                                            </div>
+    
+                                            <div id="holder-service">
+                                                <img
+                                                    src="{{asset(@$home->service_img)}}"
+                                                    style="height: 5rem;">
+    
+                                            </div>
+                                            <small class="error-message" id="service_img_err"
+                                                   style="display: none;bottom: 0;"></small>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </fieldset>
+                            <div class="offset-md-6 pt-4">
+                                <button type="submit" class="btn form-button btn-success add-button">Save
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -185,5 +174,10 @@
     <script src="{{asset('assets')}}/plugin/sweetalert/sweetalert.min.js"></script>
     <script src="{{ asset('assets/plugin/chosen/chosen.jquery.js') }}"></script>
     <script src="{{ asset('assets/plugin/chosen/prism.js') }}"></script>
-    <script src="{{asset('assets/admin/custom/js/access/user.js')}}"></script>
+    <script src="{{asset('assets/admin/custom/js/pagesettings/home.js')}}"></script>
+    <script src="{{asset('vendor/laravel-filemanager/js/stand-alone-button.js')}}"></script>
+    <script>
+        var route_prefix = "{{ url('/laravel-filemanager') }}";
+        $('.lfm').filemanager('image', {prefix: route_prefix});
+    </script>
 @endsection

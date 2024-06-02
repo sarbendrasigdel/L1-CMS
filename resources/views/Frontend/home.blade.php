@@ -29,11 +29,11 @@ Home
                                     </div>
                                 </div>
 
-                                <a href="services.html" class="mil-button mil-arrow-place mil-btn-space">
+                                <a href="{{route('frontend.services')}}" class="mil-button mil-arrow-place mil-btn-space">
                                     <span>What we do</span>
                                 </a>
 
-                                <a href="portfolio-1.html" class="mil-link mil-muted mil-arrow-place">
+                                <a href="{{route('frontend.portfolio')}}" class="mil-link mil-muted mil-arrow-place">
                                     <span>View works</span>
                                 </a>
 
@@ -74,7 +74,7 @@ Home
 
                                     <div class="mil-about-quote">
                                         <div class="mil-avatar mil-up">
-                                            <img src="img/faces/customers/2.jpg" alt="Founder">
+                                            <img src="{{$founderImg->image}}" alt="Founder">
                                         </div>
                                         <h6 class="mil-quote mil-up">Passionately Creating <span class="mil-thin">Design Wonders:</span> Unleashing <span class="mil-thin">Boundless Creativity</span></h6>
                                     </div>
@@ -86,7 +86,7 @@ Home
                                 <div class="mil-about-photo mil-mb-90">
                                     <div class="mil-lines-place"></div>
                                     <div class="mil-up mil-img-frame" style="padding-bottom: 160%;">
-                                        <img src="img/photo/1.jpg" alt="img" class="mil-scale" data-value-1="1" data-value-2="1.2">
+                                        <img src="{{$homepageInfo->discover_img}}" alt="img" class="mil-scale" data-value-1="1" data-value-2="1.2">
                                     </div>
                                 </div>
 
@@ -116,14 +116,14 @@ Home
 
                                 <div class="mil-complex-text justify-content-center mil-up mil-mb-15">
 
-                                    <span class="mil-text-image"><img src="img/photo/2.jpg" alt="team"></span>
+                                    <span class="mil-text-image"><img src="{{$homepageInfo->service_img}}" alt="team"></span>
                                     <h2 class="mil-h1 mil-muted mil-center">Unique <span class="mil-thin">Ideas</span></h2>
 
                                 </div>
                                 <div class="mil-complex-text justify-content-center mil-up">
 
                                     <h2 class="mil-h1 mil-muted mil-center">For Your <span class="mil-thin">Business.</span></h2>
-                                    <a href="services.html" class="mil-services-button mil-button mil-arrow-place"><span>What we do</span></a>
+                                    <a href="{{route('frontend.services')}}" class="mil-services-button mil-button mil-arrow-place"><span>What we do</span></a>
 
                                 </div>
                             </div>
@@ -183,7 +183,7 @@ Home
 
                                     <p class="mil-up mil-mb-60">Together, our creative team is committed to delivering impactful work that exceeds expectations.</p>
 
-                                    <div class="mil-up"><a href="team.html" class="mil-button mil-arrow-place mil-mb-60"><span>Read more</span></a></div>
+                                    <div class="mil-up"><a href="{{route('frontend.teams')}}" class="mil-button mil-arrow-place mil-mb-60"><span>Read more</span></a></div>
 
                                     <h4 class="mil-up"><span class="mil-thin">We</span> delivering <br><span class="mil-thin">exceptional</span> results.</h4>
                                 </div>
@@ -196,75 +196,45 @@ Home
 
                                     <div class="row mil-mb-60">
                                         <div class="col-sm-6">
-
+                                            @foreach($teams as $team)
                                             <div class="mil-team-card mil-up mil-mb-30">
-                                                <img src="img/faces/1.jpg" alt="Team member">
+                                                <img src="{{$team->image}}" alt="{{$team->position}}">
                                                 <div class="mil-description">
                                                     <div class="mil-secrc-text">
-                                                        <h5 class="mil-muted mil-mb-5"><a href="home-2.html">Anna Oldman</a></h5>
-                                                        <p class="mil-link mil-light-soft mil-mb-10">Art Director</p>
+                                                        <h5 class="mil-muted mil-mb-5"><a href="home-2.html">{{$team->name}}</a></h5>
+                                                        <p class="mil-link mil-light-soft mil-mb-10">{{$team->position}}</p>
                                                         <ul class="mil-social-icons mil-center">
-                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-behance"></i></a></li>
-                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-dribbble"></i></a></li>
-                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-twitter"></i></a></li>
-                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-github"></i></a></li>
+                                                            <li><a href="{{$team->facebook}}" target="_blank" class="social-icon"> <i class="fab fa-behance"></i></a></li>
+                                                            <li><a href="{{$team->instagram}}" target="_blank" class="social-icon"> <i class="fab fa-dribbble"></i></a></li>
+                                                            <li><a href="{{$team->twitter}}" target="_blank" class="social-icon"> <i class="fab fa-twitter"></i></a></li>
+                                                            <li><a href="{{$team->github}}" target="_blank" class="social-icon"> <i class="fab fa-github"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <div class="mil-team-card mil-up mil-mb-30">
-                                                <img src="img/faces/3.jpg" alt="Team member">
-                                                <div class="mil-description">
-                                                    <div class="mil-secrc-text">
-                                                        <h5 class="mil-muted mil-mb-5"><a href="home-2.html">Oscar Freeman</a></h5>
-                                                        <p class="mil-link mil-light-soft mil-mb-10">Frontend Dev</p>
-                                                        <ul class="mil-social-icons mil-center">
-                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-behance"></i></a></li>
-                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-dribbble"></i></a></li>
-                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-twitter"></i></a></li>
-                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-github"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            @endforeach
 
                                         </div>
                                         <div class="col-sm-6">
 
                                             <p class="mil-mobile-hidden mil-text-sm mil-mb-30" style="height: 30px;"><span class="mil-accent">*</span> The founders of our agency</p>
-
+                                            @foreach($founders as $founder )
                                             <div class="mil-team-card mil-up mil-mb-30">
-                                                <img src="img/faces/2.jpg" alt="Team member">
+                                                <img src="{{$founder->image}}" alt="Team member">
                                                 <div class="mil-description">
                                                     <div class="mil-secrc-text">
-                                                        <h5 class="mil-muted mil-mb-5"><a href="home-2.html">Emma Newman</a></h5>
-                                                        <p class="mil-link mil-light-soft mil-mb-10">Founder</p>
+                                                        <h5 class="mil-muted mil-mb-5"><a href="home-2.html">{{$founder->name}}</a></h5>
+                                                        <p class="mil-link mil-light-soft mil-mb-10">{{$founder->position}}</p>
                                                         <ul class="mil-social-icons mil-center">
-                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-behance"></i></a></li>
-                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-dribbble"></i></a></li>
-                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-twitter"></i></a></li>
-                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-github"></i></a></li>
+                                                            <li><a href="{{$founder->facebook}}" target="_blank" class="social-icon"> <i class="fab fa-behance"></i></a></li>
+                                                            <li><a href="{{$founder->instagram}}" target="_blank" class="social-icon"> <i class="fab fa-dribbble"></i></a></li>
+                                                            <li><a href="{{$founder->twitter}}" target="_blank" class="social-icon"> <i class="fab fa-twitter"></i></a></li>
+                                                            <li><a href="{{$founder->github}}" target="_blank" class="social-icon"> <i class="fab fa-github"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <div class="mil-team-card mil-up mil-mb-30">
-                                                <img src="img/faces/4.jpg" alt="Team member">
-                                                <div class="mil-description">
-                                                    <div class="mil-secrc-text">
-                                                        <h5 class="mil-muted mil-mb-5"><a href="home-2.html">Lisa Trueman</a></h5>
-                                                        <p class="mil-link mil-light-soft mil-mb-10">UI/UX Designer</p>
-                                                        <ul class="mil-social-icons mil-center">
-                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-behance"></i></a></li>
-                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-dribbble"></i></a></li>
-                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-twitter"></i></a></li>
-                                                            <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-github"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            @endforeach
 
                                         </div>
                                     </div>

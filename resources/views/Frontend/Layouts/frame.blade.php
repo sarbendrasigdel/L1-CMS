@@ -1,7 +1,7 @@
         <!-- frame -->
         <div class="mil-frame">
             <div class="mil-frame-top">
-                <a href="home-1.html" class="mil-logo">A.</a>
+                <a href="home-1.html" class="mil-logo">S.</a>
                 <div class="mil-menu-btn">
                     <span></span>
                 </div>
