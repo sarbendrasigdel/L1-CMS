@@ -163,7 +163,7 @@ Route::group(['middleware' => 'auth:admin-user'], function () {
         Route::post('/testimonials/{id}',[TestimonialController::class,'update']);
         Route::delete('/testimonials/{id}',[TestimonialController::class,'destroy']);
 
-        //Services Section
+        //Blog Section
 
         Route::get('blog',[BlogController::class,'index'])->name('blogs');
         Route::post('/fetch-blogs',[BlogController::class,'fetchBlogList']);
@@ -171,6 +171,16 @@ Route::group(['middleware' => 'auth:admin-user'], function () {
         Route::get('/blog/{id}/edit',[BlogController::class,'edit']);
         Route::post('/blog/{id}',[BlogController::class,'update']);
         Route::delete('/blogs/{id}',[BlogController::class,'destroy']);
+
+
+        //Porfolio Section
+
+        Route::get('portfolio',[PortfolioController::class,'index'])->name('portfolio');
+        Route::post('/fetch-portfolios',[PortfolioController::class,'fetchPortfolioList']);
+        Route::post('add-portfolio',[PortfolioController::class,'store']);
+        Route::get('/portfolio/{id}/edit',[PortfolioController::class,'edit']);
+        Route::post('/portfolio/{id}',[PortfolioController::class,'update']);
+        Route::delete('/portfolios/{id}',[PortfolioController::class,'destroy']);
 
 
 

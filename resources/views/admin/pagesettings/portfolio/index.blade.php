@@ -4,172 +4,185 @@
     <link rel="stylesheet" href="{{asset('assets/plugin/sweetalert/sweetalert.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/plugin/chosen/chosen.css') }}">
     <style>
-        fieldset.scheduler-border {
-            border: 1px groove #ddd !important;
-            padding: 0 1.4em 1.4em 1.4em !important;
-            margin: 0 0 1.5em 0 !important;
-            -webkit-box-shadow: 0px 0px 0px 0px #000;
-            box-shadow: 0px 0px 0px 0px #000;
+        .chosen .select2-container {
+            display: none;
         }
-
-        legend.scheduler-border {
-            font-size: 1.2em !important;
-            font-weight: bold !important;
-            text-align: left !important;
-            width: auto;
-            padding: 0 10px;
-            border-bottom: none;
+        .incorrect{
+            display: none;
+        }
+        .change-pass input.form-control{
+            border: 1px solid #c65454 !important;
         }
     </style>
 @endsection
 @section('main-content')
-    {{-- @include('admin.access.users.partials.view')
-    @include('admin.access.users.partials.add') --}}
+@include('layout.common.modal-spinner')
+    @include('admin.pagesettings.portfolio.partials.view')
+    @include('admin.pagesettings.portfolio.partials.add')
     <section class="content-wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="content-box">
-                        @include('layout.common.modal-spinner')
-                        <form id="">
-                            @csrf
-                            <fieldset class="scheduler-border">
-                                <legend class="scheduler-border">Home Page Information</legend>
-                                <div class="row">
-                                    <div class="col-lg-6 form-input-area">
-                                        <div class="form-group row">
-                                            <label class="col-sm-4 col-form-label">Company Name <sup
-                                                    class="text-danger">*</sup></label>
-                                            <div class="col-sm-8 pl-lg-0">
-                                                <small class="error-message" id="company_name_err"
-                                                       style="display: none;"></small>
-                                                <input type="text" class="form-control"
-                                                       placeholder="Company Name" name="company_name"
-                                                       value="">
+                        <div class="row align-items-center">
+                            <div class="col-lg-8">
+                                <header class="page-header">
+                                    <h3>
+                                        Portfolio
+                                    </h3>
+                                </header>
+                            </div>
+                            @can('create.user')
+                            <div class="col-lg-4 text-right">
+                                <div class="link-btn-wrapper">
+                                    <a href="#" class="btn link-btn" data-toggle="modal"
+                                       data-target="#addModal" data-backdrop="static" data-keyboard="false">
+                                        Add Portfolio
+                                        <span>+</span>
+                                    </a>
+                                </div>
+                            </div>
+                            @endcan
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="table-data-action mb-3">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-4">
+                                            <div class="data-sort-wrapper">
+                                                <label for="inlineFormCustomSelect">Show</label>
+                                                <select class="custom-select" id="inlineFormCustomSelect">
+                                                    <option selected="10">10</option>
+                                                    <option value="25">25</option>
+                                                    <option value="50">50</option>
+                                                    <option value="100">100</option>
+                                                </select>
+                                                <div class="select-caption">
+                                                    Entries
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group row">
-                                            <label class="col-sm-4 col-form-label">Company Logo <sup
-                                                    class="text-danger">*</sup></label>
-                                            <div class="col-sm-8 pl-lg-0">
-                                                <div class="input-group">
-                                                   <span class="input-group-btn">
-                                                     <a data-input="thumbnail" data-preview="holder"
-                                                        class="lfm btn btn-primary">
-                                                       <i class="fa fa-picture-o"></i> Choose
-                                                     </a>
-                                                   </span>
-                                                    <input id="thumbnail" class="form-control" type="text"
-                                                           name="company_logo"
-                                                           value="">
-                                                </div>
+                                        <div class="col-md-4">
 
-                                                <div id="holder">
-                                                    <img
-                                                        src=""
-                                                        style="height: 5rem;">
-
+                                            <div class="data-search-wrapper">
+                                                <form action="">
+                                                    <div class="form-group">
+                                                        <label for="searchForm">Search</label>
+                                                        <div class="search-box">
+                                                            <input type="text" class="form-control" id="searchForm"
+                                                                   aria-describedby="searchForm">
+                                                            <button class="search-submit btn">
+                                                                <i class="fas fa-search"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="data-search-wrapper  text-right">
+                                                <div class="advanced-search-btn">
+                                                    <a href="">Advanced Search > </a>
                                                 </div>
-                                                <small class="error-message" id="company_logo_err"
-                                                       style="display: none;bottom: 0;"></small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 form-input-area">
-                                        <div class="form-group row">
-                                            <label class="col-sm-4 col-form-label">Company Email <sup
-                                                    class="text-danger">*</sup></label>
-                                            <div class="col-sm-8 pl-lg-0">
-                                                <small class="error-message" id="company_email_err"
-                                                       style="display: none;"></small>
-                                                <input type="text" class="form-control"
-                                                       placeholder="Company Email" name="company_email"
-                                                       value="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 form-input-area">
-                                        <div class="form-group row">
-                                            <label class="col-sm-4 col-form-label">Company Location <sup
-                                                    class="text-danger">*</sup></label>
-                                            <div class="col-sm-8 pl-lg-0">
-                                                <small class="error-message" id="company_location_err"
-                                                       style="display: none;"></small>
-                                                <input type="text" class="form-control"
-                                                       placeholder="Company Location" name="company_location"
-                                                       value="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 form-input-area">
-                                        <div class="form-group row">
-                                            <label class="col-sm-4 col-form-label">Contact Number <sup
-                                                    class="text-danger">*</sup></label>
-                                            <div class="col-sm-8 pl-lg-0">
-                                                <small class="error-message" id="contact_number_err"
-                                                       style="display: none;"></small>
-                                                <input type="text" class="form-control"
-                                                       placeholder="Contact Number" name="contact_number"
-                                                       value="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 form-input-area">
-                                        <div class="form-group row">
-                                            <label class="col-sm-4 col-form-label">Copyright </label>
-                                            <div class="col-sm-8 pl-lg-0">
-                                                <small class="error-message" id="copyright_err"
-                                                       style="display: none;"></small>
-                                                <input type="text" class="form-control"
-                                                       placeholder="Copyright" name="copyright"
-                                                       value="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 form-input-area">
-                                        <div class="form-group row">
-                                            <label class="col-sm-4 col-form-label">Meta Title </label>
-                                            <div class="col-sm-8 pl-lg-0">
-                                                <small class="error-message" id="meta_title_err"
-                                                       style="display: none;"></small>
-                                                <input type="text" class="form-control"
-                                                       placeholder="Meta Title" name="meta_title"
-                                                       value="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 form-input-area">
-                                        <div class="form-group row">
-                                            <label class="col-sm-4 col-form-label">Meta Description </label>
-                                            <div class="col-sm-8 pl-lg-0">
-                                                <small class="error-message" id="meta_description_err"
-                                                       style="display: none;"></small>
-                                                <textarea name="meta_description"
-                                                          class="form-control"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-input-area">
-                                            <div class="row">
-                                                <label class="col-sm-4 col-form-label">
-                                                    Status </label>
-                                                <div class="col-sm-8 pl-lg-0">
-                                                    <label class="switch">
-                                                        <input type="checkbox" id="event-fee-switch"
-                                                               name="active_status"
-                                                               value="1"  >
-                                                        <span class="slider"></span>
-                                                    </label>
-                                                </div>
+                                                @can('export.user')
+                                                <a href="javascript:void(0);" class="btn form-button btn-success ml-3 export"> <i class="fa fa-file-excel text-white mr-1"></i> Export Excel </a>
+                                                @endcan
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </fieldset>
-                        </form>
+                            </div>
+                            <div class="col-lg-12">
+                                <form id="advancedSearchForm">
+                                    <div class="row form-input-area table-advanced-search align-items-center">
+                                        <div class="col-lg-2 pr-0">
+                                            <input type="text" class="form-control"
+                                                   placeholder="Full Name" name="full_name">
+                                        </div>
+                                        <div class="col-lg-2 pr-0">
+                                            <input type="text" class="form-control"
+                                                   placeholder="User Name" name="username">
+                                        </div>
+                                        <div class="col-lg-2 pr-0">
+                                            <input type="text" class="form-control"
+                                                   placeholder="Email" name="email">
+                                        </div>
+                                        {{-- <div class="col-lg-2 pr-0 chosen">
+                                            <select name="designation[]" class="form-control chosen-select-width" data-placeholder="Select a designation..." multiple="multiple" style="width:221px;">
+                                                @forelse($designations as $designation)
+                                                    <option value="{{$designation->id}}">{{$designation->name}}</option>
+                                                @empty
+                                                @endforelse
+                                            </select>
+                                        </div> --}}
+                                        <div class="col-lg-2 pr-0">
+                                            <input type="text" class="form-control"
+                                                   placeholder="Phone Number" name="phone_number">
+                                        </div>
+                                        <div class="col-lg-2 pr-0">
+                                            <input type="text" class="form-control"
+                                                   placeholder="Address" name="address">
+                                        </div>
+                                        <div class="col-lg-2 pr-0">
+                                            <input type="text" class="form-control"
+                                                   placeholder="Created By" name="created_by">
+                                        </div>
+                                        <div class="col-lg-2 pr-0">
+                                            <select name="active_status" class="form-control">
+                                                <option value="">Any Status</option>
+                                                <option value="1">Active</option>
+                                                <option value="0">InActive</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-2 pr-0">
+                                            <input type="text" class="form-control created_date"
+                                                   placeholder="From Date" name="from_date">
+                                        </div>
+                                        <div class="col-lg-2 pr-0">
+                                            <input type="text" class="form-control created_date"
+                                                   placeholder="To Date" name="to_date">
+                                        </div>
+                                        <div class="col-lg-2 pr-0">
+                                            <div class="">
+                                                <span class="chk-wrap mr-2">
+                                                    <label class="check-in-label">
+                                                        <input type="checkbox" name="log" value="1">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </span>
+                                                <span style="display: inline-block; vertical-align: sub;">Search Log</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 pr-0">
+                                            <button type="button" class="btn form-button btn-import search_users">
+                                                <i class="fas fa-search"></i>Search
+                                            </button>
+                                            <button type="button" class="btn form-button btn-import reset">
+                                                <i class="fas fa-sync"></i>Reset
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered tabled-search" id="master-table">
+                                        <thead class="thead-sort">
+                                        <tr>
+                                            <th class="sort-active">S.No</th>
+                                            <th>Title</th>
+                                            <th>category</th>
+                                            <th>Status</th>
+                                            <th>Created Date</th>
+                                            <th style="width: 245px;">Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -185,5 +198,15 @@
     <script src="{{asset('assets')}}/plugin/sweetalert/sweetalert.min.js"></script>
     <script src="{{ asset('assets/plugin/chosen/chosen.jquery.js') }}"></script>
     <script src="{{ asset('assets/plugin/chosen/prism.js') }}"></script>
-    <script src="{{asset('assets/admin/custom/js/access/user.js')}}"></script>
+    <script src="{{asset('assets/admin/custom/js/pagesettings/portfolio.js')}}"></script>
+    <script src="{{asset('vendor/laravel-filemanager/js/stand-alone-button.js')}}"></script>
+    <script src="{{asset('assets/plugin/ckeditor/ckeditor.js')}}"></script>
+    <script>
+        var route_prefix = "{{ url('/laravel-filemanager') }}";
+        $('.lfm').filemanager('image', {prefix: route_prefix});
+    </script>
+    <script>
+        CKEDITOR.replace("editor1")
+        CKEDITOR.replace("editor2")
+    </script>
 @endsection

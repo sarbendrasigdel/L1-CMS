@@ -25,7 +25,7 @@
                                         </ul> --}}
                                     </li>
                                     <li class="mil-has-children">
-                                        <a href="{{route('frontend.publication')}}">Portfolio</a>
+                                        <a href="{{route('frontend.portfolio')}}">Portfolio</a>
                                     </li>
                                     <li class="mil-has-children">
                                         <a href="{{route('frontend.services')}}">Services</a>

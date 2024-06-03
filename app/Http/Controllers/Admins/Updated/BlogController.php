@@ -27,7 +27,7 @@ class BlogController extends Controller
     }
     public function store(BlogRequest $request)
         {
-            dd($request->all());
+            // dd($request->all());
             try {
                 DB::beginTransaction();
                 $Blog = new Blog();

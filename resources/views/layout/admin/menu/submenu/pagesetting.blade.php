@@ -14,7 +14,7 @@
 
     @can('view.user')
     <div class="dropdown">
-        <a class="drop-sub @if(@$subMenu == 'portfolio') active @endif" href="{{route('admin.designations')}}">
+        <a class="drop-sub @if(@$subMenu == 'Portfolio') active @endif" href="{{route('admin.portfolio')}}">
             <i class="fas fa-id-badge text-primary"></i>Portfolio
         </a>
     </div>
