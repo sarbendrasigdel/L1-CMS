@@ -38,7 +38,7 @@
                                         <label class="col-sm-4 col-form-label"> Client <sup
                                                 class="text-danger">*</sup></label>
                                         <div class="col-sm-8 pl-lg-0">
-                                            <small class="error-message" id="title_err"
+                                            <small class="error-message" id="client_err"
                                                    style="display: none;"></small>
                                             <input type="text" class="form-control"
                                                    placeholder=" Client" name="client"

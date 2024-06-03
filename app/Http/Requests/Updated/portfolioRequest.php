@@ -22,7 +22,7 @@ class portfolioRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:255',
+            'title' => 'required|string|max:255|unique:portfolios,title',
             'client' => 'required|string|max:255',
             'image' => 'required',
             'description' => 'required|string',
@@ -34,6 +34,7 @@ class portfolioRequest extends FormRequest
     {
         return [
             'title.required' => 'The title field is required.',
+            'title.unique' => 'The title already exists',
             'title.string' => 'The title must be a string.',
             'title.max' => 'The title may not be greater than 255 characters.',
             'client.required' => 'The client name field is required.',

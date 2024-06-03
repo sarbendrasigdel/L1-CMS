@@ -15,8 +15,8 @@ class CategoryController extends Controller
     use AuthUser,BreadCrumbs;
     public function index()
     {
-        $data['title'] = 'Team';
-        $data['menu'] = 'pagesetting';
+        $data['title'] = 'Category';
+        $data['menu'] = 'servicepage';
         $data['subMenu'] = 'Category';
         $data['breadCrumbs'] = $this->getBreadCrumbDetails($data);
         return view('admin.pagesettings.category.index',$data);

@@ -18,7 +18,7 @@ class TeamController extends Controller
     public function index()
     {
         $data['title'] = 'Team';
-        $data['menu'] = 'pagesetting';
+        $data['menu'] = 'otherpages';
         $data['subMenu'] = 'Team';
         $data['breadCrumbs'] = $this->getBreadCrumbDetails($data);
         return view('admin.pagesettings.team.index',$data);

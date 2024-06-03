@@ -8,7 +8,10 @@
                         @include('layout.admin.menu.submenu.dashboard')
                         @include('layout.admin.menu.submenu.setting')
                         @include('layout.admin.menu.submenu.users')
-                        @include('layout.admin.menu.submenu.pagesetting')
+                        {{-- @include('layout.admin.menu.submenu.pagesetting') --}}
+                        @include('layout.admin.menu.submenu.homepage')
+                        @include('layout.admin.menu.submenu.servicepage')
+                        @include('layout.admin.menu.submenu.otherpages')
                     </div>
                 </div>
             </div>

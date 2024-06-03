@@ -19,7 +19,7 @@ class BlogController extends Controller
     {
 
         $data['title'] = 'Blog';
-        $data['menu'] = 'pagesetting';
+        $data['menu'] = 'otherpages';
         $data['subMenu'] = 'Blog';
         $data['breadCrumbs'] = $this->getBreadCrumbDetails($data);
         $data['category']= category::get();

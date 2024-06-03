@@ -19,7 +19,7 @@ class ServiceController extends Controller
         {
 
             $data['title'] = 'Service';
-            $data['menu'] = 'pagesetting';
+            $data['menu'] = 'servicepage';
             $data['subMenu'] = 'Services';
             $data['breadCrumbs'] = $this->getBreadCrumbDetails($data);
             $data['category']= category::get();

@@ -30,12 +30,36 @@
                            aria-controls="contact" aria-selected="false"><i class="fas fa-users text-success"></i> User</a>
                     </li>
                 @endif
-                @if($loggedInUser->can('view.user') || $loggedInUser->can('view.user') || $loggedInUser->can('view.user'))
+                {{-- @if($loggedInUser->can('view.user') || $loggedInUser->can('view.user') || $loggedInUser->can('view.user'))
                 
                     <li class="nav-item">
                         <a class="nav-link @if(@$menu == 'pagesetting') active @endif" id="pagesetting-tab" data-toggle="tab"
                            href="#pagesetting" role="tab"
                            aria-controls="pagesetting" aria-selected="false"><i class="fas fa-users text-success"></i> Page Settings</a>
+                    </li>
+                @endif --}}
+                @if($loggedInUser->can('view.user') || $loggedInUser->can('view.user') || $loggedInUser->can('view.user'))
+                
+                    <li class="nav-item">
+                        <a class="nav-link @if(@$menu == 'homepage') active @endif" id="homepage-tab" data-toggle="tab"
+                           href="#homepage" role="tab"
+                           aria-controls="homepage" aria-selected="false"><i class="fas fa-users text-success"></i> Home Page</a>
+                    </li>
+                @endif
+                @if($loggedInUser->can('view.user') || $loggedInUser->can('view.user') || $loggedInUser->can('view.user'))
+                
+                    <li class="nav-item">
+                        <a class="nav-link @if(@$menu == 'servicepage') active @endif" id="servicepage-tab" data-toggle="tab"
+                           href="#servicepage" role="tab"
+                           aria-controls="servicepage" aria-selected="false"><i class="fas fa-users text-success"></i> service Page</a>
+                    </li>
+                @endif
+                @if($loggedInUser->can('view.user') || $loggedInUser->can('view.user') || $loggedInUser->can('view.user'))
+                
+                    <li class="nav-item">
+                        <a class="nav-link @if(@$menu == 'otherpages') active @endif" id="otherpages-tab" data-toggle="tab"
+                           href="#otherpages" role="tab"
+                           aria-controls="otherpages" aria-selected="false"><i class="fas fa-users text-success"></i> Other Pages</a>
                     </li>
                 @endif
             </ul>

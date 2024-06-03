@@ -19,7 +19,7 @@ class ServiceFeaturesController extends Controller
     {
 
         $data['title'] = 'Service';
-        $data['menu'] = 'pagesetting';
+        $data['menu'] = 'servicrpage';
         $data['subMenu'] = 'ServiceFeatures';
         $data['breadCrumbs'] = $this->getBreadCrumbDetails($data);
         $data['service']= Service::get();

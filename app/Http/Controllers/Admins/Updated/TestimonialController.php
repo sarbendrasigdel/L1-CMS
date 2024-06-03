@@ -18,7 +18,7 @@ class TestimonialController extends Controller
     public function index()
     {
         $data['title'] = 'Team';
-        $data['menu'] = 'pagesetting';
+        $data['menu'] = 'homepage';
         $data['subMenu'] = 'Testimonials';
         $data['breadCrumbs'] = $this->getBreadCrumbDetails($data);
         return view('admin.pagesettings.testimonials.index',$data);

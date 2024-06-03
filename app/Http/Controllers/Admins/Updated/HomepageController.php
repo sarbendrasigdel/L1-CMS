@@ -13,8 +13,8 @@ class HomepageController extends Controller
     use AuthUser,BreadCrumbs;
     public function index()
     {
-        $data['title'] = 'Team';
-        $data['menu'] = 'pagesetting';
+        $data['title'] = 'Home';
+        $data['menu'] = 'homepage';
         $data['subMenu'] = 'HomePage';
         $data['breadCrumbs'] = $this->getBreadCrumbDetails($data);
         $data['home'] = Home::first();
