@@ -24,41 +24,41 @@ public function home()
     $data['homepageInfo'] = Home::first();
     $data['founderImg'] = Team::where('position','founder')->first();
     $data['testimonials']= Testimonial::get();
-    return view('Frontend.home',$data);
+    return view('Frontend.home.index',$data);
 }
 
 public function teams()
 {
     $data = array();
     $data['teams'] = Team::get();
-    return view('Frontend.team',$data);
+    return view('Frontend.about.team',$data);
 }
 
 
 public function services()
 {
 
-    return view('Frontend.services');
+    return view('Frontend.service.services');
 }
 public function portfolio()
 {
 
-    return view('Frontend.portfolio');
+    return view('Frontend.portfolio.index');
 }
 public function contact()
 {
 
-    return view('Frontend.contact');
+    return view('Frontend.about.contact');
 }
 public function blog()
 {
 
-    return view('Frontend.blog');
+    return view('Frontend.blog.index');
 }
 public function publication()
 {
 
-    return view('Frontend.publication');
+    return view('Frontend.blog.publication');
 }
 
 

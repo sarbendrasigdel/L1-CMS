@@ -11,6 +11,7 @@
                         {{-- @include('layout.admin.menu.submenu.pagesetting') --}}
                         @include('layout.admin.menu.submenu.homepage')
                         @include('layout.admin.menu.submenu.servicepage')
+                        @include('layout.admin.menu.submenu.portfolio')
                         @include('layout.admin.menu.submenu.otherpages')
                     </div>
                 </div>

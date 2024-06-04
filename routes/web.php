@@ -18,9 +18,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admins\Updated\HomeController;
 use App\Http\Controllers\Admins\Updated\NewsletterController;
 use App\Http\Controllers\Admins\Updated\PortfolioController;
+use App\Http\Controllers\Admins\Updated\PortfolioImageImageController;
 use App\Http\Controllers\Admins\Updated\ServiceController;
 use App\Http\Controllers\Admins\Updated\ServiceFeaturesController;
 use App\Http\Controllers\Admins\Updated\TestimonialController;
+use App\Http\Controllers\Admins\Updated\PortfolioImageController;
 use App\Http\Controllers\Frontend\FrontendController;
 use NunoMaduro\Collision\Adapters\Laravel\Commands\TestCommand;
 
@@ -181,6 +183,16 @@ Route::group(['middleware' => 'auth:admin-user'], function () {
         Route::get('/portfolio/{id}/edit',[PortfolioController::class,'edit']);
         Route::post('/portfolio/{id}',[PortfolioController::class,'update']);
         Route::delete('/portfolios/{id}',[PortfolioController::class,'destroy']);
+
+
+        //Porfolio-image Section
+
+        Route::get('portfolio-image',[PortfolioImageController::class,'index'])->name('portfolio-image');
+        Route::post('/fetch-portfolio-images',[PortfolioImageController::class,'fetchPortfolioImageList']);
+        Route::post('add-portfolio-image',[PortfolioImageController::class,'store']);
+        Route::get('/portfolio-image/{id}/edit',[PortfolioImageController::class,'edit']);
+        Route::post('/portfolio-image/{id}',[PortfolioImageController::class,'update']);
+        Route::delete('/portfolio-images/{id}',[PortfolioImageController::class,'destroy']);
 
 
 

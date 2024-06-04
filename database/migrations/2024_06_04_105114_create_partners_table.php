@@ -11,16 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('portfolios', function (Blueprint $table) {
+        Schema::create('partners', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->unique();
-            $table->string('client');
+            $table->string('name');
             $table->string('image');
-            $table->longText('description');
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('NO ACTION')->onUpdate('NO ACTION');
-            $table->string('date');
-            $table->string('slug');
             $table->tinyInteger('active_status')->default('1');
             $table->tinyInteger('is_editable')->default('1');
             $table->unsignedBigInteger('created_by_admin_users_info_id');
@@ -30,6 +24,7 @@ return new class extends Migration
             $table->foreign('updated_by_admin_users_info_id')->references('id')->on('admin_user_infos')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('deleted_by_admin_users_info_id')->references('id')->on('admin_user_infos')->onDelete('cascade')->onUpdate('cascade');
             $table->softDeletes();
+            
             $table->timestamps();
         });
     }
@@ -39,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('portfolios');
+        Schema::dropIfExists('partners');
     }
 };

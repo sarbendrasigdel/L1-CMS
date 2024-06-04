@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug');
             $table->string('image');
-            $table->text('description');
+            $table->longText('description');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('NO ACTION')->onUpdate('NO ACTION');
             $table->tinyInteger('active_status')->default('1');

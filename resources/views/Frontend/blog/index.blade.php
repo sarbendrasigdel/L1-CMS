@@ -43,7 +43,7 @@ Blog
                         <div class="row">
                             <div class="col-lg-6">
 
-                                <a href="publication.html" class="mil-blog-card mil-mb-60">
+                                <a href="{{route('frontend.publication')}}" class="mil-blog-card mil-mb-60">
                                     <div class="mil-cover-frame mil-up">
                                         <img src="img/blog/1.jpg" alt="cover">
                                     </div>
@@ -63,7 +63,7 @@ Blog
                             </div>
                             <div class="col-lg-6">
 
-                                <a href="publication.html" class="mil-blog-card mil-mb-60">
+                                <a href="{{route('frontend.publication')}}" class="mil-blog-card mil-mb-60">
                                     <div class="mil-cover-frame mil-up">
                                         <img src="img/blog/2.jpg" alt="cover">
                                     </div>
@@ -79,7 +79,6 @@ Blog
                                         </div>
                                     </div>
                                 </a>
-
                             </div>
                         </div>
                     </div>

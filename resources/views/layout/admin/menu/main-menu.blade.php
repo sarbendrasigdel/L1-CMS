@@ -57,6 +57,14 @@
                 @if($loggedInUser->can('view.user') || $loggedInUser->can('view.user') || $loggedInUser->can('view.user'))
                 
                     <li class="nav-item">
+                        <a class="nav-link @if(@$menu == 'portfolio') active @endif" id="portfolio-tab" data-toggle="tab"
+                           href="#portfolio" role="tab"
+                           aria-controls="portfolio" aria-selected="false"><i class="fas fa-users text-success"></i> Portfolio Page</a>
+                    </li>
+                @endif
+                @if($loggedInUser->can('view.user') || $loggedInUser->can('view.user') || $loggedInUser->can('view.user'))
+                
+                    <li class="nav-item">
                         <a class="nav-link @if(@$menu == 'otherpages') active @endif" id="otherpages-tab" data-toggle="tab"
                            href="#otherpages" role="tab"
                            aria-controls="otherpages" aria-selected="false"><i class="fas fa-users text-success"></i> Other Pages</a>

@@ -19,7 +19,7 @@ class PortfolioController extends Controller
     {
 
         $data['title'] = 'portfolio';
-        $data['menu'] = 'otherpages';
+        $data['menu'] = 'portfolio';
         $data['subMenu'] = 'Porfolio';
         $data['breadCrumbs'] = $this->getBreadCrumbDetails($data);
         $data['category']= category::get();
