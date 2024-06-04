@@ -20,11 +20,11 @@ Home
                         <div class="container">
                             <div class="mil-banner-content mil-up">
 
-                                <h1 class="mil-muted mil-mb-60">Designing <span class="mil-thin">a Better</span><br> World <span class="mil-thin">Today</span></h1>
+                                <h1 class="mil-muted mil-mb-60">{!!$homepageInfo->heading!!}</h1>
                                 <div class="row">
                                     <div class="col-md-7 col-lg-5">
 
-                                        <p class="mil-light-soft mil-mb-60">Welcome to our world of endless imagination and boundless creativity. Together, let's embark on a remarkable journey where dreams become tangible realities.</p>
+                                        <p class="mil-light-soft mil-mb-60">{!!$homepageInfo->description!!}</p>
 
                                     </div>
                                 </div>
@@ -76,7 +76,7 @@ Home
                                         <div class="mil-avatar mil-up">
                                             <img src="{{$founderImg->image}}" alt="Founder">
                                         </div>
-                                        <h6 class="mil-quote mil-up">Passionately Creating <span class="mil-thin">Design Wonders:</span> Unleashing <span class="mil-thin">Boundless Creativity</span></h6>
+                                        <h6 class="mil-quote mil-up">{!!$homepageInfo->quote!!}</h6>
                                     </div>
                                 </div>
 
@@ -302,18 +302,11 @@ Home
 
                         <div class="swiper-container mil-infinite-show mil-up">
                             <div class="swiper-wrapper">
+                                @foreach($partners as $partner)
                                 <div class="swiper-slide">
-                                    <a href="#." class="mil-partner-frame" style="width: 60px;"><img src="img/partners/1.svg" alt="logo"></a>
+                                    <a href="#." class="mil-partner-frame" style="width: 60px;"><img src="{{$partner->image}}" alt="logo"></a>
                                 </div>
-                                <div class="swiper-slide">
-                                    <a href="#." class="mil-partner-frame" style="width: 100px;"><img src="img/partners/2.svg" alt="logo"></a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="#." class="mil-partner-frame" style="width: 60px;"><img src="img/partners/1.svg" alt="logo"></a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="#." class="mil-partner-frame" style="width: 100px;"><img src="img/partners/2.svg" alt="logo"></a>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
 

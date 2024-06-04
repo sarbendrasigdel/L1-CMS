@@ -1,9 +1,12 @@
 var addForm = $('form#add-form');
-$('.add-button').on('click', function(e){
+$('.save-button').on('click', function(e){
     e.preventDefault();
     $('.modal-spinner').show();
     var form_data = new FormData();
-
+    CKEDITOR.instances['editor1'].updateElement();
+    CKEDITOR.instances['editor2'].updateElement();
+    CKEDITOR.instances['editor3'].updateElement();
+    CKEDITOR.instances['editor4'].updateElement();
     var form = addForm.serializeArray();
     $.each(form, function(key, val){
         form_data.append(val.name, val.value);

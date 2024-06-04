@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admins\Pagesettings\Partner;
 use Illuminate\Http\Request;
 use App\Models\Admins\Pagesettings\Team;
 use App\Models\Admins\Pagesettings\Testimonial;
@@ -24,6 +25,7 @@ public function home()
     $data['homepageInfo'] = Home::first();
     $data['founderImg'] = Team::where('position','founder')->first();
     $data['testimonials']= Testimonial::get();
+    $data['partners'] = Partner::get();
     return view('Frontend.home.index',$data);
 }
 

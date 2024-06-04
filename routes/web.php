@@ -17,6 +17,7 @@ use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admins\Updated\HomeController;
 use App\Http\Controllers\Admins\Updated\NewsletterController;
+use App\Http\Controllers\Admins\Updated\PartnerController;
 use App\Http\Controllers\Admins\Updated\PortfolioController;
 use App\Http\Controllers\Admins\Updated\PortfolioImageImageController;
 use App\Http\Controllers\Admins\Updated\ServiceController;
@@ -183,6 +184,16 @@ Route::group(['middleware' => 'auth:admin-user'], function () {
         Route::get('/portfolio/{id}/edit',[PortfolioController::class,'edit']);
         Route::post('/portfolio/{id}',[PortfolioController::class,'update']);
         Route::delete('/portfolios/{id}',[PortfolioController::class,'destroy']);
+
+
+        //Partner section
+
+        Route::get('partner',[PartnerController::class,'index'])->name('partner');
+        Route::post('/fetch-partners',[PartnerController::class,'fetchPartnerList']);
+        Route::post('add-partner',[PartnerController::class,'store']);
+        Route::get('/partners/{id}/edit',[PartnerController::class,'edit']);
+        Route::post('/partner/{id}',[PartnerController::class,'update']);
+        Route::delete('/partners/{id}',[PartnerController::class,'destroy']);
 
 
         //Porfolio-image Section

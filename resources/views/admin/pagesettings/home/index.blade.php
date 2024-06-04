@@ -44,7 +44,7 @@
                                                 <small class="error-message" id="heading_err"
                                                        style="display: none;"></small>
                                                        <textarea name="heading"
-                                                       class="form-control" value=" " 
+                                                       class="form-control" id="editor1" value=" " 
                                                        placeholder ="Heading">{{@$home->heading}}</textarea>
                                             </div>
                                         </div>
@@ -57,7 +57,7 @@
                                                 <small class="error-message" id="description_err"
                                                        style="display: none;"></small>
                                                 <textarea name="description"
-                                                          class="form-control" value=" ">{{@$home->description}}</textarea>
+                                                 id="editor2"  class="form-control" value=" ">{{@$home->description}}</textarea>
                                             </div>
                                         </div>
                                 </div>
@@ -102,7 +102,7 @@
                                             <small class="error-message" id="discover_text_err"
                                                    style="display: none;"></small>
                                             <textarea name="discover_text"
-                                                      class="form-control" value=" ">{{@$home->discover_text}}</textarea>
+                                            id="editor3"    class="form-control" value=" ">{{@$home->discover_text}}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -113,7 +113,7 @@
                                         <div class="col-sm-8 pl-lg-0">
                                             <small class="error-message" id="quote_err"
                                                    style="display: none;"></small>
-                                            <textarea name="quote"
+                                            <textarea name="quote" id="editor4"
                                                       class="form-control" value="">{{@$home->quote}}</textarea>
                                         </div>
                                     </div>
@@ -155,7 +155,7 @@
                                 </div>
                             </fieldset>
                             <div class="offset-md-6 pt-4">
-                                <button type="submit" class="btn form-button btn-success add-button">Save
+                                <button type="submit" class="btn form-button btn-success save-button">Save
                                 </button>
                             </div>
                         </form>
@@ -179,5 +179,11 @@
     <script>
         var route_prefix = "{{ url('/laravel-filemanager') }}";
         $('.lfm').filemanager('image', {prefix: route_prefix});
+    </script>
+    <script>
+        CKEDITOR.replace("editor1")
+        CKEDITOR.replace("editor2")
+        CKEDITOR.replace("editor3")
+        CKEDITOR.replace("editor4")
     </script>
 @endsection
