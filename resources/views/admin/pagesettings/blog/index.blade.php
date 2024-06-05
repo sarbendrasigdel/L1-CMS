@@ -171,7 +171,6 @@
                                         <tr>
                                             <th class="sort-active">S.No</th>
                                             <th>Title</th>
-                                            <th>Description</th>
                                             <th>category</th>
                                             <th>Status</th>
                                             <th>Created Date</th>

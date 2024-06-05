@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use App\Models\Admins\Pagesettings\Team;
 use App\Models\Admins\Pagesettings\Testimonial;
 use App\Models\Home;
+use App\Models\Admins\Pagesettings\Blog;
+use App\Models\Admins\Pagesettings\Service;
+use App\Models\Admins\Pagesettings\ServiceFeatures;
 
 class FrontendController extends Controller
 {
@@ -26,6 +29,8 @@ public function home()
     $data['founderImg'] = Team::where('position','founder')->first();
     $data['testimonials']= Testimonial::get();
     $data['partners'] = Partner::get();
+    $data['blogs'] = Blog::take(2)->get();
+    $data['services']= Service::take(4)->get();
     return view('Frontend.home.index',$data);
 }
 
@@ -57,10 +62,28 @@ public function blog()
 
     return view('Frontend.blog.index');
 }
-public function publication()
+public function publication($slug)
 {
+    // dd($slug);
+    $data = array();
+    $blog = Blog::where('slug',$slug)->first();
+    $data['blog']= $blog;
+    $data['related_blogs'] = Blog::where('category_id', $blog->category_id)
+    ->where('id', '!=', $blog->id)
+    ->take(2)
+    ->get();
 
-    return view('Frontend.blog.publication');
+    return view('Frontend.blog.publication',$data);
+}
+
+public function service($id)
+{
+    $data = array();
+    $service= Service::where('id',$id)->first();
+    $data['service'] = $service;
+    $data['service_features'] = ServiceFeatures::where('service_id',$service->id)->get();
+
+    return view('Frontend.service.service',$data);
 }
 
 

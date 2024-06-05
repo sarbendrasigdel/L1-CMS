@@ -103,7 +103,6 @@ var masterTable = $('#master-table').DataTable({
     columns: [
         {data: 'id'},
         {data: 'title'},
-        {data: 'description'},
         {data: 'category'},
         {data: 'active_status',
         render: function(data, type, dataObject, meta) {

@@ -163,7 +163,7 @@ $('table#master-table').delegate('.view-button', 'click', function(){
         form.find('input[name="name"]').val(Testimonial.name);
         form.find('input[name="image"]').val(Testimonial.image);
         // form.find('div#holder img').val(Testimonial.image);
-        form.find('input[name="company"]').val(Testimonial.comapany);
+        form.find('input[name="company"]').val(Testimonial.company);
         form.find('textarea[name="description"]').val(Testimonial.description);
         if(Testimonial.active_status){
             form.find('input[name="active_status"]').prop('checked', true);

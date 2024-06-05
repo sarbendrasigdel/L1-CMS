@@ -18,11 +18,6 @@
                                 <ul>
                                     <li class="mil-has-children mil-active">
                                         <a href="{{route('frontend.home')}}">Homepage</a>
-                                        {{-- <ul>
-                                            <li><a href="home-1.html">Landing page</a></li>
-                                            <li><a href="home-2.html">Personal</a></li>
-                                            <li><a href="portfolio-3.html">Portfolio slider</a></li>
-                                        </ul> --}}
                                     </li>
                                     <li class="mil-has-children">
                                         <a href="{{route('frontend.portfolio')}}">Portfolio</a>
@@ -32,11 +27,8 @@
                                         
                                     </li>
                                     <li class="mil-has-children">
-                                        <a href="#.">Newsletter</a>
-                                        <ul>
-                                            <li><a href="{{route('frontend.blog')}}">Blog List</a></li>
-                                            <li><a href="{{route('frontend.publication')}}">Publication</a></li>
-                                        </ul>
+                                        <a href="{{route('frontend.blog')}}">Blog List</a>
+                                        
                                     </li>
                                     <li class="mil-has-children">
                                         <a href="#.">Other pages</a>

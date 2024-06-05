@@ -76,10 +76,9 @@ class BlogController extends Controller
             $columns = array(
                 0 => 'id',
                 1 => 'title',
-                2 => 'description',
-                3 => 'category',
-                4 => 'active_status',
-                5 => 'created_at',
+                2 => 'category',
+                3 => 'active_status',
+                4 => 'created_at',
                 
             );
             $data['team'] = array();

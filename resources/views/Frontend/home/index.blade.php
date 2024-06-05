@@ -129,42 +129,18 @@ Home
                             </div>
 
                             <div class="row mil-services-grid m-0">
+                                @foreach($services as $services)
                                 <div class="col-md-6 col-lg-3 mil-services-grid-item p-0">
 
-                                    <a href="service.html" class="mil-service-card-sm mil-up">
-                                        <h5 class="mil-muted mil-mb-30">Branding and <br>Identity Design</h5>
-                                        <p class="mil-light-soft mil-mb-30">Our creative agency is a team of professionals focused on helping your brand grow.</p>
+                                    <a href="{{route('frontend.service',$services->id)}}" class="mil-service-card-sm mil-up">
+                                        <h5 class="mil-muted mil-mb-30">{{$services->title}}</h5>
+                                        <p class="mil-light-soft mil-mb-30">{{Str::limit($services->description,50)}}</p>
                                         <div class="mil-button mil-icon-button-sm mil-arrow-place"></div>
                                     </a>
 
                                 </div>
-                                <div class="col-md-6 col-lg-3 mil-services-grid-item p-0">
-
-                                    <a href="service.html" class="mil-service-card-sm mil-up">
-                                        <h5 class="mil-muted mil-mb-30">Website Design <br>and Development</h5>
-                                        <p class="mil-light-soft mil-mb-30">Our creative agency is a team of professionals focused on helping your brand grow.</p>
-                                        <div class="mil-button mil-icon-button-sm mil-arrow-place"></div>
-                                    </a>
-
-                                </div>
-                                <div class="col-md-6 col-lg-3 mil-services-grid-item p-0">
-
-                                    <a href="service.html" class="mil-service-card-sm mil-up">
-                                        <h5 class="mil-muted mil-mb-30">Advertising and <br>Marketing Campaigns</h5>
-                                        <p class="mil-light-soft mil-mb-30">Our creative agency is a team of professionals focused on helping your brand grow.</p>
-                                        <div class="mil-button mil-icon-button-sm mil-arrow-place"></div>
-                                    </a>
-
-                                </div>
-                                <div class="col-md-6 col-lg-3 mil-services-grid-item p-0">
-
-                                    <a href="service.html" class="mil-service-card-sm mil-up">
-                                        <h5 class="mil-muted mil-mb-30">Creative Consulting <br>and Development</h5>
-                                        <p class="mil-light-soft mil-mb-30">Our creative agency is a team of professionals focused on helping your brand grow.</p>
-                                        <div class="mil-button mil-icon-button-sm mil-arrow-place"></div>
-                                    </a>
-
-                                </div>
+                                @endforeach
+                                
                             </div>
                         </div>
                     </div>
@@ -330,46 +306,26 @@ Home
                             </div>
                         </div>
                         <div class="row">
+                            @foreach($blogs as $blog)
                             <div class="col-lg-6">
-
-                                <a href="publication.html" class="mil-blog-card mil-mb-60">
+                                <a href="{{route('frontend.publication',$blog->slug)}}" class="mil-blog-card mil-mb-60">
                                     <div class="mil-cover-frame mil-up">
-                                        <img src="img/blog/1.jpg" alt="cover">
+                                        <img src="{{$blog->image}}" alt="cover">
                                     </div>
                                     <div class="mil-post-descr">
                                         <div class="mil-labels mil-up mil-mb-30">
-                                            <div class="mil-label mil-upper mil-accent">TECHNOLOGY</div>
+                                            <div class="mil-label mil-upper mil-accent">{{$blog->category->name}}</div>
                                             <div class="mil-label mil-upper">may 24 2023</div>
                                         </div>
-                                        <h4 class="mil-up mil-mb-30">How to Become a Graphic Designer in 10 Simple Steps</h4>
-                                        <p class="mil-post-text mil-up mil-mb-30">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos optio, beatae, eos necessitatibus nisi. Nam cupiditate consectetur nostrum qui! Repellat natus nulla, nisi aliquid, asperiores impedit tempora sequi est reprehenderit cumque explicabo, dicta. Rem nihil ullam totam ea voluptas quibusdam repudiandae id ut at iure! Totam, a!</p>
+                                        <h4 class="mil-up mil-mb-30">{{$blog->title}}</h4>
+                                        <p class="mil-post-text mil-up mil-mb-30">{!! strip_tags(Str::limit($blog->description,'100')) !!}</p>
                                         <div class="mil-link mil-dark mil-arrow-place mil-up">
                                             <span>Read more</span>
                                         </div>
                                     </div>
                                 </a>
-
                             </div>
-                            <div class="col-lg-6">
-
-                                <a href="publication.html" class="mil-blog-card mil-mb-60">
-                                    <div class="mil-cover-frame mil-up">
-                                        <img src="img/blog/2.jpg" alt="cover">
-                                    </div>
-                                    <div class="mil-post-descr">
-                                        <div class="mil-labels mil-up mil-mb-30">
-                                            <div class="mil-label mil-upper mil-accent">TECHNOLOGY</div>
-                                            <div class="mil-label mil-upper">may 24 2023</div>
-                                        </div>
-                                        <h4 class="mil-up mil-mb-30">16 Best Graphic Design Online and Offline Courses</h4>
-                                        <p class="mil-post-text mil-up mil-mb-30">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos optio, beatae, eos necessitatibus nisi. Nam cupiditate consectetur nostrum qui! Repellat natus nulla, nisi aliquid, asperiores impedit tempora sequi est reprehenderit cumque explicabo, dicta. Rem nihil ullam totam ea voluptas quibusdam repudiandae id ut at iure! Totam, a!</p>
-                                        <div class="mil-link mil-dark mil-arrow-place mil-up">
-                                            <span>Read more</span>
-                                        </div>
-                                    </div>
-                                </a>
-
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </section>

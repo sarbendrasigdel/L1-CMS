@@ -40,7 +40,7 @@ class TestimonialController extends Controller
             $Testimonial = new Testimonial();
             $Testimonial->name = $request->name;
             $Testimonial->image = $request->image;
-            $Testimonial->comapany = $request->company;
+            $Testimonial->company = $request->company;
             $Testimonial->description = $request->description;  
             $Testimonial->active_status = ($request->has('active_status_add')) ? true : false;
             $Testimonial->created_by_admin_users_info_id = $this->getLoggedInUser()->latestAdminUserInfo->id;
@@ -68,7 +68,7 @@ class TestimonialController extends Controller
                 $Testimonial = Testimonial::find(decrypt($id));
                 $Testimonial->name = $request->name;
                 $Testimonial->image = $request->image;
-                $Testimonial->comapany = $request->company;
+                $Testimonial->company = $request->company;
                 $Testimonial->description = $request->description; 
                 $Testimonial->active_status = ($request->has('active_status')) ? true : false;
                 $Testimonial->updated_by_admin_users_info_id = $this->getLoggedInUser()->latestAdminUserInfo->id;
@@ -94,7 +94,7 @@ class TestimonialController extends Controller
         $columns = array(
             0 => 'id',
             1 => 'name',
-            2 => 'comapany',
+            2 => 'company',
             3 => 'active_status',
             4 => 'created_at',
             5 => 'id',
@@ -125,7 +125,7 @@ class TestimonialController extends Controller
             $nestedData['id'] = $index + 1;
             $nestedData['TestimonialId'] = encrypt($Testimonial->id);
             $nestedData['name'] = $Testimonial->name;
-            $nestedData['company'] = $Testimonial->comapany;
+            $nestedData['company'] = $Testimonial->company;
             $nestedData['active_status'] = $Testimonial->active_status;
             $nestedData['created_at'] = $Testimonial->created_at->toDateTimeString();
             $nestedData['edit_permission'] = true;
