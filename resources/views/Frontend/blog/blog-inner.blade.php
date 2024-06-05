@@ -1,10 +1,11 @@
 @extends('Frontend.Layouts.main')
 
 @section('title')
-Blog
+Blog-Categories
 @endsection
 
 @section('content')
+
                 <!-- banner -->
                 <div class="mil-inner-banner mil-p-0-120">
                     <div class="mil-banner-content mil-up">
@@ -15,8 +16,9 @@ Blog
                             <ul class="mil-breadcrumbs mil-mb-60">
                                 <li><a href="{{route('frontend.home')}}">Homepage</a></li>
                                 <li><a href="{{route('frontend.blog')}}">Blog</a></li>
+                                <li><a href="blog-inner.html">Category page</a></li>
                             </ul>
-                            <h1 class="mil-mb-60">Exploring <span class="mil-thin">the World</span> <br> Through Our <span class="mil-thin">Blog</span></h1>
+                            <h1 class="mil-mb-60">Publications <br>Category <span class="mil-thin">Name</span></h1>
                             <a href="#blog" class="mil-link mil-dark mil-arrow-place mil-down-arrow">
                                 <span>Publications</span>
                             </a>
@@ -25,26 +27,30 @@ Blog
                 </div>
                 <!-- banner end -->
 
-                <!-- popular -->
-                <section class="mil-soft-bg" id="blog">
-                    <div class="container mil-p-120-60">
+                <!-- blog -->
+                <section id="blog">
+                    <div class="container mil-p-120-120">
                         <div class="row align-items-center mil-mb-30">
-                            <div class="col-lg-6 mil-mb-30">
-                                <h3 class="mil-up">Popular Publications:</h3>
+                            <div class="col-lg-4 mil-mb-30">
+                                <h3 class="mil-up">Other categories:</h3>
                             </div>
-                            <div class="col-lg-6 mil-mb-30">
+                            <div class="col-lg-8 mil-mb-30">
                                 <div class="mil-adaptive-right mil-up">
-                                    <a href="{{route('frontend.blog-inner')}}" class="mil-link mil-dark mil-arrow-place">
-                                        <span>View all</span>
-                                    </a>
+
+                                    <ul class="mil-category-list">
+                                        @foreach($categories as $category)
+                                        <li><a href="blog-inner.html">{{$category->name}}</a></li>
+                                        @endforeach
+                                        <li><a href="blog-inner.html"class="mil-active">All categories</a></li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             @foreach($blog as $blog)
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
 
-                                <a href="{{route('frontend.publication',$blog->slug)}}" class="mil-blog-card mil-mb-60">
+                                <a href="{{route('frontend.publication',$blog->slug)}}" class="mil-blog-card mil-blog-card-hori mil-more mil-mb-60">
                                     <div class="mil-cover-frame mil-up">
                                         <img src="{{$blog->image}}" alt="cover">
                                     </div>
@@ -55,53 +61,6 @@ Blog
                                         </div>
                                         <h4 class="mil-up mil-mb-30">{{$blog->title}}</h4>
                                         <p class="mil-post-text mil-up mil-mb-30">{{strip_tags(Str::limit($blog->description, 100, '...'))}}</p>
-                                        <div class="mil-link mil-dark mil-arrow-place mil-up">
-                                            <span>Read more</span>
-                                        </div>
-                                    </div>
-                                </a>
-
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </section>
-                <!-- popular end -->
-
-                <!-- blog -->
-                <section>
-                    <div class="container mil-p-120-120">
-                        <div class="row align-items-center mil-mb-30">
-                            <div class="col-lg-4 mil-mb-30">
-                                <h3 class="mil-up">Categories:</h3>
-                            </div>
-                            <div class="col-lg-8 mil-mb-30">
-                                <div class="mil-adaptive-right mil-up">
-
-                                    <ul class="mil-category-list">
-                                        @foreach($categories as $category)
-                                        <li><a href="{{route('frontend.blog-inner')}}">{{$category->name}}</a></li>
-                                        @endforeach
-                                        <li><a href="{{route('frontend.blog-inner')}}" class="mil-active">All categories</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            @foreach($all_blogs as $blogs)
-                            <div class="col-lg-12">
-
-                                <a href="{{route('frontend.publication',$blog->slug)}}" class="mil-blog-card mil-blog-card-hori mil-more mil-mb-60">
-                                    <div class="mil-cover-frame mil-up">
-                                        <img src="{{$blogs->image}}" alt="cover">
-                                    </div>
-                                    <div class="mil-post-descr">
-                                        <div class="mil-labels mil-up mil-mb-30">
-                                            <div class="mil-label mil-upper mil-accent">{{$blogs->category->name}}</div>
-                                            <div class="mil-label mil-upper">may 24 2023</div>
-                                        </div>
-                                        <h4 class="mil-up mil-mb-30">{{$blogs->title}}</h4>
-                                        <p class="mil-post-text mil-up mil-mb-30">{{strip_tags(Str::limit($blogs->description, 100, '...'))}}</p>
                                         <div class="mil-link mil-dark mil-arrow-place mil-up">
                                             <span>Read more</span>
                                         </div>

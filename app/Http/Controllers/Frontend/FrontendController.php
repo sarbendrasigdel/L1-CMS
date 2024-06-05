@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Updated\CategoryRequest;
 use App\Models\Admins\Pagesettings\Partner;
 use Illuminate\Http\Request;
 use App\Models\Admins\Pagesettings\Team;
@@ -12,6 +13,7 @@ use App\Models\Admins\Pagesettings\Blog;
 use App\Models\Admins\Pagesettings\Service;
 use App\Models\Admins\Pagesettings\ServiceFeatures;
 use App\Models\Admins\Pagesettings\Portfolio;
+use App\Models\Admins\Pagesettings\category;
 
 class FrontendController extends Controller
 {
@@ -64,8 +66,11 @@ public function contact()
 }
 public function blog()
 {
-
-    return view('Frontend.blog.index');
+    $data = array();
+    $data['categories'] =category::get(); 
+    $data['blog'] = Blog::latest()->take(2)->get();
+    $data['all_blogs'] = Blog::get();
+    return view('Frontend.blog.index',$data);
 }
 public function publication($slug)
 {
@@ -99,5 +104,14 @@ public function project($slug)
     return view('Frontend.portfolio.project',$data);
 }
 
+public function blogInner()
+{
+    $data = array();
+    $data['categories'] =category::get(); 
+    $data['blog'] = Blog::latest()->take(2)->get();
+    $data['all_blogs'] = Blog::get();
+
+    return view('Frontend.blog.blog-inner',$data);
+}
 
 }

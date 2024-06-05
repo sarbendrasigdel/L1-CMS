@@ -54,7 +54,7 @@ Publication
             </div>
             <div class="col-lg-6 mil-mb-30">
                 <div class="mil-adaptive-right mil-up">
-                    <a href="blog-inner.html" class="mil-link mil-dark mil-arrow-place">
+                    <a href="{{route('frontend.blog-inner')}}" class="mil-link mil-dark mil-arrow-place">
                         <span>View all</span>
                     </a>
                 </div>

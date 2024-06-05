@@ -220,6 +220,7 @@ Route::get('/contact',[FrontendController::class,'contact'])->name('frontend.con
 Route::get('/publication/{slug}',[FrontendController::class,'publication'])->name('frontend.publication');
 Route::get('/service/{id}',[FrontendController::class,'service'])->name('frontend.service'); //need to be replaced with slug
 Route::get('/project/{slug}',[FrontendController::class,'project'])->name('frontend.project');
+Route::get('/blog-inner',[FrontendController::class,'blogInner'])->name('frontend.blog-inner');
 
 
 
