@@ -11,6 +11,7 @@ use App\Models\Home;
 use App\Models\Admins\Pagesettings\Blog;
 use App\Models\Admins\Pagesettings\Service;
 use App\Models\Admins\Pagesettings\ServiceFeatures;
+use App\Models\Admins\Pagesettings\Portfolio;
 
 class FrontendController extends Controller
 {
@@ -51,8 +52,10 @@ public function services()
 }
 public function portfolio()
 {
+    $data= array();
+    $data['portfolio'] = Portfolio::get();
 
-    return view('Frontend.portfolio.index');
+    return view('Frontend.portfolio.index',$data);
 }
 public function contact()
 {
@@ -88,6 +91,13 @@ public function service($id)
     return view('Frontend.service.service',$data);
 }
 
+public function project($slug)
+{
+    $data= array();
+    $data = Portfolio::where('slug',$slug)->first();
+    $data['portfolio']= $data;
+    return view('Frontend.portfolio.project',$data);
+}
 
 
 }

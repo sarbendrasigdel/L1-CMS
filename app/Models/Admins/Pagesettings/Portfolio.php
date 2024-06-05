@@ -16,10 +16,16 @@ class Portfolio extends Model
             ->generateSlugsFrom('title')
             ->saveSlugsTo('slug');
     }
+    
 
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(PortfolioImage::class,'portfolio_id');
     }
 
     public function scopeFilterByGlobalSearch($query, $searchKey)

@@ -21,19 +21,19 @@
                             <nav class="mil-footer-menu mil-mb-60">
                                 <ul>
                                     <li class="mil-up mil-active">
-                                        <a href="home-1.html">Home</a>
+                                        <a href="{{route('frontend.home')}}">Home</a>
                                     </li>
                                     <li class="mil-up">
-                                        <a href="portfolio-1.html">Portfolio</a>
+                                        <a href="{{route('frontend.portfolio')}}">Portfolio</a>
                                     </li>
                                     <li class="mil-up">
-                                        <a href="services.html">Services</a>
+                                        <a href="{{route('frontend.services')}}">Services</a>
                                     </li>
                                     <li class="mil-up">
-                                        <a href="contact.html">Contact</a>
+                                        <a href="{{route('frontend.contact')}}">Contact</a>
                                     </li>
                                     <li class="mil-up">
-                                        <a href="blog.html">Blog</a>
+                                        <a href="{{route('frontend.blog')}}">Blog</a>
                                     </li>
                                 </ul>
                             </nav>
