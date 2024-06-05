@@ -15,8 +15,8 @@ Services
                                 </div>
                                 <div class="container">
                                     <ul class="mil-breadcrumbs mil-light mil-mb-60">
-                                        <li><a href="home-1.html">Homepage</a></li>
-                                        <li><a href="services.html">Services</a></li>
+                                        <li><a href="{{route('frontend.home')}}">Homepage</a></li>
+                                        <li><a href="{{route('frontend.services')}}">Services</a></li>
                                     </ul>
                                     <h1 class="mil-muted mil-mb-60">This is <span class="mil-thin">what</span><br> we do <span class="mil-thin">best</span></h1>
                                     <a href="#services" class="mil-link mil-accent mil-arrow-place mil-down-arrow">
@@ -40,66 +40,22 @@ Services
                                     </div>
                                     <div class="col-lg-7">
                                         <div class="row">
+                                            @foreach($service as $service)
                                             <div class="col-md-6 col-lg-6">
-                                                <a href="service.html" class="mil-service-card-lg mil-more mil-accent-cursor mil-offset">
-                                                    <h4 class="mil-muted mil-up mil-mb-30">Branding and <br>Identity Design</h4>
-                                                    <p class="mil-descr mil-light-soft mil-up mil-mb-30">Our creative agency is a team of professionals focused on helping your brand grow.</p>
+                                                <a href="{{route('frontend.service',$service->id)}}" class="mil-service-card-lg mil-more mil-accent-cursor mil-offset">
+                                                    <h4 class="mil-muted mil-up mil-mb-30">{{$service->title}}</h4>
+                                                    <p class="mil-descr mil-light-soft mil-up mil-mb-30">{{$service->description}}</p>
                                                     <ul class="mil-service-list mil-light mil-mb-30">
-                                                        <li class="mil-up">UX Audits</li>
-                                                        <li class="mil-up">Design thinking</li>
-                                                        <li class="mil-up">Methodologies</li>
-                                                        <li class="mil-up">Wireframing</li>
+                                                        @foreach($service->features as $feature)
+                                                        <li class="mil-up">{{$feature->name}}</li>
+                                                        @endforeach
                                                     </ul>
                                                     <div class="mil-link mil-accent mil-arrow-place mil-up">
                                                         <span>Read more</span>
                                                     </div>
                                                 </a>
                                             </div>
-                                            <div class="col-md-6 col-lg-6">
-                                                <a href="service.html" class="mil-service-card-lg mil-more mil-accent-cursor">
-                                                    <h4 class="mil-muted mil-up mil-mb-30">Website Design <br>and Development</h4>
-                                                    <p class="mil-descr mil-light-soft mil-up mil-mb-30">Our creative agency is a team of professionals focused on helping your brand grow.</p>
-                                                    <ul class="mil-service-list mil-light mil-mb-30">
-                                                        <li class="mil-up">UX Audits</li>
-                                                        <li class="mil-up">Design thinking</li>
-                                                        <li class="mil-up">Methodologies</li>
-                                                        <li class="mil-up">Wireframing</li>
-                                                    </ul>
-                                                    <div class="mil-link mil-accent mil-arrow-place mil-up">
-                                                        <span>Read more</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-md-6 col-lg-6">
-                                                <a href="service.html" class="mil-service-card-lg mil-more mil-accent-cursor mil-offset">
-                                                    <h4 class="mil-muted mil-up mil-mb-30">Advertising and <br>Marketing Campaigns</h4>
-                                                    <p class="mil-descr mil-light-soft mil-up mil-mb-30">Our creative agency is a team of professionals focused on helping your brand grow.</p>
-                                                    <ul class="mil-service-list mil-light mil-mb-30">
-                                                        <li class="mil-up">UX Audits</li>
-                                                        <li class="mil-up">Design thinking</li>
-                                                        <li class="mil-up">Methodologies</li>
-                                                        <li class="mil-up">Wireframing</li>
-                                                    </ul>
-                                                    <div class="mil-link mil-accent mil-arrow-place mil-up">
-                                                        <span>Read more</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-md-6 col-lg-6">
-                                                <a href="service.html" class="mil-service-card-lg mil-more mil-accent-cursor">
-                                                    <h4 class="mil-muted mil-up mil-mb-30">Creative Consulting <br>Concept Development</h4>
-                                                    <p class="mil-descr mil-light-soft mil-up mil-mb-30">Our creative agency is a team of professionals focused on helping your brand grow.</p>
-                                                    <ul class="mil-service-list mil-light mil-mb-30">
-                                                        <li class="mil-up">UX Audits</li>
-                                                        <li class="mil-up">Design thinking</li>
-                                                        <li class="mil-up">Methodologies</li>
-                                                        <li class="mil-up">Wireframing</li>
-                                                    </ul>
-                                                    <div class="mil-link mil-accent mil-arrow-place mil-up">
-                                                        <span>Read more</span>
-                                                    </div>
-                                                </a>
-                                            </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -120,7 +76,7 @@ Services
                                         </div>
                                         <div class="mil-center">
                                             <h2 class="mil-up mil-mb-60">Let’s make an <span class="mil-thin">impact</span><br> together. Ready <span class="mil-thin">when you are</span></h2>
-                                            <div class="mil-up"><a href="contact.html" class="mil-button mil-arrow-place"><span>Contact us</span></a></div>
+                                            <div class="mil-up"><a href="{{route('frontend.contact')}}" class="mil-button mil-arrow-place"><span>Contact us</span></a></div>
                                         </div>
                                     </div>
                                 </section>

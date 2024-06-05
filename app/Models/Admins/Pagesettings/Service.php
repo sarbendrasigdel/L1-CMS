@@ -9,6 +9,10 @@ class Service extends Model
 {
     use HasFactory;
 
+    public function features()
+    {
+        return $this->hasMany(ServiceFeatures::class, 'service_id');
+    }
     public function category()
     {
         return $this->belongsTo(category::class,'category_id');

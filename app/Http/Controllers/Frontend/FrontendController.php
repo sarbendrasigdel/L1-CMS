@@ -44,8 +44,10 @@ public function teams()
 
 public function services()
 {
-
-    return view('Frontend.service.services');
+    $data = array();
+    $service = Service::with('features')->get();
+    $data['service'] = $service;
+    return view('Frontend.service.services',$data);
 }
 public function portfolio()
 {

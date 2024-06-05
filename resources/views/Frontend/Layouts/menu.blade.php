@@ -27,7 +27,7 @@
                                         
                                     </li>
                                     <li class="mil-has-children">
-                                        <a href="{{route('frontend.blog')}}">Blog List</a>
+                                        <a href="{{route('frontend.blog')}}">Blog</a>
                                         
                                     </li>
                                     <li class="mil-has-children">
