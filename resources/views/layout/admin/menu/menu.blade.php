@@ -13,6 +13,7 @@
                         @include('layout.admin.menu.submenu.servicepage')
                         @include('layout.admin.menu.submenu.portfolio')
                         @include('layout.admin.menu.submenu.otherpages')
+                        @include('layout.admin.menu.submenu.inbox')
                     </div>
                 </div>
             </div>

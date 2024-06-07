@@ -24,6 +24,7 @@ use App\Http\Controllers\Admins\Updated\ServiceController;
 use App\Http\Controllers\Admins\Updated\ServiceFeaturesController;
 use App\Http\Controllers\Admins\Updated\TestimonialController;
 use App\Http\Controllers\Admins\Updated\PortfolioImageController;
+use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\FrontendController;
 use NunoMaduro\Collision\Adapters\Laravel\Commands\TestCommand;
 
@@ -205,6 +206,11 @@ Route::group(['middleware' => 'auth:admin-user'], function () {
         Route::post('/portfolio-image/{id}',[PortfolioImageController::class,'update']);
         Route::delete('/portfolio-images/{id}',[PortfolioImageController::class,'destroy']);
 
+        //mail section
+        Route::get('mail',[ContactController::class,'index'])->name('mails');
+        Route::post('/fetch-mails',[ContactController::class,'fetchMailList']);
+        Route::delete('/mails/{id}',[ContactController::class,'destroy']);
+
 
 
     });
@@ -221,6 +227,7 @@ Route::get('/publication/{slug}',[FrontendController::class,'publication'])->nam
 Route::get('/service/{id}',[FrontendController::class,'service'])->name('frontend.service'); //need to be replaced with slug
 Route::get('/project/{slug}',[FrontendController::class,'project'])->name('frontend.project');
 Route::get('/blog-inner',[FrontendController::class,'blogInner'])->name('frontend.blog-inner');
+Route::post('submit-contact',[ContactController::class,'store'])->name('frontend.contact.mail');
 
 
 

@@ -16,3 +16,31 @@
     <script src="{{asset('Frontend/js/plugins/ScrollTo.min.js')}}"></script>
     <!-- ashley js -->
     <script src="{{asset('Frontend/js/main.js')}}"></script>
+    <!--admin-->
+    <script src="{{ asset('assets/admin/js/custom.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('input').keypress(function (event) {
+                if (event.which == 13) {
+                    event.preventDefault();
+                    return false;
+                }
+            });
+            $(document).on('keydown', function (event) {
+                if (event.which == 13) {
+                    event.preventDefault();
+                    return false;
+                }
+            });
+        });
+    
+    </script>

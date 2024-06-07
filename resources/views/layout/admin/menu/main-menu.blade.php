@@ -70,6 +70,14 @@
                            aria-controls="otherpages" aria-selected="false"><i class="fas fa-users text-success"></i> Other Pages</a>
                     </li>
                 @endif
+                @if($loggedInUser->can('view.user') || $loggedInUser->can('view.user') || $loggedInUser->can('view.user'))
+                
+                    <li class="nav-item">
+                        <a class="nav-link @if(@$menu == 'Mails') active @endif" id="mail-tab" data-toggle="tab"
+                           href="#mails" role="tab"
+                           aria-controls="mails" aria-selected="false"><i class="fas fa-envelope"></i> Mails</a>
+                    </li>
+                @endif
             </ul>
         </div>
     </div>

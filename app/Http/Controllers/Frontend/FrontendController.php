@@ -69,7 +69,7 @@ public function blog()
     $data = array();
     $data['categories'] =category::get(); 
     $data['blog'] = Blog::latest()->take(2)->get();
-    $data['all_blogs'] = Blog::get();
+    $data['all_blogs'] = Blog::paginate(1);
     return view('Frontend.blog.index',$data);
 }
 public function publication($slug)

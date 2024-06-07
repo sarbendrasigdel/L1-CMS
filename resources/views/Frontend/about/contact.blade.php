@@ -32,22 +32,23 @@ Contact Us
                 <section id="contact">
                     <div class="container mil-p-120-90">
                         <h3 class="mil-center mil-up mil-mb-120">Let's <span class="mil-thin">Talk</span></h3>
-                        <form class="row align-items-center">
+                        <form class="row align-items-center" id="contact-from">
+                            @csrf
                             <div class="col-lg-6 mil-up">
-                                <input type="text" placeholder="What's your name">
+                                <input type="text" placeholder="What's your name" name="name" id="name" required>
                             </div>
                             <div class="col-lg-6 mil-up">
-                                <input type="email" placeholder="Your Email">
+                                <input type="email" placeholder="Your Email" name ="email" id="email" required>
                             </div>
                             <div class="col-lg-12 mil-up">
-                                <textarea placeholder="Tell us about our project"></textarea>
+                                <textarea placeholder="Tell us about our project" name="description" id="description" required></textarea>
                             </div>
                             <div class="col-lg-8">
                                 <p class="mil-up mil-mb-30"><span class="mil-accent">*</span> We promise not to disclose your personal information to third parties.</p>
                             </div>
                             <div class="col-lg-4">
                                 <div class="mil-adaptive-right mil-up mil-mb-30">
-                                    <button type="submit" class="mil-button mil-arrow-place">
+                                    <button type="submit" class="mil-button mil-arrow-place add-btn" >
                                         <span>Send message</span>
                                     </button>
                                 </div>
@@ -58,4 +59,6 @@ Contact Us
                 <!-- contact form end -->
 
 @endsection
-
+@section('additional-js')
+<script src="{{asset('Frontend/custom/js/contact.js')}}"></script>
+@endsection

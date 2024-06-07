@@ -112,11 +112,8 @@ Blog
                             @endforeach
                             <div class="col-lg-12">
                                 <div class="mil-pagination">
-                                    <a href="blog-inner.html" class="mil-pagination-btn mil-active">1</a>
-                                    <a href="blog-inner.html" class="mil-pagination-btn">2</a>
-                                    <a href="blog-inner.html" class="mil-pagination-btn">3</a>
-                                    <a href="blog-inner.html" class="mil-pagination-btn">4</a>
-                                    <a href="blog-inner.html" class="mil-pagination-btn">5</a>
+                                    {{$all_blogs->links()}}
+
                                 </div>
                             </div>
                         </div>
