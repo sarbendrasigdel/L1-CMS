@@ -12,14 +12,14 @@
     @can('view.user')
     <div class="dropdown">
         <a class="drop-sub @if(@$subMenu == 'Services') active @endif" href="{{route('admin.services')}}">
-            <i class="fas fa-user-plus text-primary"></i>Services
+            <i class="fas fa-sliders-h text-primary"></i>Services
         </a>
     </div>
     @endcan
     @can('view.user')
     <div class="dropdown">
         <a class="drop-sub @if(@$subMenu == 'Service Features') active @endif" href="{{route('admin.serviceFeatures')}}">
-            <i class="fas fa-user-plus text-primary"></i>Service Features
+            <i class="fas fa-star text-primary"></i>Service Features
         </a>
     </div>
     @endcan

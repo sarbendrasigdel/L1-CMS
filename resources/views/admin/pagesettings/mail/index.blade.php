@@ -147,7 +147,7 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="table-responsive">
-                                    <table class="table table-striped table-bordered tabled-search" id="master-table">
+                                    <table class="table table-striped table-bordered tabled-search" id="masterTable">
                                         <thead class="thead-sort">
                                         <tr>
                                             <th class="sort-active">S.No</th>
@@ -178,5 +178,5 @@
     <script src="{{asset('assets')}}/plugin/sweetalert/sweetalert.min.js"></script>
     <script src="{{ asset('assets/plugin/chosen/chosen.jquery.js') }}"></script>
     <script src="{{ asset('assets/plugin/chosen/prism.js') }}"></script>
-    <script src="{{asset('assets/admin/custom/js/pagesettings/bl.js')}}"></script>
+    <script src="{{asset('assets/admin/custom/js/pagesettings/mail.js')}}"></script>
 @endsection

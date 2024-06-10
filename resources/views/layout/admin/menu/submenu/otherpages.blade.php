@@ -17,12 +17,5 @@
         </a>
     </div>
     @endcan
-    @can('view.user')
-    <div class="dropdown">
-        <a class="drop-sub @if(@$subMenu == 'Publication') active @endif" href="{{route('admin.users')}}">
-            <i class="fas fa-newspaper text-primary"></i>Publication
-        </a>
-    </div>
-    @endcan
 
 </div>

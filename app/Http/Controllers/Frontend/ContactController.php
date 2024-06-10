@@ -57,6 +57,7 @@ class ContactController extends Controller
 
     public function fetchMailList(Request $request)
     {
+        // dd($request->all());
         $columns = array(
             0 => 'id',
             1 => 'name',
@@ -111,5 +112,39 @@ class ContactController extends Controller
     
 
     }
+
+    public function edit($id)
+    {
+        $Mail = Mail::get()
+            
+            ->where('id', decrypt($id))->first();
+            
+            
+            return $Mail;
+    }
+
+    public function destroy(Request $request, $id)
+        {
+            try {
+                if ($request->ajax()) {
+                    $Mail = Mail::findOrFail(decrypt($id));
+                        $Mail->deleted_by_admin_users_info_id = $this->getLoggedInUser()->latestAdminUserInfo->id;
+                        $Mail->save();
+                        if($Mail->delete()){
+                            $data['id']= $id;
+                            $data['status']=true;
+                            $data['msg']= $Mail->display_name.' is successfully deleted.';
+                        }
+                    
+                }
+            } catch (\Exception $e) {
+                $data['status'] = false;
+                $data['title'] = 'Mail';
+                $data['message'] = 'Something went wrong. please try again';
+            //    $data['error'] = $e->getMessage();
+            }
+    
+            return $data;
+        }
 
 }

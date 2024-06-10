@@ -17,24 +17,24 @@
                             <nav class="mil-main-menu" id="swupMenu">
                                 <ul>
                                     <li class="mil-has-children mil-active">
-                                        <a href="{{route('frontend.home')}}">Homepage</a>
+                                        <a href="{{route('frontend.home')}}" id="homepage">Homepage</a>
                                     </li>
                                     <li class="mil-has-children">
-                                        <a href="{{route('frontend.portfolio')}}">Portfolio</a>
+                                        <a href="{{route('frontend.portfolio')}}" id="portfolio">Portfolio</a>
                                     </li>
                                     <li class="mil-has-children">
-                                        <a href="{{route('frontend.services')}}">Services</a>
+                                        <a href="{{route('frontend.services')}}" id="services">Services</a>
                                         
                                     </li>
                                     <li class="mil-has-children">
-                                        <a href="{{route('frontend.blog')}}">Blog</a>
+                                        <a href="{{route('frontend.blog')}}" id="blog">Blog</a>
                                         
                                     </li>
                                     <li class="mil-has-children">
-                                        <a href="#.">Other pages</a>
+                                        <a href="#." id="other-page">Other pages</a>
                                         <ul>
-                                            <li><a href="{{route('frontend.teams')}}">Team</a></li>
-                                            <li><a href="{{route('frontend.contact')}}">Contact</a></li>
+                                            <li><a href="{{route('frontend.teams')}}" id="team">Team</a></li>
+                                            <li><a href="{{route('frontend.contact')}}" id="contact">Contact</a></li>
                                         </ul>
                                     </li>
                                 </ul>

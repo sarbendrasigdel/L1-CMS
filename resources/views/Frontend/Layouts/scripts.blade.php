@@ -20,6 +20,7 @@
     <script src="{{ asset('assets/admin/js/custom.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
+    <script src="{{asset('Frontend/custom/js/frontend.js')}}"></script>
     <script>
         $.ajaxSetup({
             headers: {

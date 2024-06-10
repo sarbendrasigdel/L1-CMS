@@ -209,6 +209,7 @@ Route::group(['middleware' => 'auth:admin-user'], function () {
         //mail section
         Route::get('mail',[ContactController::class,'index'])->name('mails');
         Route::post('/fetch-mails',[ContactController::class,'fetchMailList']);
+        Route::get('/mail/{id}/view',[ContactController::class,'edit']);
         Route::delete('/mails/{id}',[ContactController::class,'destroy']);
 
 

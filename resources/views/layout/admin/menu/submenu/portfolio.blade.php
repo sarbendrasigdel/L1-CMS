@@ -14,7 +14,8 @@
     @can('view.user')
     <div class="dropdown">
         <a class="drop-sub @if(@$subMenu == 'Portfolio Image') active @endif" href="{{route('admin.portfolio-image')}}">
-            <i class="fa fa-tag text-primary"></i>Portfolio Image
+            <i class="fas fa-images text-primary"></i>
+Portfolio Image
         </a>
     </div>
     @endcan

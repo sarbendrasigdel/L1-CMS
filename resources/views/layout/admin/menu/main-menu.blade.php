@@ -9,7 +9,7 @@
                 <li class="nav-item">
                     <a class="nav-link @if(@$menu == 'dashboard') active @endif" id="dashboard-tab" data-toggle="tab"
                        href="#dashboard" role="tab"
-                       aria-controls="dashboard" aria-selected="false"><i class="fas fa-home text-success"></i>Dashboard</a>
+                       aria-controls="dashboard" aria-selected="false">Dashboard</a>
                 </li>
 
                 @php $loggedInUser = \Illuminate\Support\Facades\Auth::guard('admin-user')->user(); @endphp
@@ -43,7 +43,7 @@
                     <li class="nav-item">
                         <a class="nav-link @if(@$menu == 'homepage') active @endif" id="homepage-tab" data-toggle="tab"
                            href="#homepage" role="tab"
-                           aria-controls="homepage" aria-selected="false"><i class="fas fa-users text-success"></i> Home Page</a>
+                           aria-controls="homepage" aria-selected="false"><i class="fas fa-home text-success"></i> Home Page</a>
                     </li>
                 @endif
                 @if($loggedInUser->can('view.user') || $loggedInUser->can('view.user') || $loggedInUser->can('view.user'))
@@ -51,7 +51,8 @@
                     <li class="nav-item">
                         <a class="nav-link @if(@$menu == 'servicepage') active @endif" id="servicepage-tab" data-toggle="tab"
                            href="#servicepage" role="tab"
-                           aria-controls="servicepage" aria-selected="false"><i class="fas fa-users text-success"></i> service Page</a>
+                           aria-controls="servicepage" aria-selected="false"><i class="fas fa-briefcase"></i>
+                           service Page</a>
                     </li>
                 @endif
                 @if($loggedInUser->can('view.user') || $loggedInUser->can('view.user') || $loggedInUser->can('view.user'))
@@ -59,7 +60,16 @@
                     <li class="nav-item">
                         <a class="nav-link @if(@$menu == 'portfolio') active @endif" id="portfolio-tab" data-toggle="tab"
                            href="#portfolio" role="tab"
-                           aria-controls="portfolio" aria-selected="false"><i class="fas fa-users text-success"></i> Portfolio Page</a>
+                           aria-controls="portfolio" aria-selected="false"><i class="fas fa-address-card"></i>
+                           Portfolio Page</a>
+                    </li>
+                @endif
+                @if($loggedInUser->can('view.user') || $loggedInUser->can('view.user') || $loggedInUser->can('view.user'))
+                
+                    <li class="nav-item">
+                        <a class="nav-link @if(@$menu == 'Mails') active @endif" id="mails-tab" data-toggle="tab"
+                           href="#mails" role="tab"
+                           aria-controls="mails" aria-selected="false"><i class="fas fa-envelope text-primary"></i> Mails</a>
                     </li>
                 @endif
                 @if($loggedInUser->can('view.user') || $loggedInUser->can('view.user') || $loggedInUser->can('view.user'))
@@ -67,15 +77,8 @@
                     <li class="nav-item">
                         <a class="nav-link @if(@$menu == 'otherpages') active @endif" id="otherpages-tab" data-toggle="tab"
                            href="#otherpages" role="tab"
-                           aria-controls="otherpages" aria-selected="false"><i class="fas fa-users text-success"></i> Other Pages</a>
-                    </li>
-                @endif
-                @if($loggedInUser->can('view.user') || $loggedInUser->can('view.user') || $loggedInUser->can('view.user'))
-                
-                    <li class="nav-item">
-                        <a class="nav-link @if(@$menu == 'Mails') active @endif" id="mail-tab" data-toggle="tab"
-                           href="#mails" role="tab"
-                           aria-controls="mails" aria-selected="false"><i class="fas fa-envelope"></i> Mails</a>
+                           aria-controls="otherpages" aria-selected="false"><i class="fas fa-folder"></i>
+                           Other Pages</a>
                     </li>
                 @endif
             </ul>

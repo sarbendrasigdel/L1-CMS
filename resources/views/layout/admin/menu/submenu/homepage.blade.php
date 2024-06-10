@@ -21,7 +21,8 @@
     @can('view.user')
     <div class="dropdown">
         <a class="drop-sub @if(@$subMenu == 'partners') active @endif" href="{{route('admin.partner')}}">
-            <i class="fas fa-quote-left text-primary"></i>Partners
+            <i class="fas fa-handshake text-primary"></i>
+Partners
         </a>
     </div>
     @endcan

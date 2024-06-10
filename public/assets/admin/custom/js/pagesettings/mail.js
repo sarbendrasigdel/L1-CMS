@@ -1,6 +1,7 @@
 
 //fetch record in data table
-var masterTable = $('#master-table').DataTable({
+
+var masterTable = $('#masterTable').DataTable({
     order: [0, 'desc'],
     dom: 'lfrtip',
     serverSide: true,
@@ -51,4 +52,66 @@ var masterTable = $('#master-table').DataTable({
             }
         }
     ],
+});
+masterTable.draw();
+
+
+//view
+$('table#masterTable').delegate('.view-record', 'click', function(){
+    var MailId = $(this).parents('tr').attr('data-id');
+    $.get(basePath+"admin/mail/"+MailId+"/view", function(Mail){
+
+        // var form = $('form#edit-form');
+        console.log(Mail);
+        $('#name').html(Mail.name);
+        $('#email').html(Mail.email);
+        $('#message').html(Mail.description);
+        
+    });
+});
+
+//delete
+$('table#masterTable').delegate('.delete-record', 'click', function(e){
+    e.preventDefault();
+    var MailId = $(this).parents('tr').attr('data-id');
+    var thisReference = $(this);
+    swal({
+        title: "Are you sure want to delete this member?",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#136ba7",
+        confirmButtonText: "Yes",
+        cancelButtonText: "Cancel",
+        closeOnConfirm: false,
+        closeOnCancel: false
+    }, function (isConfirm){
+        if(isConfirm){
+            $.ajax({
+                url: basePath + 'admin/mails/' + MailId,
+                type: 'post',
+                data:{ id:MailId, _method: 'DELETE', _token: csrfToken
+                },
+                success: function(data){
+                    if(data.status){
+                        swal({
+                            title: data.msg,
+                            type: "success",
+                            confirmButtonColor: "#136ba7",
+                            confirmButtonText: "Ok",
+                            closeOnConfirm: true,
+                        }, function(isConfirm){
+                            if(isConfirm){
+                                thisReference.parents('tr').remove();
+                            }
+                        });
+                    }else{
+                        swal("Not Deleted", data.msg, "error");
+                    }
+                },
+                error: function(){},
+            });
+        }else{
+            swal("Not Deleted", "Mail is not Deleted. it is save.", "error");
+        }
+    });
 });
