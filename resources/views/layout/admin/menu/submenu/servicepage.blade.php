@@ -23,5 +23,12 @@
         </a>
     </div>
     @endcan
+    @can('view.user')
+    <div class="dropdown">
+        <a class="drop-sub @if(@$subMenu == 'Price Plans') active @endif" href="{{route('admin.price')}}">
+            <i class="fas fa-dollar-sign text-primary"></i>Price Plans
+        </a>
+    </div>
+    @endcan
 
 </div>

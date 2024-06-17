@@ -14,6 +14,7 @@ use App\Models\Admins\Pagesettings\Service;
 use App\Models\Admins\Pagesettings\ServiceFeatures;
 use App\Models\Admins\Pagesettings\Portfolio;
 use App\Models\Admins\Pagesettings\category;
+use App\Models\Admins\Settings\SeoSetting;
 
 class FrontendController extends Controller
 {
@@ -34,6 +35,7 @@ public function home()
     $data['partners'] = Partner::get();
     $data['blogs'] = Blog::take(2)->get();
     $data['services']= Service::take(4)->get();
+    $data['seoSetting'] = SeoSetting::where('page_name','home-page')->first();  
     return view('Frontend.home.index',$data);
 }
 

@@ -127,6 +127,7 @@ class DesignationController extends Controller
         $currentDate = Carbon::now()->toDateTimeString();
         $fileName = $currentDate.'Designations.xlsx';
         $file =  Excel::download(new DesignationExport($request), $fileName);
+        
 
         return $file;
     }

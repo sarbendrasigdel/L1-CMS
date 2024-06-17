@@ -21,6 +21,7 @@ use App\Http\Controllers\Admins\Updated\PartnerController;
 use App\Http\Controllers\Admins\Updated\PortfolioController;
 use App\Http\Controllers\Admins\Updated\PortfolioImageImageController;
 use App\Http\Controllers\Admins\Updated\ServiceController;
+use App\Http\Controllers\Admins\Updated\PriceController;
 use App\Http\Controllers\Admins\Updated\ServiceFeaturesController;
 use App\Http\Controllers\Admins\Updated\TestimonialController;
 use App\Http\Controllers\Admins\Updated\PortfolioImageController;
@@ -46,9 +47,9 @@ Route::get('clear', function () {
     return 'all clear';
 });
 
-Route::get('/', function () {
-    return redirect(route('admin.login'));
-})->name('frontend.index');
+// Route::get('/', function () {
+//     return redirect(route('admin.login'));
+// })->name('frontend.index');
 
 Route::get('/admin-login', [LoginController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/admin-login', [LoginController::class, 'authenticate'])->name('admin.login.submit');
@@ -211,6 +212,16 @@ Route::group(['middleware' => 'auth:admin-user'], function () {
         Route::post('/fetch-mails',[ContactController::class,'fetchMailList']);
         Route::get('/mail/{id}/view',[ContactController::class,'edit']);
         Route::delete('/mails/{id}',[ContactController::class,'destroy']);
+        
+        
+        //price section
+        Route::get('price-plans',[PriceController::class,'index'])->name('price');
+        Route::post('fetch-price-plans',[PriceController::class,'fetchPriceList']);
+        Route::get('price-plan/{id}/edit',[PriceController::class,'edit']);
+        Route::post('add-price-plans',[PriceController::class,'store']);
+        Route::post('price-plan/{id}',[PriceController::class,'update']);
+        Route::delete('price-plans/{id}',[PriceController::class,'destroy']);
+
 
 
 
@@ -218,19 +229,20 @@ Route::group(['middleware' => 'auth:admin-user'], function () {
 });
 
 //frontend routes
-Route::get('/home',[FrontendController::class,'home'])->name('frontend.home');
-Route::get('/team',[FrontendController::class,'teams'])->name('frontend.teams');
-Route::get('/services',[FrontendController::class,'services'])->name('frontend.services');
-Route::get('/portfolio',[FrontendController::class,'portfolio'])->name('frontend.portfolio');
-Route::get('/blog',[FrontendController::class,'blog'])->name('frontend.blog');
-Route::get('/contact',[FrontendController::class,'contact'])->name('frontend.contact');
-Route::get('/publication/{slug}',[FrontendController::class,'publication'])->name('frontend.publication');
-Route::get('/service/{id}',[FrontendController::class,'service'])->name('frontend.service'); //need to be replaced with slug
-Route::get('/project/{slug}',[FrontendController::class,'project'])->name('frontend.project');
-Route::get('/blog-inner',[FrontendController::class,'blogInner'])->name('frontend.blog-inner');
-Route::post('submit-contact',[ContactController::class,'store'])->name('frontend.contact.mail');
+Route::group([ 'as' => 'frontend.'], function () {
+Route::get('/',[FrontendController::class,'home'])->name('home');
+Route::get('/team',[FrontendController::class,'teams'])->name('teams');
+Route::get('/services',[FrontendController::class,'services'])->name('services');
+Route::get('/portfolio',[FrontendController::class,'portfolio'])->name('portfolio');
+Route::get('/blog',[FrontendController::class,'blog'])->name('blog');
+Route::get('/contact',[FrontendController::class,'contact'])->name('contact');
+Route::get('/publication/{slug}',[FrontendController::class,'publication'])->name('publication');
+Route::get('/service/{id}',[FrontendController::class,'service'])->name('service'); //need to be replaced with slug
+Route::get('/project/{slug}',[FrontendController::class,'project'])->name('project');
+Route::get('/blog-inner',[FrontendController::class,'blogInner'])->name('blog-inner');
+Route::post('submit-contact',[ContactController::class,'store'])->name('contact.mail');
 
-
+});
 
 
 

@@ -138,5 +138,6 @@
     @include('layout.common.messages.error')
 @endsection
 @section('additional-js')
+    <script src="{{asset('assets')}}/plugin/dataTables/datatables.min.js"></script>
     <script src="{{asset('assets/admin/custom/js/setting/seo-setting/seo-setting.js')}}"></script>
 @endsection

@@ -1,7 +1,11 @@
 @extends('Frontend.Layouts.main')
 
-@section('title')
-Home
+@section('page-title')    
+<title> {{ @$seoSetting->meta_title ? $seoSetting->meta_title: 'sarbendra' }}</title>
+@endsection
+@section('meta-tags')    
+<meta name="title" content="{{ @$seoSetting->meta_title }}">    
+<meta name="description" content="{{ @$seoSetting->meta_description }}">
 @endsection
 
 @section('content')
